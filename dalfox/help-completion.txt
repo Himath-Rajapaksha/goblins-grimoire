@@ -1,0 +1,31 @@
+
+               ░█▒
+             ████     ▓
+           ▓█████  ▓██▓
+          ████████████         ░
+        ░███████████▓          ▓░
+     ░████████████████        ▒██░
+    ▓██████████▒███████     ░█████▓░
+   ██████████████░ ████        █▓
+ ░█████▓          ░████▒       ░         Dalfox v3.3.0
+ █████               ▓██░
+ ████                  ▓██      Powerful open-source XSS scanner
+ ███▓        ▓███████▓▒▓█░     and utility focused on automation.
+ ███▒      █████
+ ▓███     ██████
+ ████     ██████▒
+ ░████    ████████▒
+
+Generate shell completion scripts
+
+Usage: dalfox completion [OPTIONS] <SHELL>
+
+Arguments:
+  <SHELL>  Shell to generate completions for [possible values: bash, elvish, fish, powershell, zsh]
+
+Options:
+      --config <FILE>  Path to a config file (TOML or JSON). Overrides default search path
+      --debug          Enable debug logging (show DBG lines)
+      --no-color       Disable colored output (also respects NO_COLOR env var)
+  -S, --silence        Silence all logs except POC output to STDOUT
+  -h, --help           Print help

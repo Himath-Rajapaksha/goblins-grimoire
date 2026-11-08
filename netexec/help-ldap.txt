@@ -1,0 +1,186 @@
+usage: nxc ldap [-h] [--version] [-t THREADS] [--timeout TIMEOUT]
+                [--jitter INTERVAL] [--exclude-hosts HOST [HOST ...]]
+                [--skip-self] [--no-progress] [--log LOG] [--verbose |
+                --debug] [-6] [--dns-server DNS_SERVER] [--dns-tcp]
+                [--dns-timeout DNS_TIMEOUT] [-u USERNAME [USERNAME ...]]
+                [-p PASSWORD [PASSWORD ...]] [-id CRED_ID [CRED_ID ...]]
+                [--ignore-pw-decoding] [--no-bruteforce]
+                [--continue-on-success] [--gfail-limit LIMIT]
+                [--ufail-limit LIMIT] [--fail-limit LIMIT] [-k] [--use-kcache]
+                [--aesKey AESKEY [AESKEY ...]] [--kdcHost KDCHOST]
+                [--pfx-cert PFXCERT] [--pfx-base64 PFXB64]
+                [--pfx-pass PFXPASS] [--pem-cert PEMCERT] [--pem-key PEMKEY]
+                [-M MODULE] [-o MODULE_OPTION [MODULE_OPTION ...]]
+                [-L [LIST_MODULES]] [--options] [-H HASH [HASH ...] |
+                --simple-bind] [--port PORT] [--ldap-timeout LDAP_TIMEOUT]
+                [-d DOMAIN] [--schannel] [--asreproast ASREPROAST]
+                [--kerberoasting KERBEROASTING]
+                [--kerberoast-account KERBEROAST_ACCOUNT [KERBEROAST_ACCOUNT ...]]
+                [--targeted-kerberoast TARGETED_KERBEROAST [TARGETED_KERBEROAST ...]]
+                [--no-preauth-targets NO_PREAUTH_TARGETS] [--base-dn BASE_DN]
+                [--query QUERY QUERY] [--find-delegation]
+                [--trusted-for-delegation] [--password-not-required]
+                [--admin-count] [--users [USERS ...]]
+                [--users-export USERS_EXPORT] [--groups [GROUPS]]
+                [--ous [OUS]] [--computers] [--dc-list] [--get-sid]
+                [--active-users [ACTIVE_USERS ...]] [--pso] [--pass-pol]
+                [--gmsa] [--gmsa-convert-id GMSA_CONVERT_ID]
+                [--gmsa-decrypt-lsa GMSA_DECRYPT_LSA] [--bloodhound]
+                [-c COLLECTION]
+                target [target ...]
+
+positional arguments:
+  target                the target IP(s), range(s), CIDR(s), hostname(s),
+                        FQDN(s), file(s) containing a list of targets, NMap
+                        XML or .Nessus file(s)
+
+options:
+  -h, --help            show this help message and exit
+  -H, --hash HASH [HASH ...]
+                        NTLM hash(es) or file(s) containing NTLM hashes
+  --simple-bind         Use simple bind authentication (no signing/sealing)
+  --port PORT           LDAP port (default: 389)
+  --ldap-timeout LDAP_TIMEOUT
+                        LDAP connection timeout (default: 3)
+  -d DOMAIN             domain to authenticate to
+  --schannel            Authenticate with the certificate using Schannel
+                        instead of PKINIT
+
+Generic Options:
+  --version             Display nxc version
+  -t, --threads THREADS
+                        set how many concurrent threads to use (default: 256)
+  --timeout TIMEOUT     [DEPRECATED] no longer used, replaced by per-protocol
+                        timeouts (--smb-timeout, --ldap-timeout, --dcom-
+                        timeout)
+  --jitter INTERVAL     sets a random delay between each authentication
+  --exclude-hosts HOST [HOST ...]
+                        Exclude one or more hosts, IPs, CIDRs or hostnames
+                        from the scan
+  --skip-self           Exclude the local machine from the scan
+
+Output Options:
+  --no-progress         do not displaying progress bar during scan
+  --log LOG             export result into a custom file
+  --verbose             enable verbose output
+  --debug               enable debug level information
+
+DNS:
+  -6                    Enable force IPv6
+  --dns-server DNS_SERVER
+                        Specify DNS server (default: Use hosts file & System
+                        DNS)
+  --dns-tcp             Use TCP instead of UDP for DNS queries
+  --dns-timeout DNS_TIMEOUT
+                        DNS query timeout in seconds (default: 3)
+
+Authentication:
+  -u, --username USERNAME [USERNAME ...]
+                        username(s) or file(s) containing usernames
+  -p, --password PASSWORD [PASSWORD ...]
+                        password(s) or file(s) containing passwords
+  -id CRED_ID [CRED_ID ...]
+                        database credential ID(s) to use for authentication
+  --ignore-pw-decoding  Ignore non UTF-8 characters when decoding the password
+                        file
+  --no-bruteforce       No spray when using file for username and password
+                        (user1 => password1, user2 => password2)
+  --continue-on-success
+                        continues authentication attempts even after successes
+  --gfail-limit LIMIT   max number of global failed login attempts
+  --ufail-limit LIMIT   max number of failed login attempts per username
+  --fail-limit LIMIT    max number of failed login attempts per host
+
+Kerberos Authentication:
+  -k, --kerberos        Use Kerberos authentication
+  --use-kcache          Use Kerberos authentication from ccache file
+                        (KRB5CCNAME)
+  --aesKey AESKEY [AESKEY ...]
+                        AES key to use for Kerberos Authentication (128 or 256
+                        bits)
+  --kdcHost KDCHOST     FQDN of the domain controller. If omitted it will use
+                        the domain part (FQDN) specified in the target
+                        parameter
+
+Certificate Authentication:
+  --pfx-cert PFXCERT    Use certificate authentication from pfx file .pfx
+  --pfx-base64 PFXB64   Use certificate authentication from pfx file encoded
+                        in base64
+  --pfx-pass PFXPASS    Password of the pfx certificate
+  --pem-cert PEMCERT    Use certificate authentication from PEM file
+  --pem-key PEMKEY      Private key for the PEM format
+
+Modules:
+  -M, --module MODULE   module to use
+  -o MODULE_OPTION [MODULE_OPTION ...]
+                        module options
+  -L, --list-modules [LIST_MODULES]
+                        list available modules
+  --options             display module options
+
+Retrieve hash on the remote DC:
+  Options to get hashes from Kerberos
+
+  --asreproast ASREPROAST
+                        Output AS_REP response to crack with hashcat to file
+  --kerberoasting, --kerberoast KERBEROASTING
+                        Output TGS ticket to crack with hashcat to file
+  --kerberoast-account KERBEROAST_ACCOUNT [KERBEROAST_ACCOUNT ...]
+                        Target specific accounts for kerberoasting
+                        (sAMAccountNames or file containing sAMAccountNames)
+  --targeted-kerberoast TARGETED_KERBEROAST [TARGETED_KERBEROAST ...]
+                        Adds temporary SPN to specified users, requests ST,
+                        then remove added SPN. Specify sAMAccountNames or file
+                        containing sAMAccountNames
+  --no-preauth-targets NO_PREAUTH_TARGETS
+                        Specify accounts that should be kerberoasted using an
+                        account without pre-authentication requirement.
+
+Retrieve useful information on the domain:
+  --base-dn BASE_DN     base DN for search queries
+  --query QUERY QUERY   Query LDAP with a custom filter and attributes
+  --find-delegation     Finds delegation relationships within an Active
+                        Directory domain. (Enabled Accounts only)
+  --trusted-for-delegation
+                        Get the list of users and computers with flag
+                        TRUSTED_FOR_DELEGATION
+  --password-not-required
+                        Get the list of users with flag PASSWD_NOTREQD
+  --admin-count         Get user that had the value adminCount=1
+  --users [USERS ...]   Enumerate domain users
+  --users-export USERS_EXPORT
+                        Enumerate domain users and export them to the
+                        specified file
+  --groups [GROUPS]     Enumerate domain groups, if a group is specified than
+                        its members are enumerated
+  --ous [OUS]           Specify OU name to query all users in that OU or list
+                        all OUs
+  --computers           Enumerate domain computers
+  --dc-list             Enumerate Domain Controllers
+  --get-sid             Get domain sid
+  --active-users [ACTIVE_USERS ...]
+                        Get Active Domain Users Accounts
+  --pso                 Get Fine Grained Password Policy/PSOs
+  --pass-pol            Dump password policy
+
+Retrieve gmsa on the remote DC:
+  Options to play with gmsa
+
+  --gmsa                Enumerate GMSA passwords
+  --gmsa-convert-id GMSA_CONVERT_ID
+                        Get the secret name of specific gmsa or all gmsa if no
+                        gmsa provided
+  --gmsa-decrypt-lsa GMSA_DECRYPT_LSA
+                        Decrypt the gmsa encrypted value from LSA
+
+Bloodhound Scan:
+  Options to play with Bloodhound
+
+  --bloodhound          Perform a Bloodhound scan. Default collector:
+                        Bloodhound CE, for legacy support see config file
+  -c, --collection COLLECTION
+                        Which information to collect. Supported: Group,
+                        LocalAdmin, Session, Trusts, Default, DCOnly, DCOM,
+                        RDP, PSRemote, LoggedOn, Container, ObjectProps, ACL,
+                        ADCS, All. You can specify more than one by separating
+                        them with a comma. (default: Default)

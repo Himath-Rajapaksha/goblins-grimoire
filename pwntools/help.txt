@@ -1,0 +1,32 @@
+usage: pwn [-h]
+           {asm,checksec,constgrep,cyclic,debug,disasm,disablenx,elfdiff,elfpatch,errno,hex,libcdb,phd,pwnstrip,scramble,shellcraft,template,unhex,update,version} ...
+
+Pwntools Command-line Interface
+
+positional arguments:
+  {asm,checksec,constgrep,cyclic,debug,disasm,disablenx,elfdiff,elfpatch,errno,hex,libcdb,phd,pwnstrip,scramble,shellcraft,template,unhex,update,version}
+    asm                 Assemble shellcode into bytes
+    checksec            Check binary security settings
+    constgrep           Looking up constants from header files. Example:
+                        constgrep -c freebsd -m ^PROT_ '3 + 4'
+    cyclic              Cyclic pattern creator/finder
+    debug               Debug a binary in GDB
+    disasm              Disassemble bytes into text format
+    disablenx           Disable NX for an ELF binary
+    elfdiff             Compare two ELF files
+    elfpatch            Patch an ELF file
+    errno               Prints out error messages
+    hex                 Hex-encodes data provided on the command line or stdin
+    libcdb              Print various information about a libc binary
+    phd                 Pretty hex dump
+    pwnstrip            Strip binaries for CTF usage
+    scramble            Shellcode encoder
+    shellcraft          Microwave shellcode -- Easy, fast and delicious
+    template            Generate an exploit template
+    unhex               Decodes hex-encoded data provided on the command line
+                        or via stdin.
+    update              Check for pwntools updates
+    version             Pwntools version
+
+options:
+  -h, --help            show this help message and exit

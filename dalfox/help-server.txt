@@ -1,0 +1,105 @@
+
+               ░█▒
+             ████     ▓
+           ▓█████  ▓██▓
+          ████████████         ░
+        ░███████████▓          ▓░
+     ░████████████████        ▒██░
+    ▓██████████▒███████     ░█████▓░
+   ██████████████░ ████        █▓
+ ░█████▓          ░████▒       ░         Dalfox v3.3.0
+ █████               ▓██░
+ ████                  ▓██      Powerful open-source XSS scanner
+ ███▓        ▓███████▓▒▓█░     and utility focused on automation.
+ ███▒      █████
+ ▓███     ██████
+ ████     ██████▒
+ ░████    ████████▒
+
+Run API/server mode
+
+Usage: dalfox server [OPTIONS]
+
+Options:
+      --config <FILE>
+          Path to a config file (TOML or JSON). Overrides default search path
+
+      --debug
+          Enable debug logging (show DBG lines)
+
+      --no-color
+          Disable colored output (also respects NO_COLOR env var)
+
+  -S, --silence
+          Silence all logs except POC output to STDOUT
+
+  -h, --help
+          Print help (see a summary with '-h')
+
+SERVER:
+  -p, --port <PORT>
+          Port to run the server on
+          
+          [default: 6664]
+
+  -H, --host <HOST>
+          Host to bind the server to
+          
+          [default: 127.0.0.1]
+
+      --api-key <API_KEY>
+          API key required in X-API-KEY header (or set via DALFOX_API_KEY). Leave empty to disable auth
+
+      --log-file <LOG_FILE>
+          Path to a log file to also write logs (plain text, no ANSI colors). Created mode 0600 on Unix — the log records every submitted target URL, which routinely carries the credential that made it worth scanning. An existing file keeps its current permissions; the server warns at startup if it is readable by group or other
+
+      --rate-limit <RATE_LIMIT>
+          Server-wide cap on each scan's outbound request rate (requests/second; 0 or unset = unlimited). Applied to every submitted scan: a request's own `rate_limit` may be lower but cannot exceed or disable this cap
+
+      --scan-timeout <SCAN_TIMEOUT>
+          Server-wide cap on each scan's total wall-clock runtime, in seconds (0 or unset = unbounded). Applied to every submitted scan: a request's own scan_timeout may be shorter but cannot exceed or disable this cap. Bounds long/deep scans so a single target can't pin a worker indefinitely
+
+      --max-concurrent-scans <MAX_CONCURRENT_SCANS>
+          Maximum number of concurrently active (queued + running) scans. Once the cap is hit, new submissions get HTTP 503 until a slot frees. 0 disables the cap (unbounded). Bounds memory + the blocking-pool against a flood of submissions
+          
+          [default: 100]
+
+      --allowed-hosts <ALLOWED_HOSTS>
+          Comma-separated hostnames accepted in the request `Host` header, on top of the bind host, `localhost`, and any IP literal (which cannot be rebound). Requests naming anything else are refused, which is what a DNS rebinding attack looks like. Set this when a reverse proxy forwards a public hostname to this server
+
+      --max-retained-scans <MAX_RETAINED_SCANS>
+          Maximum number of finished (done/error/cancelled) scans kept in memory. Once exceeded, the oldest finished scans are dropped to make room; scans still queued or running are never dropped. 0 disables the cap. This bounds memory independently of `--max-concurrent-scans`, which only counts active scans, so a flood of quick scans could otherwise retain their results (including response bodies) until the retention TTL
+          
+          [default: 1000]
+
+      --max-body-bytes <MAX_BODY_BYTES>
+          Maximum accepted request-body size (bytes) for POST /scan and /preflight. Replaces axum's implicit 2 MiB default with an explicit, documented bound
+          
+          [default: 1048576]
+
+CORS:
+      --allowed-origins <ALLOWED_ORIGINS>
+          Comma-separated list of allowed origins for CORS.
+          Supports:
+            - "*" wildcard (match all, and switches the cross-site gate off)
+            - exact origins (http://localhost:3000), compared case-insensitively
+            - "regex:<pattern>" for regex
+          
+          Both pattern forms are anchored to the whole Origin, so a longer host that
+          merely contains one is refused — and a pattern must cover the port when the
+          origins it describes carry one (https://app.example.com:8443).
+
+      --cors-allow-methods <CORS_ALLOW_METHODS>
+          CORS allow methods (comma-separated). Default: GET,POST,OPTIONS,PUT,PATCH,DELETE
+
+      --cors-allow-headers <CORS_ALLOW_HEADERS>
+          CORS allow headers (comma-separated). Default: Content-Type,X-API-KEY,Authorization
+
+JSONP:
+      --jsonp
+          Allow JSONP responses (wrap JSON in callback())
+
+      --callback-param-name <CALLBACK_PARAM_NAME>
+          JSONP callback parameter name
+          
+          [default: callback]

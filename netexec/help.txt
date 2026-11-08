@@ -1,0 +1,64 @@
+usage: nxc [-h] [--version] [-t THREADS] [--timeout TIMEOUT]
+           [--jitter INTERVAL] [--exclude-hosts HOST [HOST ...]] [--skip-self]
+           [--no-progress] [--log LOG] [--verbose | --debug] [-6]
+           [--dns-server DNS_SERVER] [--dns-tcp] [--dns-timeout DNS_TIMEOUT]
+           {winrm,ftp,wmi,rdp,ldap,ssh,mssql,nfs,vnc,smb} ...
+
+     .   .
+    .|   |.     _   _          _     _____
+    ||   ||    | \ | |   ___  | |_  | ____| __  __   ___    ___
+    \\( )//    |  \| |  / _ \ | __| |  _|   \ \/ /  / _ \  / __|
+    .=[ ]=.    | |\  | |  __/ | |_  | |___   >  <  |  __/ | (__
+   / /˙-˙\ \   |_| \_|  \___|  \__| |_____| /_/\_\  \___|  \___|
+   ˙ \   / ˙
+     ˙   ˙
+
+    The network execution tool
+    Maintained as an open source project by @NeffIsBack, @MJHallenbeck, @_zblurx
+
+    For documentation and usage examples, visit: https://www.netexec.wiki/
+
+    Version : 1.5.1
+    Codename: Yippie-Ki-Yay
+    Commit  : f08f65a4
+    
+
+options:
+  -h, --help            show this help message and exit
+
+Generic Options:
+  --version             Display nxc version
+  -t, --threads THREADS
+                        set how many concurrent threads to use
+  --timeout TIMEOUT     [DEPRECATED] no longer used, replaced by per-protocol timeouts (--smb-timeout, --ldap-timeout, --dcom-timeout)
+  --jitter INTERVAL     sets a random delay between each authentication
+  --exclude-hosts HOST [HOST ...]
+                        Exclude one or more hosts, IPs, CIDRs or hostnames from the scan
+  --skip-self           Exclude the local machine from the scan
+
+Output Options:
+  --no-progress         do not displaying progress bar during scan
+  --log LOG             export result into a custom file
+  --verbose             enable verbose output
+  --debug               enable debug level information
+
+DNS:
+  -6                    Enable force IPv6
+  --dns-server DNS_SERVER
+                        Specify DNS server (default: Use hosts file & System DNS)
+  --dns-tcp             Use TCP instead of UDP for DNS queries
+  --dns-timeout DNS_TIMEOUT
+                        DNS query timeout in seconds
+
+Available Protocols:
+  {winrm,ftp,wmi,rdp,ldap,ssh,mssql,nfs,vnc,smb}
+    winrm               own stuff using WINRM
+    ftp                 own stuff using FTP
+    wmi                 own stuff using WMI
+    rdp                 own stuff using RDP
+    ldap                own stuff using LDAP
+    ssh                 own stuff using SSH
+    mssql               own stuff using MSSQL
+    nfs                 own stuff using NFS
+    vnc                 own stuff using VNC
+    smb                 own stuff using SMB

@@ -1,0 +1,30 @@
+torsocks 2.5.0
+
+/usr/bin/torsocks [OPTIONS] [COMMAND [arg ...]]
+
+usage: /usr/bin/torsocks command args
+
+Options:
+  -h, --help         Show this help
+      --shell        Spawn a torified shell
+      --version      Show version
+  -d, --debug        Set debug mode.
+  -u, --user NAME    Username for the SOCKS5 authentication
+  -p, --pass NAME    Password for the SOCKS5 authentication
+  -i, --isolate      Automatic tor isolation. Can't be used with -u/-p
+  -6, --ipv6         Enable creation of IPv6 sockets
+  -a, --address HOST Specify Tor IP address. Accepts only numeric addresses
+  -P, --port PORT    Specify Tor port
+  on, off            Set/Unset your shell to use Torsocks by default
+                     Make sure to source the call when using this option. (See Examples)
+  show, sh           Show the current value of the LD_PRELOAD
+
+Examples:
+
+Simple use of torsocks with SSH
+    $ torsocks ssh user@host.com -p 1234
+
+Set your current shell in Tor mode.
+    $ . torsocks on
+
+Please see torsocks(1), torsocks.conf(5) and torsocks(8) for more information.

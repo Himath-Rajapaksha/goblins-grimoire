@@ -1,0 +1,58 @@
+
+               ░█▒
+             ████     ▓
+           ▓█████  ▓██▓
+          ████████████         ░
+        ░███████████▓          ▓░
+     ░████████████████        ▒██░
+    ▓██████████▒███████     ░█████▓░
+   ██████████████░ ████        █▓
+ ░█████▓          ░████▒       ░         Dalfox v3.3.0
+ █████               ▓██░
+ ████                  ▓██      Powerful open-source XSS scanner
+ ███▓        ▓███████▓▒▓█░     and utility focused on automation.
+ ███▒      █████
+ ▓███     ██████
+ ████     ██████▒
+ ░████    ████████▒
+
+Manage or enumerate payloads
+
+Usage: dalfox payload [OPTIONS] [SELECTOR]
+
+Arguments:
+  [SELECTOR]
+          Selector to enumerate payload resources.
+          Supported selectors:
+            - javascript: print the canonical JavaScript execution payloads used in JS-string / script contexts (alert(1), backtick and keyword-split variants, ...)
+            - event-handlers: print all DOM event handler attribute names (e.g., onclick, onmouseover)
+            - useful-tags: print useful HTML tag names used for XSS payloads (e.g., script, img, svg)
+            - payloadbox: fetch and print remote XSS payloads from PayloadBox
+            - portswigger: fetch and print remote XSS payloads from PortSwigger
+            - uri-scheme: print scheme-based XSS payloads (javascript:, data:, etc.)
+            - special-chars: print special characters (and encoded variants) for context probing / breakout
+            - functions: print visibly-confirmable sinks with filter-surviving variants (alert, prompt, ...)
+            - awesome-alert: print polished alert PoCs for clean screenshots/demos (alert(document.domain), ...)
+            - dom-clobbering: print DOM clobbering payloads
+            - mxss: print mutation-XSS / sanitizer-bypass payloads
+            - blind: print blind-XSS skeletons ({} = your OOB callback URL)
+            - all: print every local selector above in one pass, each under a '# name' header (no network fetch)
+
+Options:
+      --json
+          Print payloads as a JSON array
+
+      --config <FILE>
+          Path to a config file (TOML or JSON). Overrides default search path
+
+      --debug
+          Enable debug logging (show DBG lines)
+
+      --no-color
+          Disable colored output (also respects NO_COLOR env var)
+
+  -S, --silence
+          Silence all logs except POC output to STDOUT
+
+  -h, --help
+          Print help (see a summary with '-h')

@@ -1,0 +1,369 @@
+
+               ░█▒
+             ████     ▓
+           ▓█████  ▓██▓
+          ████████████         ░
+        ░███████████▓          ▓░
+     ░████████████████        ▒██░
+    ▓██████████▒███████     ░█████▓░
+   ██████████████░ ████        █▓
+ ░█████▓          ░████▒       ░         Dalfox v3.3.0
+ █████               ▓██░
+ ████                  ▓██      Powerful open-source XSS scanner
+ ███▓        ▓███████▓▒▓█░     and utility focused on automation.
+ ███▒      █████
+ ▓███     ██████
+ ████     ██████▒
+ ░████    ████████▒
+
+Scan targets for XSS
+
+Usage: dalfox scan [OPTIONS] [TARGET]...
+
+Options:
+      --config <FILE>
+          Path to a config file (TOML or JSON). Overrides default search path
+
+      --debug
+          Enable debug logging (show DBG lines)
+
+  -h, --help
+          Print help (see a summary with '-h')
+
+INPUT:
+  -i, --input-type <INPUT_TYPE>
+          Input type: auto, url, file, pipe, raw-http, har, openapi, postman
+          
+          [default: auto]
+          [possible values: auto, url, file, pipe, raw-http, har, openapi, postman]
+
+      --base-url <URL>
+          Where the API of an `-i openapi` / `-i postman` input lives. Supplies scheme, host and port for every request and is a path prefix; the spec server's path (or each Postman request's path) is appended. Example: --base-url https://staging.example.com
+
+      --dedup-urls <MODE>
+          Target deduplication [default: exact]: exact (drop byte-identical URL+method+request content), signature (also collapse URLs that differ only in parameter values — keys on method+host+path+parameter names), off (scan every input line)
+          
+          [possible values: exact, signature, off]
+
+      --state-file <PATH>
+          Record which targets finished to PATH and skip them when the same scan is re-run, so an interrupted mass scan resumes instead of restarting. Only fully completed targets are skipped; ones cut short by Ctrl-C or --scan-timeout are retried. Example: --state-file scan.state
+
+OUTPUT:
+  -f, --format <FORMAT>
+          Output format: json, jsonl, plain, markdown, sarif, toml
+          
+          [default: plain]
+          [possible values: plain, json, jsonl, markdown, sarif, toml]
+
+  -o, --output <OUTPUT>
+          Write output to a file. Example: -o 'output.txt'
+
+      --include-request
+          Include HTTP request information in output
+
+      --include-response
+          Include HTTP response information in output
+
+      --include-all
+          Include both HTTP request and response information in output (equivalent to --include-request --include-response)
+
+      --no-color
+          Disable colored output (also respects NO_COLOR env var)
+
+  -S, --silence
+          Silence all logs except POC output to STDOUT
+
+      --dry-run
+          Dry-run mode: parse targets, run parameter discovery, and report what would be scanned without sending attack payloads. Outputs target count, discovered parameters, and estimated request count
+
+      --stream-findings
+          Emit each finding (POC + Issue / Payload / Line) the moment it is verified, instead of waiting for end-of-scan. Useful for long scans where you want immediate feedback; off by default so the default flow shows findings after `WRN XSS found N XSS`
+
+      --poc-type <POC_TYPE>
+          POC output type: plain, curl, httpie, http-request
+          
+          [default: plain]
+          [possible values: plain, curl, httpie, http-request]
+
+      --limit <LIMIT>
+          Limit the number of results to display (must be >=1). Example: --limit 10
+
+      --limit-result-type <LIMIT_RESULT_TYPE>
+          Filter which finding types count toward --limit: all, v (vulnerable), r (reflected), a (AST DOM XSS), i (informational). Example: --limit-result-type v
+          
+          [default: all]
+          [possible values: all, v, r, a, i, V, R, A, I]
+
+      --only-poc <ONLY_POC>
+          Filter output to show only specific finding types (comma-separated). Options: v (vulnerable), r (reflected), a (AST DOM XSS), i (informational). Example: --only-poc "v,r"
+          
+          [possible values: v, r, a, i, V, R, A, I]
+
+      --baseline <BASELINE>
+          Diff against a previous dalfox JSON/JSONL report and report only findings new since it. The baseline is an ordinary `--format json --output` report. Example: --baseline baseline.json
+
+      --baseline-mode <MODE>
+          What --baseline does with already-known findings [default: filter]: filter (drop them, so the exit code gates on new findings only) or annotate (keep them and mark each `new`). Example: --baseline-mode annotate
+          
+          [possible values: filter, annotate]
+
+      --min-confidence <LEVEL>
+          Drop findings graded below this confidence before output, per-target counts, --baseline, and the exit code: low (default, keep everything) or high (keep only findings dalfox can claim are exploitable; informational findings carry no grade and are kept). Example: --min-confidence high
+          
+          [possible values: low, high]
+
+TARGETS:
+  -p, --param <PARAM>
+          Specify parameter names to analyze (e.g., -p sort -p id:query). Types: query, body, json, multipart, cookie, header, graphql, xml, path, fragment
+
+  -d, --data <DATA>
+          HTTP request body data
+
+  -H, --headers <HEADERS>
+          HTTP headers (can be specified multiple times)
+
+      --cookies <COOKIES>
+          Cookies (can be specified multiple times)
+
+  -X, --method <METHOD>
+          Override the HTTP method. Example: -X 'PUT'
+          
+          [default: GET]
+
+      --user-agent <USER_AGENT>
+          Set a custom User-Agent header. Example: --user-agent 'Mozilla/5.0'
+
+      --cookie-from-raw <COOKIE_FROM_RAW>
+          Load cookies from a raw HTTP request file. Example: --cookie-from-raw 'request.txt'
+
+  [TARGET]...
+          Targets (URLs or file paths)
+
+SESSION:
+      --session-check <REGEX>
+          Regex that must keep matching the response body for the session to be considered alive (e.g. --session-check 'Sign out'). Authoritative: when set, the built-in heuristics (401/403, login redirect, appearing login form) are not consulted. Without it, session monitoring still runs automatically whenever credentials are supplied via --cookies, --cookie-from-raw, or a Cookie/Authorization header
+
+      --session-check-url <URL>
+          Probe this URL instead of the scan target when re-validating the session. Useful when the target itself is public but the app exposes a cheap authenticated endpoint. Example: --session-check-url 'https://app/me'
+
+      --on-session-loss <POLICY>
+          What to do when the session is detected as lost [default: abort]: abort stops the affected target and skips the rest of that host; continue keeps scanning. Either way the target is reported as `incomplete` / SESSION_LOST instead of a misleading "clean"
+          
+          [possible values: abort, continue]
+
+SCOPE:
+      --include-url <INCLUDE_URL>
+          Include only URLs matching these patterns (regex, can be specified multiple times)
+
+      --exclude-url <EXCLUDE_URL>
+          Exclude URLs matching these patterns (regex, can be specified multiple times)
+
+      --ignore-param <IGNORE_PARAM>
+          Ignore specific parameters during scanning (can be specified multiple times)
+
+      --out-of-scope <OUT_OF_SCOPE>
+          Exclude targets whose domain matches these patterns (supports wildcards, e.g. *.dev.example.com)
+
+      --out-of-scope-file <OUT_OF_SCOPE_FILE>
+          Load out-of-scope domains from a file (one per line, supports wildcards)
+
+PARAMETER DISCOVERY:
+      --only-discovery
+          Only perform parameter discovery (skip XSS scanning)
+
+      --skip-discovery
+          Skip all discovery checks
+
+      --skip-reflection-header
+          Skip header-based reflection checks
+
+      --skip-reflection-cookie
+          Skip cookie-based reflection checks
+
+      --skip-reflection-path
+          Skip path-based reflection checks
+
+PARAMETER MINING:
+  -W, --mining-dict-word <MINING_DICT_WORD>
+          Dictionary analysis with wordlist file path
+
+      --remote-wordlists <REMOTE_WORDLISTS>
+          Fetch remote parameter wordlists from providers (comma-separated). Options: burp, assetnote
+
+      --skip-mining
+          Skip all mining
+
+      --skip-mining-dict
+          Skip dictionary-based mining
+
+      --skip-mining-dom
+          Skip mining parameter names from HTML input id/name attributes. Does NOT disable DOM-XSS static analysis of inline scripts (the `[A]` findings) — use --skip-ast-analysis for that
+
+NETWORK:
+      --timeout <TIMEOUT>
+          Per-request timeout in seconds (network only; does not bound total scan time)
+          
+          [default: 10]
+
+      --scan-timeout <SCAN_TIMEOUT>
+          Hard wall-clock cap per target for the payload-injection (scan) stage in seconds. When set, dalfox stops a target's payload-injection stage once this budget is exceeded — useful when many sequential phases each pay the per-request `--timeout` cost against a partially-hung endpoint. Scope note: this caps ONLY the injection stage. The earlier preflight and parameter-analysis (discovery + mining) phases are bounded separately by `--timeout` × request-count, NOT by this wall-clock cap, so a slow target can overshoot this budget during analysis. 0 disables
+          
+          [default: 0]
+
+      --delay <DELAY>
+          Delay in milliseconds
+          
+          [default: 0]
+
+  -r, --rate-limit <RATE_LIMIT>
+          Cap the global outbound request rate in requests/second, shared across all workers and targets (0 = unlimited). Unlike --delay (which only spaces a single worker's requests), this bounds the total in-flight burst from workers × concurrent targets — friendlier to shared-IP / edge WAF thresholds. Example: --rate-limit 20
+          
+          [default: 0]
+          [alias: --rl]
+
+      --retries <RETRIES>
+          Retry failed requests on HTTP 5xx and transient transport errors (timeouts, connection resets) up to this many times (0 = off). HTTP 429 is always retried regardless of this value. Example: --retries 2
+          
+          [default: 0]
+
+      --retry-delay <RETRY_DELAY>
+          Base delay (ms) for the exponential backoff between retries (--retries). Doubles each attempt and is capped internally; a server Retry-After header takes precedence on 429. Example: --retry-delay 500
+          
+          [default: 1000]
+
+      --proxy <PROXY>
+          Proxy URL (e.g., http://localhost:8080, socks5://localhost:9050)
+
+      --insecure[=<INSECURE>]
+          Skip TLS/SSL certificate verification, accepting self-signed, expired, or hostname-mismatched certs. Enabled by default for scanner use; pass `--insecure=false` to enforce certificate validation. Applies to the scan target and to an OAST server named with `--blind-oob=`; the public interactsh mesh is always verified. Example: --insecure=false
+          
+          The config file key `insecure` sets the same thing; a value given on the command line always wins over the config file.
+          
+          [possible values: true, false]
+
+  -F, --follow-redirects
+          Follow HTTP redirects. Example: -F
+
+      --ignore-return <IGNORE_RETURN>
+          Ignore specific HTTP status codes during scanning (comma-separated). Example: --ignore-return 302,403,404
+
+ENGINE:
+      --workers <WORKERS>
+          Number of concurrent workers
+          
+          [default: 50]
+
+      --max-concurrent-targets <MAX_CONCURRENT_TARGETS>
+          Maximum number of concurrent targets to scan
+          
+          [default: 50]
+
+      --max-targets-per-host <MAX_TARGETS_PER_HOST>
+          Maximum number of targets per host
+          
+          [default: 100]
+
+XSS SCANNING:
+  -e, --encoders <ENCODERS>
+          Specify payload encoders to use (comma-separated). Options: none, url, 2url, 3url, 4url, html, htmlpad, base64, unicode, zwsp
+          
+          [default: url html]
+          [possible values: none, url, 2url, 3url, 4url, html, htmlpad, base64, unicode, zwsp]
+
+      --remote-payloads <REMOTE_PAYLOADS>
+          Fetch remote XSS payloads from providers (comma-separated). Options: portswigger, payloadbox
+
+      --custom-blind-xss-payload <CUSTOM_BLIND_XSS_PAYLOAD>
+          Load custom blind XSS payloads from a file. Example: --custom-blind-xss-payload 'payloads.txt'
+
+  -b, --blind <BLIND_CALLBACK_URL>
+          Blind XSS callback URL. Example: -b 'https://example.com/callback'
+
+      --blind-oob[=<BLIND_OOB>...]
+          Enable OOB blind XSS via interactsh. Optional comma-separated server domains (default: public servers). Example: --blind-oob=oast.fun,oast.me
+
+      --blind-oob-secret <BLIND_OOB_SECRET>
+          Auth token (secret) for a self-hosted interactsh server; sent as the Authorization header on register/poll/deregister
+
+      --blind-oob-wait <BLIND_OOB_WAIT>
+          Seconds to keep polling for OOB callbacks after all payloads are sent (default 30; 0 = no extra end-of-scan wait)
+
+      --custom-payload <CUSTOM_PAYLOAD>
+          Load custom payloads from a file. Example: --custom-payload 'payloads.txt'
+
+      --only-custom-payload
+          Only test custom payloads. Example: --only-custom-payload --custom-payload=p.txt
+
+      --custom-alert-value <CUSTOM_ALERT_VALUE>
+          Custom value for alert/prompt/confirm in payloads. Example: --custom-alert-value 'document.domain'
+          
+          [default: 1]
+
+      --custom-alert-type <CUSTOM_ALERT_TYPE>
+          Custom alert function type. Options: none (keep original), str (wrap value in quotes)
+          
+          [default: none]
+          [possible values: none, str]
+
+      --inject-marker <INJECT_MARKER>
+          Custom injection point marker. Replace this string with payloads in URL/headers/body. Example: --inject-marker 'FUZZ' with URL 'http://example.com/?q=FUZZ'
+
+      --skip-xss-scanning
+          Skip XSS scanning entirely
+
+      --max-payloads-per-param <MAX_PAYLOADS_PER_PARAM>
+          Cap the number of base payloads tested per parameter (reflection set and DOM-verification set are each capped independently). 0 (default) applies a built-in safety cap of 3000 per set unless --deep-scan is set; pass an explicit value to override, or --deep-scan for a truly unlimited run. Bounds the request fan-out on large attack surfaces and on endpoints that reflect every payload (self-/canonical-link echoes) without verifying. Note: the cap applies to the base catalog; WAF-bypass mutation/encoder expansion and a small set of shared CSP-bypass / tech-specific payloads are added afterwards (and never trimmed), so the actual per-parameter total can exceed this value — substantially so when a WAF bypass strategy is active. Use --deep-scan only to lift the built-in default cap
+          
+          [default: 0]
+
+      --deep-scan
+          Perform deep scanning - test all payloads even after finding XSS
+
+      --sxss
+          Enable Stored XSS mode
+
+      --sxss-url <SXSS_URL>
+          URL to check for Stored XSS reflection. Repeat to check several pages (a list view and a detail view, say). Checked in addition to the pages auto-detected from form discovery context
+
+      --sxss-method <SXSS_METHOD>
+          HTTP method for checking Stored XSS
+          
+          [default: GET]
+
+      --sxss-retries <SXSS_RETRIES>
+          Number of times to re-check the Stored XSS URL to handle slow session/content propagation. Each retry waits 500ms * attempt_index
+          
+          [default: 3]
+
+      --skip-ast-analysis
+          Skip AST-based DOM XSS detection — the source→sink analysis of JavaScript in responses that emits [A] findings. This is the flag that silences them; --skip-mining-dom does not
+
+      --analyze-external-js
+          Fetch and AST-analyze same-origin external <script src> bundles for DOM-XSS (off by default to preserve request budget)
+
+      --hpp
+          Enable HTTP Parameter Pollution (HPP) — duplicate query params to bypass WAF
+
+      --detect-outdated-libs
+          Also report outdated / known-vulnerable JS libraries (informational, CWE-1104). Off by default: dalfox focuses on verified XSS; this is an opt-in retire.js-style add-on that inspects <script> tags (0 extra requests)
+
+WAF:
+      --waf-bypass <WAF_BYPASS>
+          WAF bypass mode: auto (detect+bypass), force (same as auto; pin a WAF with --force-waf), off (detect-only; no payload mutations)
+          
+          [default: auto]
+          [possible values: auto, force, off]
+
+      --skip-waf-probe
+          Skip the WAF provocation probe; detect only from the normal preflight response (headers and body)
+
+      --force-waf <FORCE_WAF>
+          Force a specific WAF type for bypass strategies (e.g., cloudflare, akamai, modsecurity)
+
+      --waf-evasion
+          Cautious, stealthy pacing whether or not a WAF is detected: one request at a time per parameter, a randomized pause between requests (at least ~150 ms on average), and an escalating cooldown on runs of 403/406 blocks. Pairs well with --rate-limit. The per-WAF pacing hint is applied automatically on detection even without this flag
+
+      --waf-min-confidence <WAF_MIN_CONFIDENCE>
+          Discard WAF fingerprints below this confidence (0.0–1.0); a match at exactly the threshold is kept. The default (0.3) filters weak signals like `Server: Google Frontend` (0.15, sent by every Google-hosted property regardless of Cloud Armor). Real WAF signatures (Cloudflare 0.9+, AWS WAF 0.95) are kept. Pass `--waf-min-confidence 0.0` to keep every match
+          
+          [default: 0.3]
