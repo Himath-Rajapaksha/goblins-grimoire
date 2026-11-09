@@ -69,14 +69,17 @@ Append findings to `~/tools/<tool>/RESEARCH-LOG.md`:
 
 ## Scenario index
 
-Every directory below has a `SCENARIOS.md`. There are 67 directories covering
-66 tools: `metasploit-msfvenom` is documented alongside Metasploit rather than
+Every directory below has a `SCENARIOS.md`. There are 79 directories covering
+78 tools: `metasploit-msfvenom` is documented alongside Metasploit rather than
 counted separately.
 
 ### Recon & asset discovery
 
 | Tool | Scenarios file | Command surface |
 |------|----------------|-----------------|
+| nmap | [`nmap/SCENARIOS.md`](nmap/SCENARIOS.md) | discovery/port/service/NSE/output |
+| masscan | [`masscan/SCENARIOS.md`](masscan/SCENARIOS.md) | rate/ranges/banners/output |
+| tcpdump | [`tcpdump/SCENARIOS.md`](tcpdump/SCENARIOS.md) | BPF filters/interfaces/rotation |
 | subfinder | [`subfinder/SCENARIOS.md`](subfinder/SCENARIOS.md) | single command, all flag groups |
 | httpx | [`httpx/SCENARIOS.md`](httpx/SCENARIOS.md) | probe/filter/headless/output matrix |
 | katana | [`katana/SCENARIOS.md`](katana/SCENARIOS.md) | standard/JS/headless crawl matrix |
@@ -104,6 +107,9 @@ counted separately.
 | nikto | [`nikto/SCENARIOS.md`](nikto/SCENARIOS.md) | tuning/evasion/output matrix |
 | nuclei | [`nuclei/SCENARIOS.md`](nuclei/SCENARIOS.md) | target/template/output/DAST |
 | dalfox | [`dalfox/SCENARIOS.md`](dalfox/SCENARIOS.md) | scan/server/payload/mcp |
+| sqlmap | [`sqlmap/SCENARIOS.md`](sqlmap/SCENARIOS.md) | detection/enumeration/tamper/os-shell |
+| ffuf | [`ffuf/SCENARIOS.md`](ffuf/SCENARIOS.md) | content/vhost/parameter fuzzing |
+| gobuster | [`gobuster/SCENARIOS.md`](gobuster/SCENARIOS.md) | dir/dns/vhost/fuzz modes |
 | wfuzz | [`wfuzz/SCENARIOS.md`](wfuzz/SCENARIOS.md) | payload/iterator/filter |
 | dirsearch | [`dirsearch/SCENARIOS.md`](dirsearch/SCENARIOS.md) | wordlist/extensions/recursion/format |
 | cewl | [`cewl/SCENARIOS.md`](cewl/SCENARIOS.md) | crawl/depth/wordlist options |
@@ -135,6 +141,10 @@ counted separately.
 | Tool | Scenarios file | Command surface |
 |------|----------------|-----------------|
 | netexec | [`netexec/SCENARIOS.md`](netexec/SCENARIOS.md) | 10 protocols x actions |
+| impacket | [`impacket/SCENARIOS.md`](impacket/SCENARIOS.md) | 62 scripts: enum/kerberos/dump/exec/relay |
+| smbclient | [`smbclient/SCENARIOS.md`](smbclient/SCENARIOS.md) | share access/upload/download/scripting |
+| rpcclient | [`rpcclient/SCENARIOS.md`](rpcclient/SCENARIOS.md) | SAMR/LSA/SPOOLSS command groups |
+| ldapsearch | [`ldapsearch/SCENARIOS.md`](ldapsearch/SCENARIOS.md) | bind/base/filter/attribute/output |
 | enum4linux-ng | [`enum4linux-ng/SCENARIOS.md`](enum4linux-ng/SCENARIOS.md) | all enumeration switches |
 | wireshark | [`wireshark/SCENARIOS.md`](wireshark/SCENARIOS.md) | dumpcap/tshark/GUI |
 | snmp | [`snmp/SCENARIOS.md`](snmp/SCENARIOS.md) | snmpwalk/get/set/bulk/translate |
@@ -142,6 +152,13 @@ counted separately.
 | nbtscan | [`nbtscan/SCENARIOS.md`](nbtscan/SCENARIOS.md) | range/verbose/script output |
 | sshuttle | [`sshuttle/SCENARIOS.md`](sshuttle/SCENARIOS.md) | subnet/DNS/ssh options |
 | kerbrute | [`kerbrute/SCENARIOS.md`](kerbrute/SCENARIOS.md) | userenum/passwordspray/bruteuser |
+
+### Credentials & password attacks
+
+| Tool | Scenarios file | Command surface |
+|------|----------------|-----------------|
+| hashcat | [`hashcat/SCENARIOS.md`](hashcat/SCENARIOS.md) | hash modes/attack modes/rules/sessions |
+| hydra | [`hydra/SCENARIOS.md`](hydra/SCENARIOS.md) | protocol modules/user-pass matrices/output |
 
 ### Wireless & RF
 

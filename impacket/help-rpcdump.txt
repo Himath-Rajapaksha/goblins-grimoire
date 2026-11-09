@@ -1,0 +1,27 @@
+Impacket v0.12.0 - Copyright Fortra, LLC and its affiliated companies 
+
+usage: rpcdump.py [-h] [-debug] [-target-ip ip address]
+                  [-port [destination port]] [-hashes LMHASH:NTHASH]
+                  target
+
+Dumps the remote RPC enpoints information via epmapper.
+
+positional arguments:
+  target                [[domain/]username[:password]@]<targetName or address>
+
+options:
+  -h, --help            show this help message and exit
+  -debug                Turn DEBUG output ON
+
+connection:
+  -target-ip ip address
+                        IP Address of the target machine. If ommited it will
+                        use whatever was specified as target. This is useful
+                        when target is the NetBIOS name and you cannot resolve
+                        it
+  -port [destination port]
+                        Destination port to connect to RPC Endpoint Mapper
+
+authentication:
+  -hashes LMHASH:NTHASH
+                        NTLM hashes, format is LMHASH:NTHASH

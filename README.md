@@ -14,7 +14,7 @@ adds context, workflows, and copy-paste recipes that `--help` does not explain.
 
 > **Start here for research-driven use:** [`DEEP-RESEARCH.md`](DEEP-RESEARCH.md) —
 > the `@deep-research` workflow, prompt template, evidence rules, research-log
-> format, and the index of all 67 `SCENARIOS.md` files (66 tools;
+> format, and the index of all 79 `SCENARIOS.md` files (78 tools;
 > `metasploit-msfvenom` is documented alongside Metasploit).
 >
 > **External references:** [`RELATED-DOCS.md`](RELATED-DOCS.md) — a cited
@@ -29,6 +29,9 @@ adds context, workflows, and copy-paste recipes that `--help` does not explain.
 ### Recon & asset discovery
 | Tool | Directory | One-liner |
 |------|-----------|-----------|
+| nmap | [`nmap/`](nmap/README.md) | Port scanning, service/OS fingerprinting, NSE scripting |
+| masscan | [`masscan/`](masscan/README.md) | Internet-scale asynchronous port scanner |
+| tcpdump | [`tcpdump/`](tcpdump/README.md) | Packet capture and BPF-filtered traffic analysis |
 | subfinder | [`subfinder/`](subfinder/README.md) | Passive subdomain enumeration from dozens of sources |
 | httpx | [`httpx/`](httpx/README.md) | Fast HTTP probing, tech detection, screenshots, filtering |
 | katana | [`katana/`](katana/README.md) | Web crawler (standard + headless), JS endpoint extraction |
@@ -54,6 +57,9 @@ adds context, workflows, and copy-paste recipes that `--help` does not explain.
 | nikto | [`nikto/`](nikto/README.md) | Classic web server misconfiguration/vulnerability scanner |
 | nuclei | [`nuclei/`](nuclei/README.md) | Template-driven vulnerability scanner |
 | dalfox | [`dalfox/`](dalfox/README.md) | XSS scanner with DOM analysis, mining, WAF bypass |
+| sqlmap | [`sqlmap/`](sqlmap/README.md) | SQL injection detection, exploitation, and takeover |
+| ffuf | [`ffuf/`](ffuf/README.md) | Fast content, vhost, and parameter fuzzing |
+| gobuster | [`gobuster/`](gobuster/README.md) | Directory, DNS, vhost, and fuzz brute force |
 | wfuzz | [`wfuzz/`](wfuzz/README.md) | General-purpose web fuzzer |
 | dirsearch | [`dirsearch/`](dirsearch/README.md) | Web path and file brute force |
 | cewl | [`cewl/`](cewl/README.md) | Wordlist generator from website content |
@@ -78,10 +84,20 @@ adds context, workflows, and copy-paste recipes that `--help` does not explain.
 | subjs | [`subjs/`](subjs/README.md) | Fetch JavaScript files from URLs |
 | sourcemapper | [`sourcemapper/`](sourcemapper/README.md) | Recover original source from source maps |
 
+### Credentials & password attacks
+| Tool | Directory | One-liner |
+|------|-----------|-----------|
+| hashcat | [`hashcat/`](hashcat/README.md) | GPU/CPU hash cracking across 300+ modes |
+| hydra | [`hydra/`](hydra/README.md) | Network login brute force across 50+ protocols |
+
 ### Network / Active Directory
 | Tool | Directory | One-liner |
 |------|-----------|-----------|
 | netexec | [`netexec/`](netexec/README.md) | Multi-protocol network exploitation (SMB/LDAP/WinRM/...) |
+| impacket | [`impacket/`](impacket/README.md) | Python SMB/MS-RPC/Kerberos toolkit and 62 example scripts |
+| smbclient | [`smbclient/`](smbclient/README.md) | Samba SMB/CIFS client and mini shell |
+| rpcclient | [`rpcclient/`](rpcclient/README.md) | Samba MS-RPC client for SAMR/LSA/SPOOLSS |
+| ldapsearch | [`ldapsearch/`](ldapsearch/README.md) | OpenLDAP query tool for directory enumeration |
 | enum4linux-ng | [`enum4linux-ng/`](enum4linux-ng/README.md) | SMB/NetBIOS/AD enumeration |
 | wireshark | [`wireshark/`](wireshark/README.md) | Packet capture & analysis (`tshark`, `dumpcap`, GUI) |
 | snmp | [`snmp/`](snmp/README.md) | Net-SNMP CLI suite (`snmpwalk`, `snmpget`, `snmpset`, ...) |

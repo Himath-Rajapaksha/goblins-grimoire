@@ -1,0 +1,9 @@
+seed = 9127622841101214818
+rate = 100       
+shard = 1/1
+nocapture = servername
+
+
+# TARGET SELECTION (IP, PORTS, EXCLUDES)
+ports = 
+

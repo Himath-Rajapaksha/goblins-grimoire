@@ -1,0 +1,54 @@
+Impacket v0.12.0 - Copyright Fortra, LLC and its affiliated companies 
+
+usage: changepasswd.py [-h] [-ts] [-debug] [-newpass NEWPASS |
+                       -newhashes LMHASH:NTHASH] [-hashes LMHASH:NTHASH]
+                       [-no-pass] [-altuser ALTUSER] [-altpass ALTPASS |
+                       -althash ALTHASH]
+                       [-protocol {smb-samr,rpc-samr,kpasswd,ldap}] [-reset]
+                       [-k] [-aesKey hex key] [-dc-ip ip address]
+                       target
+
+Change or reset passwords over different protocols.
+
+positional arguments:
+  target                [[domain/]username[:password]@]<hostname or address>
+
+options:
+  -h, --help            show this help message and exit
+  -ts                   adds timestamp to every logging output
+  -debug                turn DEBUG output ON
+
+New credentials for target:
+  -newpass NEWPASS      new password
+  -newhashes LMHASH:NTHASH
+                        new NTLM hashes, format is NTHASH or LMHASH:NTHASH
+
+Authentication (target user whose password is changed):
+  -hashes LMHASH:NTHASH
+                        NTLM hashes, format is NTHASH or LMHASH:NTHASH
+  -no-pass              Don't ask for password (useful for Kerberos, -k)
+
+Authentication (optional, privileged user performing the change):
+  -altuser ALTUSER      Alternative username
+  -altpass ALTPASS      Alternative password
+  -althash, -althashes ALTHASH
+                        Alternative NT hash, format is NTHASH or LMHASH:NTHASH
+
+Method of operations:
+  -protocol, -p {smb-samr,rpc-samr,kpasswd,ldap}
+                        Protocol to use for password change/reset
+  -reset, -admin        Try to reset the password with privileges (may bypass
+                        some password policies)
+
+Kerberos authentication:
+  Applicable to the authenticating user (-altuser if defined, else target)
+
+  -k                    Use Kerberos authentication. Grabs credentials from
+                        ccache file (KRB5CCNAME) based on target parameters.
+                        If valid credentials cannot be found, it will use the
+                        ones specified in the command line
+  -aesKey hex key       AES key to use for Kerberos Authentication (128 or 256
+                        bits)
+  -dc-ip ip address     IP Address of the domain controller, for Kerberos. If
+                        omitted it will use the domain part (FQDN) specified
+                        in the target parameter
