@@ -16,6 +16,11 @@ adds context, workflows, and copy-paste recipes that `--help` does not explain.
 > the `@deep-research` workflow, prompt template, evidence rules, research-log
 > format, and the index of all 67 `SCENARIOS.md` files (66 tools;
 > `metasploit-msfvenom` is documented alongside Metasploit).
+>
+> **External references:** [`RELATED-DOCS.md`](RELATED-DOCS.md) — a cited
+> comparison of public per-tool/per-command documentation projects (WADComs,
+> GTFOBins, LOLBAS, Arsenal, Kali Tools, HackTricks, and others), what each
+> does better, and what this repo should borrow.
 
 ---
 
