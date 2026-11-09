@@ -1,0 +1,11 @@
+Usage of subjs:
+  -c int
+    	Number of concurrent workers (default 10)
+  -i string
+    	Input file containing URLS
+  -t int
+    	Timeout (in seconds) for http client (default 15)
+  -ua string
+    	User-Agent to send in requests
+  -version
+    	Show version number

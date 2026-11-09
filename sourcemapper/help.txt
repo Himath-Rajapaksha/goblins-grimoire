@@ -1,0 +1,17 @@
+Usage of sourcemapper:
+  -dir string
+    	Directory of .map files to process recursively
+  -header value
+    	A header to send with the request, similar to curl's -H. Can be set multiple times, EG: "./sourcemapper --header "Cookie: session=bar" --header "Authorization: blerp"
+  -help
+    	Show help
+  -insecure
+    	Ignore invalid TLS certificates
+  -jsurl string
+    	URL to JavaScript file
+  -output string
+    	Source file output directory - REQUIRED
+  -proxy string
+    	Proxy URL
+  -url string
+    	URL or path to the Sourcemap file

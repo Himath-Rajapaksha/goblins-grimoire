@@ -1,6 +1,6 @@
-ENUM4LINUX - next generation (v1.3.10)
+[92mENUM4LINUX - next generation (v1.3.10)[0m
 
-[!] The following dependend tools are missing: nmblookup, net
+[91m[!] The following dependend tools are missing: nmblookup, net
      For Gentoo, you need to install the 'samba' package.
      For Debian derivates (like Ubuntu) or ArchLinux, you need to install the 'smbclient' package.
-     For Fedora derivates (like RHEL, CentOS), you need to install the 'samba-common-tools' and 'samba-client' package.
+     For Fedora derivates (like RHEL, CentOS), you need to install the 'samba-common-tools' and 'samba-client' package.[0m

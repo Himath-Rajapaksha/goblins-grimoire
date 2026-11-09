@@ -13,11 +13,11 @@ Available Commands:
 Flags:
       --enable-modules strings   [EXPERIMENTAL] module names to enable
   -h, --help                     help for module
-      --module-dir string        specify the directory of the WASM modules to load (default "/home/user/.trivy/modules")
+      --module-dir string        specify the directory of the WASM modules to load (default "/root/.trivy/modules")
 
 Global Flags:
       --cacert string             Path to PEM-encoded CA certificate file
-      --cache-dir string          cache directory (default "/home/user/.cache/trivy")
+      --cache-dir string          cache directory (default "/root/.cache/trivy")
   -c, --config string             config path (empty string disables loading) (default "trivy.yaml")
   -d, --debug                     debug mode
       --generate-default-config   write the default config to trivy-default.yaml

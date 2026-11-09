@@ -1,0 +1,19 @@
+usage: linkfinder.py [-h] [-d] -i INPUT [-o OUTPUT] [-r REGEX] [-b]
+                     [-c COOKIES] [-t <seconds>]
+
+options:
+  -h, --help            show this help message and exit
+  -d, --domain          Input a domain to recursively parse all javascript
+                        located in a page
+  -i, --input INPUT     Input a: URL, file or folder. For folders a wildcard
+                        can be used (e.g. '/*.js').
+  -o, --output OUTPUT   Where to save the file, including file name. Default:
+                        output.html
+  -r, --regex REGEX     RegEx for filtering purposes against found endpoint
+                        (e.g. ^/api/)
+  -b, --burp
+  -c, --cookies COOKIES
+                        Add cookies for authenticated JS files
+  -t, --timeout <seconds>
+                        How many seconds to wait for the server to send data
+                        before giving up (default: 10 seconds)

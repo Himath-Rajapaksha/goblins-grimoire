@@ -1,0 +1,203 @@
+websocat 1.14.1
+Vitaly "_Vi" Shukela <vi0oss@gmail.com>
+Command-line client for web sockets, like netcat/curl/socat for ws://.
+
+USAGE:
+    websocat ws://URL | wss://URL               (simple client)
+    websocat -s port                            (simple server)
+    websocat [FLAGS] [OPTIONS] <addr1> <addr2>  (advanced mode)
+
+FLAGS:
+    (some flags are hidden, see --help=long)
+
+
+
+    -e, --set-environment
+            Set WEBSOCAT_* environment variables when doing exec:/cmd:/sh-c:
+            Currently it's WEBSOCAT_URI and WEBSOCAT_CLIENT for
+            request URI and client address (if TCP)
+            Beware of ShellShock or similar security problems.
+    -E, --exit-on-eof                            Close a data transfer direction if the other one reached EOF
+        --jsonrpc
+            Format messages you type as JSON RPC 2.0 method calls. First word becomes method name, the rest becomes
+            parameters, possibly automatically wrapped in [].
+
+
+
+
+    -0, --null-terminated                        Use \0 instead of \n for linemode
+            --no-fixups to discover what is being inserted automatically and read the full manual about Websocat
+            internal workings.
+    -1, --one-message                            Send and/or receive only one message. Use with --no-close and/or -u/-U.
+        --oneshot                                Serve only once. Not to be confused with -1 (--one-message)
+        --print-ping-rtts
+            Print measured round-trip-time to stderr after each received WebSocket pong.
+
+
+
+
+    -q                                           Suppress all diagnostic messages, except of startup errors
+
+    -s, --server-mode                            Simple server mode: specify TCP port or addr:port as single argument
+    -S, --strict
+            strict line/message mode: drop too long messages instead of splitting them, drop incomplete lines.
+
+    -k, --insecure                               Accept invalid certificates and hostnames while connecting to TLS
+
+
+
+
+    -u, --unidirectional                         Inhibit copying data in one direction
+    -U, --unidirectional-reverse
+            Inhibit copying data in the other direction (or maybe in both directions if combined with -u)
+
+    -v                                           Increase verbosity level to info or further
+    -b, --binary                                 Send message to WebSockets as binary messages
+    -n, --no-close                               Don't send Close message to websocket on EOF
+    -t, --text                                   Send message to WebSockets as text messages
+        --base64
+            Encode incoming binary WebSocket messages in one-line Base64 If `--binary-prefix` (see `--help=full`) is
+            set, outgoing WebSocket messages that start with the prefix are decoded from base64 prior to sending.
+
+OPTIONS:
+    (some options are hidden, see --help=long)
+        --socks5 <auto_socks5>
+            Use specified address:port as a SOCKS5 proxy. Example: --socks5 127.0.0.1:9050
+
+
+        --basic-auth <basic_auth>
+            Add `Authorization: Basic` HTTP request header with this base64-encoded parameter. Also available as
+            `WEBSOCAT_BASIC_AUTH` environment variable
+        --basic-auth-file <basic_auth_file>
+            Add `Authorization: Basic` HTTP request header base64-encoded content of the specified file
+
+
+    -B, --buffer-size <buffer_size>                                  Maximum message size, in bytes [default: 65536]
+
+
+        --close-reason <close_reason>
+            Close connection with a reason message. This option only takes effect if --close-status-code option is
+            provided as well.
+        --close-status-code <close_status_code>                      Close connection with a status code.
+    -H, --header <custom_headers>...
+            Add custom HTTP header to websocket client request. Separate header name and value with a colon and
+            optionally a single space. Can be used multiple times. Note that single -H may eat multiple further
+            arguments, leading to confusing errors. Specify headers at the end or with equal sign like -H='X: y'.
+        --server-header <custom_reply_headers>...
+            Add custom HTTP header to websocket upgrade reply. Separate header name and value with a colon and
+            optionally a single space. Can be used multiple times. Note that single -H may eat multiple further
+            arguments, leading to confusing errors.
+        --header-to-env <headers_to_env>...
+            Forward specified incoming request header to H_* environment variable for `exec:`-like specifiers.
+
+    -h, --help <help>
+            See the help.
+            --help=short is the list of easy options and address types
+            --help=long lists all options and types (see [A] markers)
+            --help=doc also shows longer description and examples.
+
+
+        --max-messages <max_messages>
+            Maximum number of messages to copy in one direction.
+
+        --max-messages-rev <max_messages_rev>
+            Maximum number of messages to copy in the other direction.
+
+        --conncap <max_parallel_conns>
+            Maximum number of simultaneous connections for listening mode
+
+
+
+        --origin <origin>                                            Add Origin HTTP header to websocket client request
+        --pkcs12-der <pkcs12_der>
+            Pkcs12 archive needed to accept SSL connections, certificate and key.
+            A command to output it: openssl pkcs12 -export -out output.pkcs12 -inkey key.pem -in cert.pem
+            Use with -s (--server-mode) option or with manually specified TLS overlays.
+            See moreexamples.md for more info.
+        --pkcs12-passwd <pkcs12_passwd>
+            Password for --pkcs12-der pkcs12 archive. Required on Mac.
+
+    -p, --preamble <preamble>...
+            Prepend copied data with a specified string. Can be specified multiple times.
+
+    -P, --preamble-reverse <preamble_reverse>...
+            Prepend copied data with a specified string (reverse direction). Can be specified multiple times.
+
+
+        --restrict-uri <restrict_uri>
+            When serving a websocket, only accept the given URI, like `/ws`
+            This liberates other URIs for things like serving static files or proxying.
+    -F, --static-file <serve_static_files>...
+            Serve a named static file for non-websocket connections.
+            Argument syntax: <URI>:<Content-Type>:<file-path>
+            Argument example: /index.html:text/html:index.html
+            Directories are not and will not be supported for security reasons.
+            Can be specified multiple times. Recommended to specify them at the end or with equal sign like `-F=...`,
+            otherwise this option may eat positional arguments
+
+
+
+
+
+        --ua <useragent>
+            Set `User-Agent` request header to this value. Similar to setting it with `-H`.
+
+        --protocol <websocket_protocol>
+            Specify this Sec-WebSocket-Protocol: header when connecting
+
+        --server-protocol <websocket_reply_protocol>
+            Force this Sec-WebSocket-Protocol: header when accepting a connection
+
+        --websocket-version <websocket_version>                      Override the Sec-WebSocket-Version value
+
+        --ping-interval <ws_ping_interval>                           Send WebSocket pings each this number of seconds
+        --ping-timeout <ws_ping_timeout>
+            Drop WebSocket connection if Pong message not received for this number of seconds
+
+
+ARGS:
+    <addr1>    In simple mode, WebSocket URL to connect. In advanced mode first address (there are many kinds of
+               addresses) to use. See --help=types for info about address types. If this is an address for
+               listening, it will try serving multiple connections.
+    <addr2>    In advanced mode, second address to connect. If this is an address for listening, it will accept only
+               one connection.
+
+
+Basic examples:
+  Command-line websocket client:
+    websocat ws://ws.vi-server.org/mirror/
+    
+  WebSocket server
+    websocat -s 8080
+    
+  WebSocket-to-TCP proxy:
+    websocat --binary ws-l:127.0.0.1:8080 tcp:127.0.0.1:5678
+    
+
+Partial list of address types:
+	ws://           	Insecure (ws://) WebSocket client. Argument is host and URL.
+	wss://          	Secure (wss://) WebSocket client. Argument is host and URL.
+	ws-listen:      	WebSocket server. Argument is host and port to listen.
+	wss-listen:     	Listen for secure WebSocket connections on a TCP port
+	tcp:            	Connect to specified TCP host and port. Argument is a socket address.
+	tcp-listen:     	Listen TCP port on specified address.
+	ssl-listen:     	Listen for SSL connections on a TCP port
+	sh-c:           	Start specified command line using `sh -c` (even on Windows)
+	cmd:            	Start specified command line using `sh -c` or `cmd /C` (depending on platform)
+	readfile:       	Synchronously read a file. Argument is a file path.
+	writefile:      	Synchronously truncate and write a file.
+	appendfile:     	Synchronously append a file.
+	udp:            	Send and receive packets to specified UDP socket, from random UDP port  
+	udp-listen:     	Bind an UDP socket to specified host:port, receive packet
+	-               	Read input from console, print to console. Uses threaded implementation even on UNIX unless requested by `--async-stdio` CLI option.
+	mirror:         	Simply copy output to input. No arguments needed.
+	literalreply:   	Reply with a specified string for each input packet.
+	literal:        	Output a string, discard input.
+	random:         	Generate random bytes when being read from, discard written bytes.
+Partial list of overlays:
+	broadcast:      	Reuse this connection for serving multiple clients, sending replies to all clients.
+	autoreconnect:  	Re-establish underlying connection on any error or EOF
+	foreachmsg:     	Execute something for each incoming message.
+	log:            	Log each buffer as it pass though the underlying connector.
+See more address types with the --help=long option.
+See short examples and --dump-spec names for most address types and overlays with --help=doc option

@@ -1,0 +1,42 @@
+[H[2J[3J[33m
+    ____  _____  _____  __  __  ___   ___    __    _  _ 
+   (_  _)(  _  )(  _  )(  \/  )/ __) / __)  /__\  ( \( )
+  .-_)(   )(_)(  )(_)(  )    ( \__ \( (__  /(__)\  )  ( 
+  \____) (_____)(_____)(_/\/\_)(___/ \___)(__)(__)(_)\_)
+[31m			(1337.today)[0m
+   
+    --=[[34mOWASP JoomScan[0m
+    +---++---==[Version : [31m0.0.7
+[0m    +---++---==[Update Date : [[31m2018/09/23[0m]
+    +---++---==[Authors : [31mMohammad Reza Espargham , Ali Razmjoo[0m
+    --=[Code name : [31mSelf Challenge[0m
+    @OWASP_JoomScan , @rezesp , @Ali_Razmjo0 , @OWASP
+
+[36m   
+
+Help :
+
+Usage:	/opt/joomscan/joomscan.pl [options]
+
+--url | -u <URL>                |   The Joomla URL/domain to scan.
+--mass | -m <filename>          |   Cycle through URLs provided in txt file
+--enumerate-components | -ec    |   Try to enumerate components.
+--joomla-version | -jv          |   Output target Joomla version and exit without further checks
+--no-report | -nr               |   Do not produce a report  
+
+--cookie <String>               |   Set cookie.
+--user-agent | -a <User-Agent>  |   Use the specified User-Agent.
+--random-agent | -r             |   Use a random User-Agent.
+--timeout <Time-Out>            |   Set timeout.
+--proxy=PROXY                   |   Use a proxy to connect to the target URL
+           Proxy example: --proxy http://127.0.0.1:8080
+                                  https://127.0.0.1:443
+                                  socks://127.0.0.1:414
+                       
+--about                         |   About Author
+--update                        |   Update to the latest version.
+--help | -h                     |   This help screen.
+--version                       |   Output the current joomscan version and exit.
+
+
+[0m

@@ -19,7 +19,8 @@ behavior, and three security levels. It bundles its own Tor daemon (SOCKS on
 `127.0.0.1:9150`) so it does not depend on the system Tor service or the
 `torsocks` shim.
 
-Keep it in a per-user directory; do not mix it with a system Firefox profile.
+It is a separate installation from the `user` user's Tor Browser and must
+stay in `user`'s home.
 
 ## Use cases
 
@@ -74,8 +75,8 @@ silently drops `--detach` when output is requested.
 4. Optionally set the security level via the shield icon.
 
 The bundled Tor listens on `127.0.0.1:9150` once the browser is running. That
-port is separate from a system Tor on `9050` used by `torsocks` or
-transparent Tor routing.
+port is separate from the system Tor (`9050`) configured for `tor-mode` and
+`torsocks`.
 
 ## Security levels
 
@@ -208,9 +209,10 @@ Do not mix a system Firefox profile with Tor Browser's profile.
 
 ## Gotchas
 
-- **Never run Tor Browser as root.** Install and launch it as an unprivileged user.
-- Tor Browser's Tor is separate from the system Tor. `torsocks` and
-  transparent Tor routing do not control it, and it does not use `/etc/tor/torrc`.
+- **Never run Tor Browser as root.** It is installed for `user` and should be
+  launched as that user.
+- Tor Browser's Tor is separate from the system Tor. `tor-mode` and `torsocks`
+  do not control it, and it does not use `/etc/tor/torrc`.
 - `check.torproject.org` is the ground truth — if it says *not using Tor*,
   something is misconfigured.
 - Security level *Safest* disables JavaScript; modern SPAs will look broken.
@@ -218,7 +220,7 @@ Do not mix a system Firefox profile with Tor Browser's profile.
   reduce fingerprinting resistance.
 - Do not resize the window to unusual dimensions if anonymity matters; letterboxing
   is intentional.
-- The `.desktop` entry is per-user; `--register-app` must be run as that user.
+- The `.desktop` entry is per-user; `--register-app` must be run as `user`.
 - The launcher checks the install path at runtime; moving the directory breaks
   the desktop entry until it is re-registered.
 - Screenshots and clipboard can leak identity; Tor Browser warns on some

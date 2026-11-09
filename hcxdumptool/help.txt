@@ -1,0 +1,53 @@
+hcxdumptool 6.3.5  (C) 2024 ZeroBeat
+Additional information:
+-----------------------
+get information about running services that have access to the device:
+ $ sudo systemctl --type=service --state=running
+stop all services that have access to the interface, e.g.:
+ $ sudo systemctl stop NetworkManager.service
+ $ sudo systemctl stop wpa_supplicant.service
+run hcxdumptool - it will set an appropriate monitor mode
+ scan for ACCESS POINTS in range (packets are not stored to dump file, not in combination with attack modes)
+  $ hcxdumptool -i INTERFACENAME -F --rcascan=active
+ attack target(s) (not in combination with rcascan)
+  $ hcxdumptool -i INTERFACENAME -w dumpfile.pcapng -F --rds=1
+   i     : name of the interface to be used
+   w     : name of file to which packets are written
+   F     : use all available channels
+   rds=1 : sort real time display by status (last PMKID/EAPOL on top)
+press ctrl+c to terminate
+press GPIO button to terminate
+ hardware modification is necessary, read more:
+ https://github.com/ZerBea/hcxdumptool/tree/master/docs
+to store entire traffic, run tshark in parallel on the same interface:
+ $ tshark -i <interface> -w allframes.pcapng
+
+Berkeley Packet Filter:
+-----------------------
+tcpdump decimal numper format:
+ example: tcpdump high level compiler:
+  $ tcpdump -s 1024 -y IEEE802_11_RADIO wlan addr3 112233445566 -ddd > filter.bpf
+  see man pcap-filter
+ example: bpf_asm low level compiler
+  $ bpf_asm filter.asm | tr ',' '\n' > filter.bpf
+  see https://www.kernel.org/doc/html/latest/networking/filter.html
+ example: bpfc low level compiler:
+  $ bpfc -f tcpdump -i filter.asm > filter.bpf
+  see man bpfc
+tcpdump C style format:
+ example: tcpdump high level compiler:
+  $ tcpdump -s 1024 -y IEEE802_11_RADIO wlan addr3 112233445566 -dd > filter.bpf
+  see man pcap-filter
+ example: bpfc low level compiler:
+  $ bpfc -f C -i filter.asm > filter.bpf
+  see man bpfc
+
+Important recommendation:
+-------------------------
+Do not set monitor mode by third party tools or third party scripts!
+Do not use virtual interfaces (monx, wlanxmon, prismx, ...)!
+Do not use virtual machines or emulators!
+Do not run other tools that take access to the interface in parallel (except: tshark, wireshark, tcpdump)!
+Do not use tools to change the virtual MAC (like macchanger)!
+Do not merge (pcapng) dump files, because this destroys assigned hash values!
+

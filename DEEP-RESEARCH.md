@@ -69,27 +69,139 @@ Append findings to `~/tools/<tool>/RESEARCH-LOG.md`:
 
 ## Scenario index
 
+Every directory below has a `SCENARIOS.md`. There are 67 directories covering
+66 tools: `metasploit-msfvenom` is documented alongside Metasploit rather than
+counted separately.
+
+### Recon & asset discovery
+
 | Tool | Scenarios file | Command surface |
 |------|----------------|-----------------|
 | subfinder | [`subfinder/SCENARIOS.md`](subfinder/SCENARIOS.md) | single command, all flag groups |
 | httpx | [`httpx/SCENARIOS.md`](httpx/SCENARIOS.md) | probe/filter/headless/output matrix |
 | katana | [`katana/SCENARIOS.md`](katana/SCENARIOS.md) | standard/JS/headless crawl matrix |
 | arjun | [`arjun/SCENARIOS.md`](arjun/SCENARIOS.md) | GET/POST/JSON/XML + passive |
+
+### OSINT & people
+
+| Tool | Scenarios file | Command surface |
+|------|----------------|-----------------|
+| theHarvester | [`theharvester/SCENARIOS.md`](theharvester/SCENARIOS.md) | sources/limits/output |
+| recon-ng | [`recon-ng/SCENARIOS.md`](recon-ng/SCENARIOS.md) | workspace/module/marketplace |
+| spiderfoot | [`spiderfoot/SCENARIOS.md`](spiderfoot/SCENARIOS.md) | scan/config/module/CLI |
+| ghunt | [`ghunt/SCENARIOS.md`](ghunt/SCENARIOS.md) | login/email/drive/gaia |
+| holehe | [`holehe/SCENARIOS.md`](holehe/SCENARIOS.md) | email checks + only-used/csv |
+| sherlock | [`sherlock/SCENARIOS.md`](sherlock/SCENARIOS.md) | username/site-list/output |
+| metagoofil | [`metagoofil/SCENARIOS.md`](metagoofil/SCENARIOS.md) | search/download/extract |
+
+### Web application testing
+
+| Tool | Scenarios file | Command surface |
+|------|----------------|-----------------|
 | burp | [`burp/SCENARIOS.md`](burp/SCENARIOS.md) | launcher flags + tool workflows |
 | zap | [`zap/SCENARIOS.md`](zap/SCENARIOS.md) | GUI/daemon/CLI/automation/api |
 | mitmproxy | [`mitmproxy/SCENARIOS.md`](mitmproxy/SCENARIOS.md) | 3 frontends x 6 modes |
 | nikto | [`nikto/SCENARIOS.md`](nikto/SCENARIOS.md) | tuning/evasion/output matrix |
 | nuclei | [`nuclei/SCENARIOS.md`](nuclei/SCENARIOS.md) | target/template/output/DAST |
 | dalfox | [`dalfox/SCENARIOS.md`](dalfox/SCENARIOS.md) | scan/server/payload/mcp |
+| wfuzz | [`wfuzz/SCENARIOS.md`](wfuzz/SCENARIOS.md) | payload/iterator/filter |
+| dirsearch | [`dirsearch/SCENARIOS.md`](dirsearch/SCENARIOS.md) | wordlist/extensions/recursion/format |
+| cewl | [`cewl/SCENARIOS.md`](cewl/SCENARIOS.md) | crawl/depth/wordlist options |
+
+### JavaScript, CMS & secrets
+
+| Tool | Scenarios file | Command surface |
+|------|----------------|-----------------|
+| linkfinder | [`linkfinder/SCENARIOS.md`](linkfinder/SCENARIOS.md) | single URL/file/dir modes |
+| secretfinder | [`secretfinder/SCENARIOS.md`](secretfinder/SCENARIOS.md) | regex/output modes |
+| cmseek | [`cmseek/SCENARIOS.md`](cmseek/SCENARIOS.md) | CMS detect + scan modes |
+| joomscan | [`joomscan/SCENARIOS.md`](joomscan/SCENARIOS.md) | enumeration + vulnerability checks |
+| paramspider | [`paramspider/SCENARIOS.md`](paramspider/SCENARIOS.md) | archive URL harvesting |
+| x8 | [`x8/SCENARIOS.md`](x8/SCENARIOS.md) | parameter discovery modes |
+
+### API & protocol testing
+
+| Tool | Scenarios file | Command surface |
+|------|----------------|-----------------|
+| corsy | [`corsy/SCENARIOS.md`](corsy/SCENARIOS.md) | CORS scan options |
+| smuggler | [`smuggler/SCENARIOS.md`](smuggler/SCENARIOS.md) | CL/TE detection modes |
+| websocat | [`websocat/SCENARIOS.md`](websocat/SCENARIOS.md) | client/server/bridge |
+| grpcurl | [`grpcurl/SCENARIOS.md`](grpcurl/SCENARIOS.md) | list/describe/invoke + reflection |
+| subjs | [`subjs/SCENARIOS.md`](subjs/SCENARIOS.md) | URL/JS inventory flags |
+| sourcemapper | [`sourcemapper/SCENARIOS.md`](sourcemapper/SCENARIOS.md) | url/jsurl/dir extraction |
+
+### Network / Active Directory
+
+| Tool | Scenarios file | Command surface |
+|------|----------------|-----------------|
 | netexec | [`netexec/SCENARIOS.md`](netexec/SCENARIOS.md) | 10 protocols x actions |
 | enum4linux-ng | [`enum4linux-ng/SCENARIOS.md`](enum4linux-ng/SCENARIOS.md) | all enumeration switches |
-| metasploit | [`metasploit/SCENARIOS.md`](metasploit/SCENARIOS.md) | console flags + commands |
-| msfvenom | [`msfvenom/SCENARIOS.md`](metasploit-msfvenom/SCENARIOS.md) | list/payload/encode/format |
 | wireshark | [`wireshark/SCENARIOS.md`](wireshark/SCENARIOS.md) | dumpcap/tshark/GUI |
-| semgrep | [`semgrep/SCENARIOS.md`](semgrep/SCENARIOS.md) | all subcommands + scan modes |
-| trivy | [`trivy/SCENARIOS.md`](trivy/SCENARIOS.md) | all targets + scanners |
+| snmp | [`snmp/SCENARIOS.md`](snmp/SCENARIOS.md) | snmpwalk/get/set/bulk/translate |
+| onesixtyone | [`onesixtyone/SCENARIOS.md`](onesixtyone/SCENARIOS.md) | community-string scanning |
+| nbtscan | [`nbtscan/SCENARIOS.md`](nbtscan/SCENARIOS.md) | range/verbose/script output |
+| sshuttle | [`sshuttle/SCENARIOS.md`](sshuttle/SCENARIOS.md) | subnet/DNS/ssh options |
+| kerbrute | [`kerbrute/SCENARIOS.md`](kerbrute/SCENARIOS.md) | userenum/passwordspray/bruteuser |
+
+### Wireless & RF
+
+| Tool | Scenarios file | Command surface |
+|------|----------------|-----------------|
+| hcxdumptool | [`hcxdumptool/SCENARIOS.md`](hcxdumptool/SCENARIOS.md) | capture/filter/attack modes |
+| hcxtools | [`hcxtools/SCENARIOS.md`](hcxtools/SCENARIOS.md) | hcxpcapngtool/psktool/hash2cap |
+| kismet | [`kismet/SCENARIOS.md`](kismet/SCENARIOS.md) | capture server + kismetdb tools |
+| bully | [`bully/SCENARIOS.md`](bully/SCENARIOS.md) | WPS PIN attack options |
+| eaphammer | [`eaphammer/SCENARIOS.md`](eaphammer/SCENARIOS.md) | evil-twin/EAP capture modes |
+| wifiphisher | [`wifiphisher/SCENARIOS.md`](wifiphisher/SCENARIOS.md) | AP/phishing scenario modes |
+
+### Phishing & social engineering
+
+| Tool | Scenarios file | Command surface |
+|------|----------------|-----------------|
+| gophish | [`gophish/SCENARIOS.md`](gophish/SCENARIOS.md) | server flags + admin API |
+| evilginx | [`evilginx/SCENARIOS.md`](evilginx/SCENARIOS.md) | CLI flags + console |
+| set | [`set/SCENARIOS.md`](set/SCENARIOS.md) | menu paths |
+| crunch | [`crunch/SCENARIOS.md`](crunch/SCENARIOS.md) | keyspace/mask/chunk/resume |
+
+### Exploitation & fuzzing
+
+| Tool | Scenarios file | Command surface |
+|------|----------------|-----------------|
+| metasploit | [`metasploit/SCENARIOS.md`](metasploit/SCENARIOS.md) | console flags + commands |
+| msfvenom | [`metasploit-msfvenom/SCENARIOS.md`](metasploit-msfvenom/SCENARIOS.md) | list/payload/encode/format |
 | pwntools | [`pwntools/SCENARIOS.md`](pwntools/SCENARIOS.md) | all 20 `pwn` subcommands |
 | aflplusplus | [`aflplusplus/SCENARIOS.md`](aflplusplus/SCENARIOS.md) | fuzz/build/minimize/monitor |
+
+### Reverse engineering, pwn & forensics
+
+| Tool | Scenarios file | Command surface |
+|------|----------------|-----------------|
+| apktool | [`apktool/SCENARIOS.md`](apktool/SCENARIOS.md) | decode/build/install-framework |
+| ropper | [`ropper/SCENARIOS.md`](ropper/SCENARIOS.md) | search/info/chain |
+| ropgadget | [`ropgadget/SCENARIOS.md`](ropgadget/SCENARIOS.md) | gadget search/filter/chain |
+| one-gadget | [`one-gadget/SCENARIOS.md`](one-gadget/SCENARIOS.md) | glibc one-shot gadget search |
+| pwndbg | [`pwndbg/SCENARIOS.md`](pwndbg/SCENARIOS.md) | GDB command groups |
+| gef | [`gef/SCENARIOS.md`](gef/SCENARIOS.md) | GDB command groups |
+| volatility3 | [`volatility3/SCENARIOS.md`](volatility3/SCENARIOS.md) | plugin/history/render |
+
+### TLS & service scanning
+
+| Tool | Scenarios file | Command surface |
+|------|----------------|-----------------|
+| testssl | [`testssl/SCENARIOS.md`](testssl/SCENARIOS.md) | protocol/cipher/vuln/output matrix |
+| sslyze | [`sslyze/SCENARIOS.md`](sslyze/SCENARIOS.md) | scan targets/json/output |
+
+### Code / container / supply chain
+
+| Tool | Scenarios file | Command surface |
+|------|----------------|-----------------|
+| semgrep | [`semgrep/SCENARIOS.md`](semgrep/SCENARIOS.md) | all subcommands + scan modes |
+| trivy | [`trivy/SCENARIOS.md`](trivy/SCENARIOS.md) | all targets + scanners |
+
+### Privacy / anonymization
+
+| Tool | Scenarios file | Command surface |
+|------|----------------|-----------------|
 | torsocks | [`torsocks/SCENARIOS.md`](torsocks/SCENARIOS.md) | wrapper/shell/isolation |
 | tor-browser | [`tor-browser/SCENARIOS.md`](tor-browser/SCENARIOS.md) | launcher/profile/bridges |
 

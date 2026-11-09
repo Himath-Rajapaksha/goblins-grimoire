@@ -1,0 +1,12 @@
+Usage of evilginx:
+  -c string
+    	Configuration directory path
+  -debug
+    	Enable debug output
+  -developer
+    	Enable developer mode (generates self-signed certificates for all hostnames)
+  -p string
+    	Phishlets directory path
+  -t string
+    	HTML redirector pages directory path
+  -v	Show version

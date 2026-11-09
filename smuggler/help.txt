@@ -1,0 +1,16 @@
+usage: smuggler.py [-h] [-u URL] [-v VHOST] [-x] [-m METHOD] [-l LOG] [-q]
+                   [-t TIMEOUT] [--no-color] [-c CONFIGFILE]
+
+options:
+  -h, --help            show this help message and exit
+  -u, --url URL         Target URL with Endpoint
+  -v, --vhost VHOST     Specify a virtual host
+  -x, --exit_early      Exit scan on first finding
+  -m, --method METHOD   HTTP method to use (e.g GET, POST) Default: POST
+  -l, --log LOG         Specify a log file
+  -q, --quiet           Quiet mode will only log issues found
+  -t, --timeout TIMEOUT
+                        Socket timeout value Default: 5
+  --no-color            Suppress color codes
+  -c, --configfile CONFIGFILE
+                        Filepath to the configuration file of payloads

@@ -1,0 +1,46 @@
+hcxpsktool 6.3.5 (C) 2024 ZeroBeat
+usage:
+hcxpsktool <options>
+
+options:
+-c <file>   : input PMKID/EAPOL hash file (hashcat -m 22000/22001)
+-i <file>   : input EAPOL hash file (hashcat -m 2500/2501)
+-j <file>   : input EAPOL hash file (john)
+-z <file>   : input PMKID hash file (hashcat -m 16800/16801 and john)
+-e <char>   : input ESSID
+-b <xdigit> : input MAC access point
+              format: 112233445566
+-o <file>   : output PSK file
+              default: stdout
+              output list must be sorted unique!
+-h          : show this help
+-v          : show version
+
+--maconly           : print only candidates based on ACCESS POINT MAC
+--noessidcombination: exclude ESSID combinations
+--netgear           : include weak NETGEAR / ORBI / NTGR_VMB / ARLO_VMB / FoxtelHub candidates
+--spectrum          : include weak MySpectrumWiFi / SpectrumSetup / MyCharterWiFi candidates
+                      list will be > 2.2GB
+--digit10           : include weak 10 digit candidates (INFINITUM, ALHN, INEA, VodafoneNet, VIVACOM)
+                      list will be > 1GB
+--phome             : include weak PEGATRON / Vantiva candidates (CBCI, HOME, [SP/XF]SETUP)
+                      list will be > 2.9GB
+--tenda             : include weak Tenda / NOVA / NOVE / BrosTrend candidates
+--ee                : include weak 5GHz-EE / BrightBox / EE / EE-BrightBox candidates
+                      list will be > 1.3GB
+--eeupper           : include weak EE-Hub candidates
+                      list will be > 3.8GB
+--alticeoptimum     : include weak Altice/Optimum candidates (MyAltice, MyOptimum)
+                      list will be > 4.6GB
+--asus              : include weak ASUS RT-AC candidates (ASUS_XX, RT-AC)
+--weakpass          : include weak password candidates
+--eudate            : include complete european dates
+--usdate            : include complete american dates
+--wpskeys           : include complete WPS keys
+--egn               : include Bulgarian EGN
+--simple            : include simple pattern
+--help              : show this help
+--version           : show version
+
+if hcxpsktool recovered your password, you should change it immediately!
+

@@ -1,0 +1,22 @@
+usage: SecretFinder.py [-h] [-e] -i INPUT [-o OUTPUT] [-r REGEX] [-b]
+                       [-c COOKIE] [-g IGNORE] [-n ONLY] [-H HEADERS]
+                       [-p PROXY]
+
+options:
+  -h, --help            show this help message and exit
+  -e, --extract         Extract all javascript links located in a page and
+                        process it
+  -i, --input INPUT     Input a: URL, file or folder
+  -o, --output OUTPUT   Where to save the file, including file name. Default:
+                        output.html
+  -r, --regex REGEX     RegEx for filtering purposes against found endpoint
+                        (e.g: ^/api/)
+  -b, --burp            Support burp exported file
+  -c, --cookie COOKIE   Add cookies for authenticated JS files
+  -g, --ignore IGNORE   Ignore js url, if it contain the provided string
+                        (string;string2..)
+  -n, --only ONLY       Process js url, if it contain the provided string
+                        (string;string2..)
+  -H, --headers HEADERS
+                        Set headers ("Name:Value\nName:Value")
+  -p, --proxy PROXY     Set proxy (host:port)

@@ -1,0 +1,27 @@
+hcxeiutool 6.3.5 (C) 2024 ZeroBeat
+usage:
+hcxeiutool <options>
+
+options:
+-i <file> : input wordlist
+-d <file> : output digit wordlist
+-x <file> : output xdigit wordlist
+-c <file> : output character wordlist (A-Za-z - other characters removed)
+-s <file> : output character wordlist (A-Za-z - other characters replaced by 0x0a)
+            recommended option for processing with rules
+-h        : show this help
+-v        : show version
+
+--help           : show this help
+--version        : show version
+
+example:
+$ hcxdumptool -i <interface> -w dump.pcapng
+$ hcxpcapngtool -o hash.22000 -E elist dump.pcapng
+$ hcxeiutool -i elist -d digitlist -x xdigitlist -c charlist -s sclist
+$ cat elist digitlist xdigitlist charlist sclist > wordlisttmp
+$ hashcat --stdout -r <rule> charlist >> wordlisttmp
+$ hashcat --stdout -r <rule> sclist >> wordlisttmp
+$ cat wordlisttmp | sort | uniq > wordlist
+$ hashcat -m 22000 hash.22000 wordlist
+

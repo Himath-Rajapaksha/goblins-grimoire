@@ -1,0 +1,102 @@
+hcxhashtool 6.3.5 (C) 2024 ZeroBeat
+usage:
+hcxhashtool <options>
+
+options:
+-i <file>   : input PMKID/EAPOL hash file
+-o <file>   : output PMKID/EAPOL hash file
+-E <file>   : output ESSID list (autohex enabled)
+-E stdout   : output ESSID list to stdout (autohex enabled)
+-L <file>   : output ESSID list (unfiltered and unsorted)
+              useful in combination with hashcat -a9 option
+-d          : download https://standards-oui.ieee.org/oui.txt
+              and save to ~/.hcxtools/oui.txt
+              internet connection required
+-h          : show this help
+-v          : show version
+
+--essid-group                : convert to ESSID groups in working directory
+                               full advantage of reuse of PBKDF2
+                               not on old hash formats
+--oui-group                  : convert to OUI groups in working directory
+                               not on old hash formats
+--mac-group-ap               : convert APs to MAC groups in working directory
+                               not on old hash formats
+--mac-group-client           : convert CLIENTs to MAC groups in working directory
+                               not on old hash formats
+--type=<digit>               : filter by hash type
+                               bitmask:
+                                1 = PMKID
+                                2 = EAPOL
+                               default PMKID and EAPOL (1+2=3)
+--hcx-min=<digit>            : disregard hashes with occurrence lower than hcx-min/ESSID
+--hcx-max=<digit>            : disregard hashes with occurrence higher than hcx-max/ESSID
+--essid-len                  : filter by ESSID length
+                               default ESSID length: 0...32
+--essid-min                  : filter by ESSID minimum length
+                               default ESSID minimum length: 0
+--essid-max                  : filter by ESSID maximum length
+                               default ESSID maximum length: 32
+--essid=<ESSID>              : filter by ESSID
+--essid-part=<part of ESSID> : filter by part of ESSID (case sensitive)
+--essid-partx=<part of ESSID>: filter by part of ESSID (case insensitive)
+                               locale and wide characters are ignored
+--essid-list=<file>          : filter by ESSID file
+--essid-regex=<regex>        : filter ESSID by regular expression
+--mac-ap=<MAC>               : filter AP by MAC
+                               format: 001122334455, 00:11:22:33:44:55, 00-11-22-33-44-55 (hex)
+--mac-client=<MAC>           : filter CLIENT by MAC
+                               format: 001122334455, 00:11:22:33:44:55, 00-11-22-33-44-55 (hex)
+--mac-list=<file>            : filter by MAC file
+                               format: 001122334455, 00:11:22:33:44:55, 00-11-22-33-44-55 (hex)
+--mac-skiplist=<file>        : exclude MAC from file
+                               format: 001122334455, 00:11:22:33:44:55, 00-11-22-33-44-55 (hex)
+--oui-ap=<OUI>               : filter AP by OUI
+                               format: 001122, 00:11:22, 00-11-22 (hex)
+--oui-client=<OUI>           : filter CLIENT by OUI
+                               format: 001122, 00:11:22, 00-11-22 (hex)
+--vendor=<VENDOR>            : filter AP or CLIENT by (part of) VENDOR name
+--vendor-ap=<VENDOR>         : filter AP by (part of) VENDOR name
+--vendor-client=<VENDOR>     : filter CLIENT by (part of) VENDOR name
+--authorized                 : filter EAPOL pairs by status authorized (M2M3, M3M4, M1M4)
+--challenge                  : filter EAPOL pairs by status CHALLENGE (M1M2, M1M2ROGUE)
+--rc                         : filter EAPOL pairs by replaycount status checked
+--rc-not                     : filter EAPOL pairs by replaycount status not checked
+--apless                     : filter EAPOL pairs by status M1M2ROGUE (M2 requested from CLIENT)
+--info=<file>                : output detailed information about content of hash file
+                               no filter options available
+--info=stdout                : stdout output detailed information about content of hash file
+                               no filter options available
+--info-vendor=<file>         : output detailed information about ACCESS POINT and CLIENT VENDORs
+                               no filter options available
+--info-vendor-ap=<file>      : output detailed information about ACCESS POINT VENDORs
+                               no filter options available
+--info-vendor-client=<file>  : output detailed information about CLIENT VENDORs
+                               no filter options available
+--info-vendor=stdout         : stdout output detailed information about ACCESS POINT and CLIENT VENDORs
+                               no filter options available
+--info-vendor-ap=stdout      : stdout output detailed information about ACCESS POINT VENDORs
+                               no filter options available
+--info-vendor-client=stdout  : stdout output detailed information about CLIENT VENDORs
+                               no filter options available
+--psk=<PSK>                  : pre-shared key to test
+                               due to PBKDF2 calculation this is a very slow process
+                               no nonce error corrections
+--pmk=<PMK>                  : plain master key to test
+                               no nonce error corrections
+--hccapx-in=<file>           : input deprecated hccapx file
+                                MESSSAGEPAIR is taken from the hccapx source
+--hccapx-out=<file>          : output to deprecated hccapx file
+--hccap-in=<file>            : input ancient hccap file
+--hccap-out=<file>           : output to ancient hccap file
+                                MESSSAGEPAIR is calculated from the EAPOL MESSAGE
+                                due to missing information, the worst case value is calculated
+--hccap-single               : output to ancient hccap single files (MAC + count)
+--john=<file>                : output to deprecated john file
+--vendorlist                 : stdout output complete OUI list sorted by OUI
+--help                       : show this help
+--version                    : show version
+
+Important notice:
+hcxhashtool does not do NONCE ERROR CORRECTIONS
+in case of a packet loss, you get a wrong PTK

@@ -187,7 +187,7 @@ id: example-detect
 
 info:
   name: Example Panel Detect
-  author: your-handle
+  author: user
   severity: info
   tags: panel,example
 

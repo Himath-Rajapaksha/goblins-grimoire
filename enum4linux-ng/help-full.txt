@@ -1,4 +1,4 @@
-ENUM4LINUX - next generation (v1.3.10)
+[92mENUM4LINUX - next generation (v1.3.10)[0m
 
 usage: enum4linux-ng [-h] [-A] [-As] [-U] [-G] [-Gm] [-S] [-C] [-P] [-O] [-L]
                      [-I] [-R [BULK_SIZE]] [-N] [-w DOMAIN] [-u USER] [-p PW |

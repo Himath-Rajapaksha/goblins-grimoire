@@ -1,0 +1,19 @@
+[32mGEF[0m for linux ready, type `[4m[33mgef[24m[0m' to start, `[4m[35mgef config[24m[0m' to configure
+[1m[32m90[0m commands loaded and [1m[34m5[0m functions added for GDB [1m[33m16.3[0m in 0.01ms using Python engine [1m[31m3.13[0m
+GEF main command: view all new commands by typing `gef`.
+
+List of gef subcommands:
+
+gef config -- GEF configuration sub-command
+gef help -- GEF help sub-command.
+gef install -- `gef install` command: installs one or more scripts from the `gef-extras` script repo. Note that the command
+gef missing -- GEF missing sub-command
+gef restore -- GEF restore sub-command.
+gef run -- Override GDB run commands with the context from GEF.
+gef save -- GEF save sub-command.
+gef set -- Override GDB set commands with the context from GEF.
+
+Type "help gef" followed by gef subcommand name for full documentation.
+Type "apropos word" to search for commands related to "word".
+Type "apropos -v word" for full documentation of commands related to "word".
+Command name abbreviations are allowed if unambiguous.

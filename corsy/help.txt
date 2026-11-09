@@ -1,0 +1,16 @@
+
+    [92mＣＯＲＳＹ  [97m{[37mv1.0-beta[97m}[0m
+
+usage: corsy.py [-h] [-u TARGET] [-o JSON_FILE] [-i INP_FILE] [-t THREADS]
+                [-d DELAY] [-q] [--headers [HEADER_DICT]]
+
+options:
+  -h, --help            show this help message and exit
+  -u TARGET             target url
+  -o JSON_FILE          json output file
+  -i INP_FILE           input file urls/subdomains
+  -t THREADS            thread count
+  -d DELAY              request delay
+  -q                    don't print help tips
+  --headers [HEADER_DICT]
+                        add headers

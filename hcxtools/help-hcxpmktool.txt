@@ -1,0 +1,23 @@
+hcxpmktool 6.3.5  (C) 2024 ZeroBeat
+usage  : hcxpmktool <options>
+
+short options:
+-l <hash line> : input hashcat hash line (-m 22000)
+-e <ESSID>     : input Network Name (ESSID)
+-p <PSK>       : input Pre Shared Key (PSK) or Plain Master Key (PMK)
+-p -           : read Pre Shared Key (PSK) from stdin
+               : small lists only
+
+long options:
+--help         : show this help
+--version      : show version
+
+exit codes:
+0 = PSK/PMK confirmed
+1 = ERROR occurred
+2 = PSK/PMK unconfirmed
+
+Important notice:
+hcxpmktool does not do NONCE ERROR CORRECTIONS
+in case of a packet loss, you get a wrong PTK
+

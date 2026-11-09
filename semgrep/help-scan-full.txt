@@ -1,13 +1,13 @@
 cmdliner error: Illegal escape char '\n' in "[INTERNAL] Dump symbol analysis results in JSON format, \\\n          ATD type 'symbol_analysis'.\n"
-SEMGREP SCAN(1)               Semgrep scan Manual              SEMGREP SCAN(1)
+[4mSEMGREP[24m [4mSCAN[24m(1)               Semgrep scan Manual              [4mSEMGREP[24m [4mSCAN[24m(1)
 
-NAME
+[1mNAME[0m
        semgrep scan - run semgrep rules on files
 
-SYNOPSIS
-       semgrep scan [OPTION]… [TARGETS]…
+[1mSYNOPSIS[0m
+       [1msemgrep scan [22m[[4mOPTION[24m]… [[4mTARGETS[24m]…
 
-DESCRIPTION
+[1mDESCRIPTION[0m
        Searches TARGET paths for matches to rules or patterns. Defaults to
        searching entire current working directory.
 
@@ -27,18 +27,18 @@ DESCRIPTION
        https://semgrep.dev/docs/metrics. To modify this behavior, see the
        --metrics option below.
 
-ARGUMENTS
-       TARGETS
+[1mARGUMENTS[0m
+       [4mTARGETS[0m
            Files or folders to be scanned by semgrep.
 
-OPTIONS
-       -a, --autofix
+[1mOPTIONS[0m
+       [1m-a[22m, [1m--autofix[0m
            Apply autofix patches. WARNING: data loss can occur with this flag.
            Make  sure  your files are stored in a version control system. Note
            that this mode is  experimental  and  not  guaranteed  to  function
            properly.
 
-       --allow-local-builds
+       [1m--allow-local-builds[0m
            Experimental:  allow building projects contained in the repository.
            This  allows  Semgrep  to  identify  dependencies  and   dependency
            relationships  when  lockfiles are not present or are insufficient.
@@ -46,86 +46,86 @@ OPTIONS
            contained in the scanned project or in its dependencies, which is a
            security risk.
 
-       --allow-untrusted-validators
+       [1m--allow-untrusted-validators[0m
            Allows running  rules  with  validators  from  origins  other  than
            semgrep.dev. Avoid running rules from origins you don't trust.
 
-       --baseline-commit=VAL (absent SEMGREP_BASELINE_COMMIT env)
+       [1m--baseline-commit[22m=[4mVAL[24m (absent [1mSEMGREP_BASELINE_COMMIT [22menv)
            Only  show  results  that are not found in this commit hash. Aborts
            run if not  currently  in  a  git  directory,  there  are  unstaged
            changes, or given baseline hash doesn't exist.
 
-       -d, --dump-command-for-core
+       [1m-d[22m, [1m--dump-command-for-core[0m
            <internal, do not use>
 
-       --dataflow-traces
+       [1m--dataflow-traces[0m
            Explain  how non-local values reach the location of a finding (only
            affects text and SARIF output).
 
-       --disable-nosem
+       [1m--disable-nosem[0m
            negates --enable-nosem
 
-       --disable-version-check
+       [1m--disable-version-check[0m
            negates --enable-version-check
 
-       --dryrun
+       [1m--dryrun[0m
            If --dryrun, does not write autofixes to a file.  This  will  print
            the  changes  to  the console. This lets you see the changes before
            you commit to them. Only works with the --autofix  flag.  Otherwise
            does nothing.
 
-       --dump-ast
+       [1m--dump-ast[0m
            If --dump-ast, shows AST of the input file or passed expression and
            then exit (can use --json).
 
-       --dump-engine-path
+       [1m--dump-engine-path[0m
            <internal, do not use>
 
-       -e VAL, --pattern=VAL
+       [1m-e [4m[22mVAL[24m, [1m--pattern[22m=[4mVAL[0m
            Code                search               pattern.               See
            https://semgrep.dev/docs/writing-rules/pattern-syntax           for
            information on pattern features.
 
-       --emacs
+       [1m--emacs[0m
            Output results in Emacs single-line format.
 
-       --emacs-output=VAL
+       [1m--emacs-output[22m=[4mVAL[0m
            Write a copy of the emacs output to a file or post to URL.
 
-       --enable-nosem
+       [1m--enable-nosem[0m
            Enables  'nosem'. Findings will not be reported on lines containing
            a 'nosem' comment at the end. Enabled by default.
 
-       --enable-version-check (absent SEMGREP_ENABLE_VERSION_CHECK env)
+       [1m--enable-version-check [22m(absent [1mSEMGREP_ENABLE_VERSION_CHECK [22menv)
            Checks Semgrep servers  to  see  if  the  latest  version  is  run;
            disabling this may reduce exit time after returning results.
 
-       --error
+       [1m--error[0m
            Exit 1 if there are findings. Useful for CI and scripts.
 
-       --exclude=PATTERN
-           Skip  any  file  or  directory  whose  path  that  matches PATTERN.
+       [1m--exclude[22m=[4mPATTERN[0m
+           Skip  any  file  or  directory  whose  path  that  matches [4mPATTERN[24m.
            '--exclude=*.py' will ignore the following: 'foo.py', 'src/foo.py',
            'foo.py/bar.sh'. '--exclude=tests' will  ignore  'tests/foo.py'  as
            well  as  'a/b/tests/c/foo.py'. Multiple '--exclude' options may be
-           specified. PATTERN is a  glob-style  pattern  that  uses  the  same
+           specified. [4mPATTERN[24m is a  glob-style  pattern  that  uses  the  same
            syntax  as  gitignore  and  semgrepignore,  which  is documented at
            https://git-scm.com/docs/gitignore#_pattern_format
 
-       --exclude-binary-files
+       [1m--exclude-binary-files[0m
            Skip binary files. These are files that contain magic bytes at  the
            start  that correspond to their file extension. Enabled by default;
            use --no-exclude-binary-files to scan binary files.
 
-       --exclude-minified-files
+       [1m--exclude-minified-files[0m
            Skip minified files. These are files that are < 7%  whitespace,  or
            which have an average of > 1000 bytes per line. By default minified
            files are scanned.
 
-       --exclude-rule=VAL
+       [1m--exclude-rule[22m=[4mVAL[0m
            Skip any rule with the given id. Can add multiple times.
 
-       -f VAL, -c VAL, --config=VAL (absent SEMGREP_RULES env)
+       [1m-f [4m[22mVAL[24m, [1m-c [4m[22mVAL[24m, [1m--config[22m=[4mVAL[24m (absent [1mSEMGREP_RULES [22menv)
            YAML   configuration  file,  directory  of  YAML  files  ending  in
            .yml|.yaml, URL of a configuration file, or Semgrep registry  entry
            name.  Use  --config auto to automatically obtain rules tailored to
@@ -137,36 +137,36 @@ OPTIONS
            https://semgrep.dev/docs/writing-rules/rule-syntax  for information
            on configuration file format.
 
-       --files-with-matches
+       [1m--files-with-matches[0m
            Output  only  the  names  of  files  containing  matches.  REQUIRES
            --experimental
 
-       --force-color (absent SEMGREP_FORCE_COLOR env)
+       [1m--force-color [22m(absent [1mSEMGREP_FORCE_COLOR [22menv)
            Always  include  ANSI color in the output, even if not writing to a
            TTY; defaults to using the TTY status
 
-       --gitlab-sast
+       [1m--gitlab-sast[0m
            Output results in GitLab SAST format.
 
-       --gitlab-sast-output=VAL
+       [1m--gitlab-sast-output[22m=[4mVAL[0m
            Write a copy of the GitLab SAST output to a file or post to URL.
 
-       --gitlab-secrets
+       [1m--gitlab-secrets[0m
            Output results in GitLab Secrets format.
 
-       --gitlab-secrets-output=VAL
+       [1m--gitlab-secrets-output[22m=[4mVAL[0m
            Write a copy of the GitLab Secrets output to a file or post to URL.
 
-       --historical-secrets
+       [1m--historical-secrets[0m
            Scans git history using Secrets rules.
 
-       --include=PATTERN
+       [1m--include[22m=[4mPATTERN[0m
            Specify files or directories that should  be  scanned  by  semgrep,
            excluding  other  files.  This  filter is applied after these other
            filters: '--exclude' options, any filtering done by git  (or  other
            SCM), and filtering by '.semgrepignore' files. Multiple '--include'
            options  can be specified. A file path is selected if it matches at
-           least one of the include patterns. PATTERN is a glob-style  pattern
+           least one of the include patterns. [4mPATTERN[24m is a glob-style  pattern
            such  as  'foo.*' that must match the path. For example, specifying
            the  language  with   '-l   javascript'   might   preselect   files
            'src/foo.jsx'  and 'lib/bar.js'. Specifying one of '--include=src',
@@ -178,17 +178,17 @@ OPTIONS
            by   gitignore   and   semgrepignore,   which   is   documented  at
            https://git-scm.com/docs/gitignore#_pattern_format
 
-       --incremental-output
+       [1m--incremental-output[0m
            Output results incrementally. REQUIRES --experimental
 
-       --interfile-timeout=INT (absent=0)
+       [1m--interfile-timeout[22m=[4mINT[24m (absent=[1m0[22m)
            Maximum time to spend on interfile analysis.  The  time  budget  is
            enforced  by  being divided among analysis steps, so scans may take
            less time than the specified timeout. If set to 0, a blanket higher
            timeout is used for each analysis step. Defaults to 0 s for all CLI
            scans. For CI scans, it defaults to 3 hours.
 
-       -j VALUE, --jobs=VALUE (absent=3)
+       [1m-j [4m[22mVALUE[24m, [1m--jobs[22m=[4mVALUE[24m (absent=[1m3[22m)
            Degree of parallelism to use for parallel  scanning,  either  using
            shared-memory  threads  (the  default)  or the legacy process-based
            parallelism (enabled with the deprecated --x-parmap flag).  Semgrep
@@ -202,45 +202,45 @@ OPTIONS
            derived  from  the  number  of  logical  cores that are detected by
            Semgrep, scaled by 0.85.
 
-       --json
+       [1m--json[0m
            Output results in Semgrep's JSON format.
 
-       --json-output=VAL
+       [1m--json-output[22m=[4mVAL[0m
            Write a copy of the json output to a file or post to URL.
 
-       --junit-xml
+       [1m--junit-xml[0m
            Output results in JUnit XML format.
 
-       --junit-xml-output=VAL
+       [1m--junit-xml-output[22m=[4mVAL[0m
            Write a copy of the JUnit XML output to a file or post to URL.
 
-       -l VAL, --lang=VAL
+       [1m-l [4m[22mVAL[24m, [1m--lang[22m=[4mVAL[0m
            Parse pattern and all files in specified  language.  Must  be  used
            with -e/--pattern.
 
-       --matching-explanations
+       [1m--matching-explanations[0m
            Add debugging information in the JSON output to trace how different
            parts  of a rule are matched (a.k.a., "Inspect Rule" in the Semgrep
            playground)
 
-       --max-chars-per-line=INT (absent=160)
+       [1m--max-chars-per-line[22m=[4mINT[24m (absent=[1m160[22m)
            Maximum number of characters to show per line.
 
-       --max-lines-per-finding=INT (absent=10)
+       [1m--max-lines-per-finding[22m=[4mINT[24m (absent=[1m10[22m)
            Maximum number of lines of code that will be shown for  each  match
            before trimming (set to 0 for unlimited).
 
-       --max-log-list-entries=INT (absent=100)
+       [1m--max-log-list-entries[22m=[4mINT[24m (absent=[1m100[22m)
            Maximum number of entries that will be shown in the log (e.g., list
            of  rule  ids,  list  of  skipped  files). A zero or negative value
            disables this filter. Defaults to 100
 
-       --max-match-context-size=INT (absent=0)
+       [1m--max-match-context-size[22m=[4mINT[24m (absent=[1m0[22m)
            Maximum number of characters of source code to include  as  context
            surrounding  the  match  in  output.  Prevents  enormous output for
            minified files. 0 means unlimited. Defaults to 0
 
-       --max-memory=INT (absent=0)
+       [1m--max-memory[22m=[4mINT[24m (absent=[1m0[22m)
            Maximum  system  memory  in  MiB  to  use  during   the   interfile
            pre-processing  phase,  or when running a rule on a single file. If
            set to 0, will not have memory limit. Defaults to 0. For  CI  scans
@@ -248,12 +248,12 @@ OPTIONS
            container's available memory; or 8 GiB if  querying  the  available
            system memory is not feasible.
 
-       --max-target-bytes=VALUE (absent=1000000)
+       [1m--max-target-bytes[22m=[4mVALUE[24m (absent=[1m1000000[22m)
            Maximum  size for a file to be scanned by Semgrep, e.g '1.5MB'. Any
            input program larger than this will be ignored. A zero or  negative
            value disables this filter. Defaults to 1000000 bytes
 
-       --metrics=ENUM (absent=auto or SEMGREP_SEND_METRICS env)
+       [1m--metrics[22m=[4mENUM[24m (absent=[1mauto [22mor [1mSEMGREP_SEND_METRICS [22menv)
            Configures  how  usage  metrics  are sent to the Semgrep server. If
            'auto', metrics are sent whenever the --config value pulls from the
            Semgrep server or if the user is logged in. If  'on',  metrics  are
@@ -261,80 +261,80 @@ OPTIONS
            sent. If  absent,  the  SEMGREP_SEND_METRICS  environment  variable
            value will be used. If no environment variable, defaults to 'auto'.
 
-       --no-autofix
+       [1m--no-autofix[0m
            negates -a/--autofix
 
-       --no-dryrun
+       [1m--no-dryrun[0m
            negates --dryrun
 
-       --no-error
+       [1m--no-error[0m
            negates --error
 
-       --no-exclude-binary-files
+       [1m--no-exclude-binary-files[0m
            negates --exclude-binary-files
 
-       --no-exclude-minified-files
+       [1m--no-exclude-minified-files[0m
            negates --exclude-minified-files
 
-       --no-force-color
+       [1m--no-force-color[0m
            negates --force-color
 
-       --no-git-ignore
+       [1m--no-git-ignore[0m
            negates --use-git-ignore
 
-       --no-rewrite-rule-ids
+       [1m--no-rewrite-rule-ids[0m
            negates --rewrite-rule-ids
 
-       --no-secrets-validation
+       [1m--no-secrets-validation[0m
            Disables secret validation.
 
-       --no-strict
+       [1m--no-strict[0m
            negates --strict
 
-       --no-test-ignore-todo
+       [1m--no-test-ignore-todo[0m
            negates --test-ignore-todo
 
-       --no-time
+       [1m--no-time[0m
            negates --time
 
-       --novcs
+       [1m--novcs[0m
            Assume  the  project  is  not  managed  by a version control system
            (VCS), even if the project appears  to  be  under  version  control
            based  on the presence of files such as '.git' or similar. REQUIRES
            --experimental or --semgrepignore-v2.
 
-       -o VAL, --output=VAL
+       [1m-o [4m[22mVAL[24m, [1m--output[22m=[4mVAL[0m
            Save search results to a file or post to URL. Default is  to  print
            to stdout.
 
-       --optimizations=VALUE (absent=all)
+       [1m--optimizations[22m=[4mVALUE[24m (absent=[1mall[22m)
            Turn  on/off optimizations. Default = 'all'. Use 'none' to turn all
            optimizations off.
 
-       --oss-only
+       [1m--oss-only[0m
            Run using only the OSS engine, even if the Semgrep  Pro  toggle  is
            on. This may still run Pro rules, but only using the OSS features.
 
-       --pro
+       [1m--pro[0m
            Inter-file  analysis  and  Pro  languages  (currently Apex, C#, and
            Elixir.      Requires      Semgrep      Pro       Engine.       See
            https://semgrep.dev/products/pro-engine/ for more.
 
-       --pro-intrafile
+       [1m--pro-intrafile[0m
            Intra-file     inter-procedural     taint     analysis.     Implies
            --pro-languages.    Requires    Semgrep     Pro     Engine.     See
            https://semgrep.dev/products/pro-engine/ for more.
 
-       --pro-languages
+       [1m--pro-languages[0m
            Enable  Pro  languages  (currently  Apex, C#, and Elixir). Requires
            Semgrep Pro  Engine.  See  https://semgrep.dev/products/pro-engine/
            for more.
 
-       --pro-path-sensitive
+       [1m--pro-path-sensitive[0m
            Path  sensitivity.  Implies  --pro-intrafile.  Requires Semgrep Pro
            Engine. See https://semgrep.dev/products/pro-engine/ for more.
 
-       --project-root=VAL
+       [1m--project-root[22m=[4mVAL[0m
            Semgrep normally determines the type of project (git or novcs)  and
            the  project  root  automatically. The project root is then used to
            locate  and  use  '.gitignore'  and  '.semgrepignore'  files  which
@@ -353,28 +353,28 @@ OPTIONS
            '/var/sources'  (assuming  '/var' is not a symbolic link). REQUIRES
            --experimental or --semgrepignore-v2.
 
-       --remote=VAL
+       [1m--remote[22m=[4mVAL[0m
            Remote will quickly check out and scan a remote git  repository  of
            the  format  "http[s]://<WEBSITE>/.../<REPO>.git". Must be run with
            --pro. Incompatible with  --project-root.  Note  this  requires  an
            empty  CWD  as this command will clone the repository into the CWD.
            REQUIRES --experimental
 
-       --replacement=VAL
+       [1m--replacement[22m=[4mVAL[0m
            An autofix expression that will be applied  to  any  matches  found
            with --pattern. Only valid with a command-line specified pattern.
 
-       --rewrite-rule-ids
+       [1m--rewrite-rule-ids[0m
            Rewrite  rule  ids when they appear in nested sub-directories (Rule
            'foo' in test/rules.yaml will be renamed 'test.foo').
 
-       --sarif
+       [1m--sarif[0m
            Output results in SARIF format.
 
-       --sarif-output=VAL
+       [1m--sarif-output[22m=[4mVAL[0m
            Write a copy of the SARIF output to a file or post to URL.
 
-       --scan-unknown-extensions
+       [1m--scan-unknown-extensions[0m
            If true, target files specified directly on the command  line  will
            bypass  normal  language detection. They will be analyzed according
            to the value  of  --lang  if  applicable,  or  otherwise  with  the
@@ -382,65 +382,65 @@ OPTIONS
            file extension or file type. This setting doesn't apply  to  target
            files discovered by scanning folders. Defaults to false.
 
-       --secrets
+       [1m--secrets[0m
            Run   Semgrep   Secrets   product,  including  support  for  secret
            validation. Requires access to Secrets, contact support@semgrep.com
            for more information.
 
-       --secrets-timeout=INT (absent=30)
+       [1m--secrets-timeout[22m=[4mINT[24m (absent=[1m30[22m)
            Timeout in seconds for each secrets validation HTTP request. If set
            to 0, no timeout is applied. Defaults to 30.
 
-       --semgrepignore-v2
+       [1m--semgrepignore-v2[0m
            [DEPRECATED] '--semgrepignore-v2' used to  force  the  use  of  the
            newer Semgrepignore v2 implementation for discovering and filtering
            target  files.  It  is  now  the  default  and  only  behavior. The
            transitional option '--no-semgrepignore-v2' is no longer available.
 
-       --severity=ENUM
+       [1m--severity[22m=[4mENUM[0m
            Report findings only from  rules  matching  the  supplied  severity
            level.  By  default  all applicable rules are run. Can add multiple
            times. Each should be one of INFO, WARNING, or ERROR.
 
-       --show-supported-languages
+       [1m--show-supported-languages[0m
            Print a list of languages that are currently supported by Semgrep.
 
-       --skip-unknown-extensions
+       [1m--skip-unknown-extensions[0m
            negates --scan-unknown-extensions
 
-       --strict
+       [1m--strict[0m
            Return a nonzero exit code when WARN level errors are  encountered.
            Fails early if invalid configuration files are present. Defaults to
            --no-strict.
 
-       --test
+       [1m--test[0m
            Run test suite.
 
-       --test-ignore-todo
+       [1m--test-ignore-todo[0m
            If  --test-ignore-todo,  ignores  rules marked as '#todoruleid:' in
            test files.
 
-       --text
+       [1m--text[0m
            Output results in text format.
 
-       --text-output=VAL
+       [1m--text-output[22m=[4mVAL[0m
            Write a copy of the text output to a file or post to URL.
 
-       --time
+       [1m--time[0m
            Include a timing summary with the  results.  If  output  format  is
            json,  provides times for each pair (rule, target). This feature is
            meant for internal use  and  may  be  changed  or  removed  without
            warning. At the current moment, --trace is better supported.
 
-       --timeout=DOUBLE (absent=5.)
+       [1m--timeout[22m=[4mDOUBLE[24m (absent=[1m5.[22m)
            Maximum  time  to spend running a rule on a single file in seconds.
            If set to 0 will not have time limit. Defaults to 5.0 s.
 
-       --timeout-threshold=INT (absent=3)
+       [1m--timeout-threshold[22m=[4mINT[24m (absent=[1m3[22m)
            Maximum number of rules that can time out on a file before the file
            is skipped. If set to 0 will not have limit. Defaults to 3.
 
-       --use-git-ignore
+       [1m--use-git-ignore[0m
            '--use-git-ignore' is Semgrep's default behavior. Under the default
            behavior, Git-tracked files are not excluded by Gitignore rules and
            only   untracked   files   are   excluded   by   Gitignore   rules.
@@ -451,156 +451,156 @@ OPTIONS
            '--exclude', etc.). This flag has no effect if the scanning root is
            not in a Git repository.
 
-       --validate
+       [1m--validate[0m
            Validate configuration file(s). This  will  check  YAML  files  for
            errors  and run 'p/semgrep-rule-lints' on the YAML files. No search
            is performed.
 
-       --version
+       [1m--version[0m
            Show the version and exit.
 
-       --vim
+       [1m--vim[0m
            Output results in vim single-line format.
 
-       --vim-output=VAL
+       [1m--vim-output[22m=[4mVAL[0m
            Write a copy of the vim output to a file or post to URL.
 
-       --x-mem-policy=VAL
+       [1m--x-mem-policy[22m=[4mVAL[0m
            [INTERNAL] Heap and GC tuning policy. Only affects the Pro Engine.
 
-COMMON OPTIONS
-       --debug
+[1mCOMMON OPTIONS[0m
+       [1m--debug[0m
            All of --verbose, but with additional debugging information.
 
-       --develop
+       [1m--develop[0m
            Living on the edge.
 
-       --experimental
+       [1m--experimental[0m
            Enable experimental features.
 
-       --help[=FMT] (default=auto)
-           Show this help in format FMT. The value FMT must be  one  of  auto,
-           pager,  groff  or  plain.  With  auto, the format is pager or plain
-           whenever the TERM env var is dumb or undefined.
+       [1m--help[22m[=[4mFMT[24m] (default=[1mauto[22m)
+           Show this help in format [4mFMT[24m. The value [4mFMT[24m must be  one  of  [1mauto[22m,
+           [1mpager[22m,  [1mgroff  [22mor  [1mplain[22m.  With  [1mauto[22m, the format is [1mpager [22mor [1mplain[0m
+           whenever the [1mTERM [22menv var is [1mdumb [22mor undefined.
 
-       --legacy
+       [1m--legacy[0m
            Prefer old (legacy) behavior.
 
-       --no-trace
+       [1m--no-trace[0m
            negates --trace
 
-       --profile
+       [1m--profile[0m
            Record  profiles  via  Pyro  Caml.  By  default   sends   them   to
            localhost:4040
 
-       -q, --quiet
+       [1m-q[22m, [1m--quiet[0m
            Only output findings.
 
-       --trace
+       [1m--trace[0m
            Record traces from Semgrep scans to help debugging. This feature is
            meant  for  internal  use  and  may  be  changed or removed without
            warning.
 
-       --trace-endpoint=VAL
+       [1m--trace-endpoint[22m=[4mVAL[0m
            Endpoint to send OpenTelemetry traces to, if `--trace` is  present.
            The   value   may   be   `semgrep-prod`  (default),  `semgrep-dev`,
            `semgrep-local`, or any  valid  URL.  This  feature  is  meant  for
            internal use and may be changed or removed without warning.
 
-       -v, --verbose
+       [1m-v[22m, [1m--verbose[0m
            Show  more details about what rules are running, which files failed
            to parse, etc.
 
-EXPERIMENTAL OPTIONS
+[1mEXPERIMENTAL OPTIONS[0m
        Any option starting with '--x-' is experimental and may be removed from
        semgrep without notice.
 
-       --no-x-run-taint-once
+       [1m--no-x-run-taint-once[0m
            [INTERNAL] Disable running taint analysis just once
 
-       --x-dependency-paths
+       [1m--x-dependency-paths[0m
            (experimental) Include the full dependency path(s)  for  transitive
            supply-chain findings in --json and --sarif output.
 
-       --x-disable-transitive-reachability
+       [1m--x-disable-transitive-reachability[0m
            [INTERNAL]  Disable  transitive reachability analysis regardless of
            app-based configuration.
 
-       --x-dump-symbol-analysis
+       [1m--x-dump-symbol-analysis[0m
            [INTERNAL] Dump symbol analysis results in JSON  format,  ATD  type
            'symbol_analysis'.
 
-       --x-eio
+       [1m--x-eio[0m
            [INTERNAL] <deprecated>
 
-       --x-gradle-module-attribution
+       [1m--x-gradle-module-attribution[0m
            (experimental)  Report  Gradle dependencies from their module build
            files.
 
-       --x-group-taint-rules
+       [1m--x-group-taint-rules[0m
            [INTERNAL] Do not use
 
-       --x-ignore-semgrepignore-files
+       [1m--x-ignore-semgrepignore-files[0m
            [INTERNAL] Ignore all '.semgrepignore' files found in  the  project
            tree  for  the  purpose  of selecting target files to be scanned by
            semgrep. Other filters may still apply. THIS OPTION IS NOT PART  OF
            THE SEMGREP API AND MAY CHANGE OR DISAPPEAR WITHOUT NOTICE.
 
-       --x-ls
+       [1m--x-ls[0m
            [INTERNAL]  List the selected target files before any rule-specific
            or language-specific  filtering.  Then  exit.  The  default  output
            format is one path per line. THIS OPTION IS NOT PART OF THE SEMGREP
            API AND MAY CHANGE OR DISAPPEAR WITHOUT NOTICE.
 
-       --x-ls-long
+       [1m--x-ls-long[0m
            [INTERNAL]  Show  selected targets and skipped targets with reasons
            why they were skipped, using an unspecified output format.  Implies
            --x-ls.  THIS  OPTION IS NOT PART OF THE SEMGREP API AND MAY CHANGE
            OR DISAPPEAR WITHOUT NOTICE.
 
-       --x-mcp
+       [1m--x-mcp[0m
            [INTERNAL] This flag indicates that the scan  is  run  by  the  MCP
            server.  It  is  used  to  output extra info (e.g. rules, num bytes
            scanned) at the end of the scan for the MCP server to use and makes
            sure that metrics are not sent so that the MCP server can send  its
            own metrics.
 
-       --x-no-python-schema-validation
+       [1m--x-no-python-schema-validation[0m
            [DEPRECATED]  No-op  alias  kept  for  backward  compatibility. Use
            --x-rule-validation=core-only instead.
 
-       --x-parmap
+       [1m--x-parmap[0m
            [INTERNAL] Rely on legacy Parmap-based parallelism
 
-       --x-pro-naming
+       [1m--x-pro-naming[0m
            [INTERNAL] Do not use
 
-       --x-rule-validation=VAL (absent=full)
+       [1m--x-rule-validation[22m=[4mVAL[24m (absent=[1mfull[22m)
            [INTERNAL]  Control  rule  pre-validation.  'full'  (default)  runs
            Python  jsonschema  + semgrep-core RPC validation. 'core-only' runs
            only the RPC validation. 'none' skips  both;  rule  errors  surface
            from the scan subprocess instead.
 
-       --x-run-taint-once
+       [1m--x-run-taint-once[0m
            [INTERNAL] Run taint analysis just once (default: true)
 
-       --x-semgrepignore-filename=FILENAME
-           [INTERNAL]  Files  named FILENAME shall be consulted instead of the
+       [1m--x-semgrepignore-filename[22m=[4mFILENAME[0m
+           [INTERNAL]  Files  named [4mFILENAME[24m shall be consulted instead of the
            files named '.semgrepignore'. This option can be useful for testing
            semgrep on  intentionally  broken  code  that  should  normally  be
            ignored.
 
-       --x-simple-profiling
+       [1m--x-simple-profiling[0m
            Upon  exit,  print  on  stderr  a  report  showing how long certain
            operations took, in an unspecified text format.
 
-       --x-tr, --x-enable-transitive-reachability
+       [1m--x-tr[22m, [1m--x-enable-transitive-reachability[0m
            [INTERNAL] Enable transitive reachability  analysis  regardless  of
            app-based       configuration.       Typically       used      with
            '--allow-local-builds'.
 
-EXIT STATUS
-       semgrep scan exits with:
+[1mEXIT STATUS[0m
+       [1msemgrep scan [22mexits with:
 
        0   OK
 
@@ -622,34 +622,34 @@ EXIT STATUS
 
        99  not implemented in osemgrep
 
-ENVIRONMENT
-       These environment variables affect the execution of semgrep scan:
+[1mENVIRONMENT[0m
+       These environment variables affect the execution of [1msemgrep scan[22m:
 
-       SEMGREP_BASELINE_COMMIT
-           See option --baseline-commit.
+       [1mSEMGREP_BASELINE_COMMIT[0m
+           See option [1m--baseline-commit[22m.
 
-       SEMGREP_ENABLE_VERSION_CHECK
-           See option --enable-version-check.
+       [1mSEMGREP_ENABLE_VERSION_CHECK[0m
+           See option [1m--enable-version-check[22m.
 
-       SEMGREP_FORCE_COLOR
-           See option --force-color.
+       [1mSEMGREP_FORCE_COLOR[0m
+           See option [1m--force-color[22m.
 
-       SEMGREP_RULES
-           See option --config.
+       [1mSEMGREP_RULES[0m
+           See option [1m--config[22m.
 
-       SEMGREP_SEND_METRICS
-           See option --metrics.
+       [1mSEMGREP_SEND_METRICS[0m
+           See option [1m--metrics[22m.
 
-AUTHORS
+[1mAUTHORS[0m
        Semgrep Inc. <support@semgrep.com>
 
-BUGS
+[1mBUGS[0m
        If    you    encounter    an    issue,    please    report    it     at
        https://github.com/semgrep/semgrep/issues
 
-THIRD-PARTY LICENSES
+[1mTHIRD-PARTY LICENSES[0m
        Semgrep  includes  open  source  software. The licenses and notices for
        these          dependencies           are           listed           at
        https://semgrep.dev/cli-credits?version=1.184.0
 
-Semgrep scan                                                   SEMGREP SCAN(1)
+Semgrep scan                                                   [4mSEMGREP[24m [4mSCAN[24m(1)

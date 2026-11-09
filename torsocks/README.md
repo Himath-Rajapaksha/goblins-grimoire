@@ -17,8 +17,8 @@ related calls. The application keeps using normal hostnames and ports; the
 shim rewrites them to Tor.
 
 Use it when you want *one* program to use Tor while the rest of the system
-keeps its normal connectivity — the opposite of transparent Tor routing, which
-reroutes the whole machine.
+keeps its normal connectivity — the opposite of `tor-mode`, which reroutes the
+whole machine.
 
 ## Use cases
 
@@ -85,7 +85,7 @@ new terminal, and they do not affect GUI applications launched elsewhere.
 | Statically linked binaries | **No** | `LD_PRELOAD` is ignored |
 | setuid/setgid binaries | **No** | Loader strips `LD_PRELOAD` for security |
 
-This is the key limitation versus transparent Tor routing: torsocks only covers dynamically
+This is the key limitation versus `tor-mode`: torsocks only covers dynamically
 linked programs that use libc networking calls and do not drop privileges.
 
 ## Configuration: `torsocks.conf`
@@ -198,19 +198,19 @@ torsocks curl -s https://dnsleaktest.com/ 2>/dev/null | head
   Tor's own configuration.
 - If the app spawns helpers via setuid or drops privileges, parts of the
   traffic may bypass Tor.
-- For full-system anonymity, use transparent Tor routing (root-only) instead;
-  torsocks is per-application only.
+- For full-system anonymity, use `tor-mode` (root-only) instead; torsocks is
+  per-application only.
 
-## Differences from transparent Tor routing
+## Differences from `tor-mode`
 
-| | torsocks | Transparent Tor |
+| | torsocks | tor-mode |
 |--|----------|----------|
 | Scope | One command | Whole host (nftables redirect) |
 | Needs root | No | Yes |
 | UDP/ICMP | Not proxied | ICMP dropped; UDP DNS redirected |
 | Static binaries | Not covered | Covered (kernel-level) |
 | DNS | Intercepted in libc | Redirected to Tor DNSPort |
-| Reversible | Per-command | Disabling the rules restores direct routing |
+| Reversible | Per-command | `tor-mode off` restores direct routing |
 
 ## References
 

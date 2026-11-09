@@ -1,7 +1,7 @@
 # arjun — HTTP parameter discovery
 
 - **Version:** 2.2.1 (Arjun)
-- **Binary:** `/usr/bin/arjun` (may be group-restricted via `dpkg-statoverride`)
+- **Binary:** `/usr/bin/arjun` (restricted: `root:sectools 750` via dpkg-statoverride)
 - **Full help snapshot:** [`help.txt`](help.txt)
 - **Upstream:** https://github.com/s0md3v/Arjun
 - **Docs:** https://github.com/s0md3v/Arjun/wiki
@@ -102,7 +102,7 @@ produce false positives/negatives. `--stable` and smaller chunks help.
 - JSON/XML modes need correct `Content-Type`; add with `--headers`.
 - Redirects can mask parameter effects; try `--disable-redirects` when results look odd.
 - Parameter names found are not automatically vulnerable — test them.
-- If the binary is group-restricted, run it as a member of that group (or root).
+- The binary is `750 root:sectools`; you must be in `sectools` (or root) to run it.
 - `-oB` opens a Burp proxy connection; Burp must be listening.
 
 ## Output

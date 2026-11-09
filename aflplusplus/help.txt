@@ -1,4 +1,4 @@
-afl-fuzz++4.21c based on afl by Michal Zalewski and a large online community
+[0;36mafl-fuzz++4.21c[0m based on afl by Michal Zalewski and a large online community
 
 afl-fuzz [ options ] -- /path/to/fuzzed_app [ ... ]
 

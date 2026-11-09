@@ -15,7 +15,7 @@ efficiently; `tshark` gives the same dissectors a scriptable CLI; the GUI adds
 visual analysis, follow-stream, and statistics.
 
 On this machine `/usr/bin/dumpcap` has `cap_net_admin,cap_net_raw=eip` and is
-group-readable by `wireshark`; your user must be a member.
+group-readable by `wireshark`; `user` is a member.
 
 ## Use cases
 
@@ -38,7 +38,7 @@ id | grep wireshark          # must be a member
 getcap /usr/bin/dumpcap      # cap_net_admin,cap_net_raw=eip
 ```
 
-If capture is denied, log out/in after `usermod -aG wireshark $USER`, or use
+If capture is denied, log out/in after `usermod -aG wireshark user`, or use
 `newgrp wireshark`.
 
 ## dumpcap basics

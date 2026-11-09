@@ -1,0 +1,12 @@
+usage: gophish [<flags>]
+
+Flags:
+  -h, --help                    Show context-sensitive help (also try
+                                --help-long and --help-man).
+      --config="./config.json"  Location of config.json.
+      --disable-mailer          Disable the mailer (for use with multi-system
+                                deployments)
+      --mode=all                Run the binary in one of the modes (all,
+                                admin or phish)
+      --version                 Show application version.
+

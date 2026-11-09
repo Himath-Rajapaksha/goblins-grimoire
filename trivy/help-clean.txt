@@ -24,7 +24,7 @@ Clean Flags
 
 Global Flags:
       --cacert string             Path to PEM-encoded CA certificate file
-      --cache-dir string          cache directory (default "/home/user/.cache/trivy")
+      --cache-dir string          cache directory (default "/root/.cache/trivy")
   -c, --config string             config path (empty string disables loading) (default "trivy.yaml")
   -d, --debug                     debug mode
       --generate-default-config   write the default config to trivy-default.yaml

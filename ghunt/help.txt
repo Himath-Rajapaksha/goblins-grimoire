@@ -1,0 +1,31 @@
+
+     .d8888b.  888    888                   888    
+    d88P  Y88b 888    888                   888    
+    888    888 888    888                   888    
+    888        8888888888 888  888 88888b.  888888 
+    888  88888 888    888 888  888 888 "88b 888    
+    888    888 888    888 888  888 888  888 888    
+    Y88b  d88P 888    888 Y88b 888 888  888 Y88b.  
+     "Y8888P88 888    888  "Y88888 888  888  "Y888 v2
+
+             By: mxrch (🐦 @mxrchreborn)
+       Support my work on GitHub Sponsors ! 💖
+    
+
+         > GHunt 2.3.4 (🕷️  Spider Edition) <        
+
+🎉 You are up to date !
+
+Usage: ghunt [-h] {login,email,gaia,drive,geolocate,spiderdal} ...
+
+Positional Arguments:
+  {login,email,gaia,drive,geolocate,spiderdal}
+    login               Authenticate GHunt to Google.
+    email               Get information on an email address.
+    gaia                Get information on a Gaia ID.
+    drive               Get information on a Drive file or folder.
+    geolocate           Geolocate a BSSID.
+    spiderdal           Find assets using Digital Assets Links.
+
+Options:
+  -h, --help            show this help message and exit

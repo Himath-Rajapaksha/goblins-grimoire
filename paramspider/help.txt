@@ -1,0 +1,23 @@
+
+           
+                                      _    __       
+   ___  ___ ________ ___ _  ___ ___  (_)__/ /__ ____
+  / _ \/ _ `/ __/ _ `/  ' \(_-</ _ \/ / _  / -_) __/
+ / .__/\_,_/_/  \_,_/_/_/_/___/ .__/_/\_,_/\__/_/   
+/_/                          /_/                    
+
+                              with <3 by @0xasm0d3us           
+    
+usage: paramspider [-h] [-d DOMAIN] [-l LIST] [-s] [--proxy PROXY]
+                   [-p PLACEHOLDER]
+
+Mining URLs from dark corners of Web Archives
+
+options:
+  -h, --help            show this help message and exit
+  -d, --domain DOMAIN   Domain name to fetch related URLs for.
+  -l, --list LIST       File containing a list of domain names.
+  -s, --stream          Stream URLs on the terminal.
+  --proxy PROXY         Set the proxy address for web requests.
+  -p, --placeholder PLACEHOLDER
+                        placeholder for parameter values
