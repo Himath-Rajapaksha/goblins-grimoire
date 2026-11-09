@@ -69,8 +69,8 @@ Append findings to `~/tools/<tool>/RESEARCH-LOG.md`:
 
 ## Scenario index
 
-Every directory below has a `SCENARIOS.md`. There are 89 directories covering
-88 tools: `metasploit-msfvenom` is documented alongside Metasploit rather than
+Every directory below has a `SCENARIOS.md`. There are 99 directories covering
+98 tools: `metasploit-msfvenom` is documented alongside Metasploit rather than
 counted separately.
 
 ### Recon & asset discovery
@@ -170,10 +170,25 @@ counted separately.
 | hydra | [`hydra/SCENARIOS.md`](hydra/SCENARIOS.md) | protocol modules/user-pass matrices/output |
 | medusa | [`medusa/SCENARIOS.md`](medusa/SCENARIOS.md) | 25 modules/tasks/hosts/resume/output |
 
+### Sniffing & MITM
+
+| Tool | Scenarios file | Command surface |
+|------|----------------|-----------------|
+| bettercap | [`bettercap/SCENARIOS.md`](bettercap/SCENARIOS.md) | CLI/caplets/modules/events |
+| ettercap | [`ettercap/SCENARIOS.md`](ettercap/SCENARIOS.md) | CLI/modes/filters/plugins |
+| dsniff | [`dsniff/SCENARIOS.md`](dsniff/SCENARIOS.md) | capture/spoof/snarf/disrupt suite |
+
 ### Wireless & RF
 
 | Tool | Scenarios file | Command surface |
 |------|----------------|-----------------|
+| aircrack-ng | [`aircrack-ng/SCENARIOS.md`](aircrack-ng/SCENARIOS.md) | monitor/capture/inject/crack suite |
+| wifite | [`wifite/SCENARIOS.md`](wifite/SCENARIOS.md) | survey/WEP/WPA/WPS/PMKID |
+| reaver | [`reaver/SCENARIOS.md`](reaver/SCENARIOS.md) | WPS PIN/lockout/Pixie-Dust |
+| pixiewps | [`pixiewps/SCENARIOS.md`](pixiewps/SCENARIOS.md) | modes/date bounds/M5-M7 |
+| wash | [`wash/SCENARIOS.md`](wash/SCENARIOS.md) | survey/scan/JSON/offline |
+| macchanger | [`macchanger/SCENARIOS.md`](macchanger/SCENARIOS.md) | show/set/random/restore |
+| iw | [`iw/SCENARIOS.md`](iw/SCENARIOS.md) | dev/phy/wdev/reg/event |
 | hcxdumptool | [`hcxdumptool/SCENARIOS.md`](hcxdumptool/SCENARIOS.md) | capture/filter/attack modes |
 | hcxtools | [`hcxtools/SCENARIOS.md`](hcxtools/SCENARIOS.md) | hcxpcapngtool/psktool/hash2cap |
 | kismet | [`kismet/SCENARIOS.md`](kismet/SCENARIOS.md) | capture server + kismetdb tools |

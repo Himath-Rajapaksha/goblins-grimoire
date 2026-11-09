@@ -1,0 +1,26 @@
+
+Wash v1.6.6 WiFi Protected Setup Scan Tool
+Copyright (c) 2011, Tactical Network Solutions, Craig Heffner
+
+Required Arguments:
+	-i, --interface=<iface>              Interface to capture packets on
+	-f, --file [FILE1 FILE2 FILE3 ...]   Read packets from capture files
+
+Optional Arguments:
+	-c, --channel=<num>                  Channel to listen on [auto]
+	-n, --probes=<num>                   Maximum number of probes to send to each AP in scan mode [15]
+	-O, --output-file=<filename>         Write packets of interest into pcap file
+	-F, --ignore-fcs                     Ignore frame checksum errors
+	-2, --2ghz                           Use 2.4GHz 802.11 channels
+	-5, --5ghz                           Use 5GHz 802.11 channels
+	-s, --scan                           Use scan mode
+	-u, --survey                         Use survey mode [default]
+	-a, --all                            Show all APs, even those without WPS
+	-j, --json                           print extended WPS info as json
+	-U, --utf8                           Show UTF8 ESSID (does not sanitize ESSID, dangerous)
+	-p, --progress                       Show percentage of crack progress
+	-h, --help                           Show help
+
+Example:
+	wash -i wlan0mon
+

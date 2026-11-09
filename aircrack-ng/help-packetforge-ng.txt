@@ -1,0 +1,38 @@
+
+  Packetforge-ng 1.7  - (C) 2006-2022 Thomas d'Otreppe
+  Original work: Martin Beck
+  https://www.aircrack-ng.org
+
+  Usage: packetforge-ng <mode> <options>
+
+  Forge options:
+
+      -p <fctrl>     : set frame control word (hex)
+      -a <bssid>     : set Access Point MAC address
+      -c <dmac>      : set Destination  MAC address
+      -h <smac>      : set Source       MAC address
+      -j             : set FromDS bit
+      -o             : clear ToDS bit
+      -e             : disables WEP encryption
+      -k <ip[:port]> : set Destination IP [Port]
+      -l <ip[:port]> : set Source      IP [Port]
+      -t ttl         : set Time To Live
+      -w <file>      : write packet to this pcap file
+      -s <size>      : specify size of null packet
+      -n <packets>   : set number of packets to generate
+
+  Source options:
+
+      -r <file>      : read packet from this raw file
+      -y <file>      : read PRGA from this file
+
+  Modes:
+
+      --arp          : forge an ARP packet    (-0)
+      --udp          : forge an UDP packet    (-1)
+      --icmp         : forge an ICMP packet   (-2)
+      --null         : build a null packet    (-3)
+      --custom       : build a custom packet  (-9)
+
+      --help         : Displays this usage screen
+

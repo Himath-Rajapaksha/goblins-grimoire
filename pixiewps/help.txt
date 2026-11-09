@@ -1,0 +1,72 @@
+
+ Pixiewps 1.4 WPS pixie-dust attack tool
+ Copyright (c) 2015-2017, wiire <wi7ire@gmail.com>
+
+ Description of arguments:
+
+ -e, --pke
+
+     Enrollee's DH public key, found in M1.
+
+ -r, --pkr
+
+     Registrar's DH public key, found in M2.
+
+ -s, --e-hash1
+
+     Enrollee hash-1, found in M3. It's the hash of the first half of the PIN.
+
+ -z, --e-hash2
+
+     Enrollee hash-2, found in M3. It's the hash of the second half of the PIN.
+
+ -a, --authkey
+
+     Authentication session key. Although for this parameter a modified version of Reaver or Bully is needed, it can be avoided by specifying small Diffie-Hellman keys in both Reaver and Pixiewps and supplying --e-nonce, --r-nonce and --e-bssid.
+
+ [?] pixiewps -e <pke> -s <e-hash1> -z <e-hash2> -S -n <e-nonce> -m <r-nonce> -b <e-bssid>
+
+ -n, --e-nonce
+
+     Enrollee's nonce, found in M1.
+
+ -m, --r-nonce
+
+     Registrar's nonce, found in M2. Used with other parameters to compute the session keys.
+
+ -b, --e-bssid
+
+     Enrollee's BSSID. Used with other parameters to compute the session keys.
+
+ -S, --dh-small (deprecated)
+
+     Small Diffie-Hellman keys. The same option must be specified in Reaver too. Some Access Points seem to be buggy and don't behave correctly with this option. Avoid using it with Reaver when possible
+
+ --mode N[,... N]
+
+     Select modes, comma separated (experimental modes are not used unless specified):
+
+         1 (RT/MT/CL)
+         2 (eCos simple)
+         3 (RTL819x)
+         4 (eCos simplest) [Experimental]
+         5 (eCos Knuth)    [Experimental]
+
+ --start [mm/]yyyy
+ --end   [mm/]yyyy
+
+     Starting and ending dates for mode 3. They are interchangeable. If only one is specified, the current time will be used for the other. The earliest possible date is 01/1970, corresponding to 0 (Unix epoch time), the latest is 02/2038, corresponding to 0x7FFFFFFF. If --force is used then pixiewps will start from the current time and go back all the way to 0.
+
+ -7, --m7-enc
+
+     Encrypted settings, found in M7. Recover Enrollee's WPA-PSK and secret nonce 2. This feature only works on some Access Points vulnerable to mode 3.
+
+ [?] pixiewps -e <pke> -r <pkr> -n <e-nonce> -m <r-nonce> -b <e-bssid> -7 <enc7> --mode 3
+
+ -5, --m5-enc
+
+     Encrypted settings, found in M5. Recover Enrollee's secret nonce 1. This option must be used in conjunction with --m7-enc. If --e-hash1 and --e-hash2 are also specified, pixiewps will also recover the WPS PIN.
+
+ [?] pixiewps -e <pke> -r <pkr> -n <e-nonce> -m <r-nonce> -b <e-bssid> -7 <enc7> -5 <enc5> --mode 3
+ [?] pixiewps -e <pke> -r <pkr> -n <e-nonce> -m <r-nonce> -b <e-bssid> -7 <enc7> -5 <enc5> -s <e-hash1> -z <e-hash2> --mode 3
+

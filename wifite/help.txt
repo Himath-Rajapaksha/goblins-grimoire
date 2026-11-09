@@ -1,0 +1,51 @@
+ [32m  .     [37m[2m     [0m[32m     .    [0m
+ [32m.´  ·  .[37m[2m     [0m[32m.  ·  `.  [32mwifite2 [2m2.7.0[0m
+ [32m:  :  : [37m[2m (¯) [0m[32m :  :  :  [0m[2ma wireless auditor by derv82[0m
+ [32m`.  ·  `[37m[2m /¯\ [0m[32m´  ·  .´  [0m[2mmaintained by kimocoder[0m
+ [32m  `     [37m[2m/¯¯¯\[0m[32m     ´    [36m[2mhttps://github.com/kimocoder/wifite2[0m
+
+options:
+  -h, --help                    show this help message and exit
+
+[36mSETTINGS[0m:
+  -v, --verbose                 Shows more options ([36m-h -v[0m). Prints commands and outputs. (default: [32mquiet[0m)
+  -i [interface]                Wireless interface to use, e.g. [36mwlan0mon[0m (default: [32mask[0m)
+  -c [channel]                  Wireless channel to scan e.g. [36m1,3-6[0m (default: [32mall 2Ghz channels[0m)
+  -inf, --infinite              Enable infinite attack mode. Modify scanning time with [36m-p[0m (default: [32moff[0m)
+  -mac, --random-mac            Randomize wireless card MAC address (default: [32moff[0m)
+  -p [scan_time]                [32mPillage[0m: Attack all targets after [36mscan_time[0m (seconds)
+  --kill                        Kill processes that conflict with Airmon/Airodump (default: [32moff[0m)
+  -pow, --power [min_power]     Attacks any targets with at least [36mmin_power[0m signal strength
+  --skip-crack                  Skip cracking captured handshakes/pmkid (default: [32moff[0m)
+  -first, --first [attack_max]  Attacks the first [36mattack_max[0m targets
+  -ic, --ignore-cracked         Hides previously-cracked targets. (default: [32moff[0m)
+  --clients-only                Only show targets that have associated clients (default: [32moff[0m)
+  --nodeauths                   Passive mode: Never deauthenticates clients (default: [32mdeauth targets[0m)
+  --daemon                      Puts device back in managed mode after quitting (default: [32moff[0m)
+
+[36mWEP[0m:
+  --wep                         Show only [36mWEP-encrypted networks[0m
+  --require-fakeauth            Fails attacks if [36mfake-auth[0m fails (default: [32moff[0m)
+  --keep-ivs                    Retain .IVS files and reuse when cracking (default: [32moff[0m)
+
+[36mWPA[0m:
+  --wpa                         Show only [36mWPA-encrypted networks[0m (includes [36mWPS[0m)
+  --new-hs                      Captures new handshakes, ignores existing handshakes in [36mhs[0m (default: [32moff[0m)
+  --dict [file]                 File containing passwords for cracking (default: [32m/usr/share/dict/wordlist-probable.txt[0m)
+
+[36mWPS[0m:
+  --wps                         Show only [36mWPS-enabled networks[0m
+  --wps-only                    [33mOnly[0m use [36mWPS PIN[0m & [36mPixie-Dust[0m attacks (default: [32moff[0m)
+  --bully                       Use [32mbully[0m program for WPS PIN & Pixie-Dust attacks (default: [32mreaver[0m)
+  --reaver                      Use [32mreaver[0m program for WPS PIN & Pixie-Dust attacks (default: [32mreaver[0m)
+  --ignore-locks                Do [33mnot[0m stop WPS PIN attack if AP becomes [33mlocked[0m (default: [32mstop[0m)
+
+[36mPMKID[0m:
+  --pmkid                       [33mOnly[0m use [36mPMKID capture[0m, avoids other WPS & WPA attacks (default: [32moff[0m)
+  --no-pmkid                    [33mDon't[0m use [36mPMKID capture[0m (default: [32moff[0m)
+  --pmkid-timeout [sec]         Time to wait for PMKID capture (default: [32m300[0m seconds)
+
+[36mCOMMANDS[0m:
+  --cracked                     Print previously-cracked access points
+  --check [file]                Check a [36m.cap file[0m (or all [36mhs/*.cap[0m files) for WPA handshakes
+  --crack                       Show commands to crack a captured handshake

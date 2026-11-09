@@ -14,7 +14,7 @@ adds context, workflows, and copy-paste recipes that `--help` does not explain.
 
 > **Start here for research-driven use:** [`DEEP-RESEARCH.md`](DEEP-RESEARCH.md) —
 > the `@deep-research` workflow, prompt template, evidence rules, research-log
-> format, and the index of all 89 `SCENARIOS.md` files (88 tools;
+> format, and the index of all 99 `SCENARIOS.md` files (98 tools;
 > `metasploit-msfvenom` is documented alongside Metasploit).
 >
 > **External references:** [`RELATED-DOCS.md`](RELATED-DOCS.md) — a cited
@@ -116,9 +116,23 @@ adds context, workflows, and copy-paste recipes that `--help` does not explain.
 | proxychains4 | [`proxychains4/`](proxychains4/README.md) | Force TCP through SOCKS/HTTP proxy chains via LD_PRELOAD |
 | kerbrute | [`kerbrute/`](kerbrute/README.md) | AD username enumeration and password spraying |
 
+### Sniffing & MITM
+| Tool | Directory | One-liner |
+|------|-----------|-----------|
+| bettercap | [`bettercap/`](bettercap/README.md) | Modular MITM framework: ARP/DNS spoofing, Wi-Fi, BLE, HTTP(S) proxy |
+| ettercap | [`ettercap/`](ettercap/README.md) | Classic ARP/MITM sniffer with plugins and protocol dissectors |
+| dsniff | [`dsniff/`](dsniff/README.md) | Suite of ARP/DNS spoof, snarf, and connection-kill tools |
+
 ### Wireless & RF
 | Tool | Directory | One-liner |
 |------|-----------|-----------|
+| aircrack-ng | [`aircrack-ng/`](aircrack-ng/README.md) | 802.11 capture, injection, and WEP/WPA-PSK cracking suite |
+| wifite | [`wifite/`](wifite/README.md) | Automated wireless auditing front end |
+| reaver | [`reaver/`](reaver/README.md) | WPS PIN and Pixie-Dust attack tool |
+| pixiewps | [`pixiewps/`](pixiewps/README.md) | Offline WPS Pixie-Dust computation |
+| wash | [`wash/`](wash/README.md) | WPS survey and lock-state discovery |
+| macchanger | [`macchanger/`](macchanger/README.md) | Inspect and change interface MAC addresses |
+| iw | [`iw/`](iw/README.md) | nl80211 wireless configuration and inspection |
 | hcxdumptool | [`hcxdumptool/`](hcxdumptool/README.md) | Monitor-mode capture of PMKID/EAPOL for WPA/WPA2 cracking |
 | hcxtools | [`hcxtools/`](hcxtools/README.md) | Convert, clean, and inspect captures; build hashcat inputs |
 | kismet | [`kismet/`](kismet/README.md) | Wireless detector, sniffer, and IDS with web UI |
@@ -235,9 +249,11 @@ holehe --only-used user@example.com
 - Everything here is installed system-wide and available to members of `sectools`.
 - `afl-fuzz` and `arjun` are `root:sectools 750` via `dpkg-statoverride`.
 - `wireshark` group membership is required for live packet capture.
-- Wireless capture tools (`hcxdumptool`, `kismet`, `bully`, `eaphammer`,
-  `wifiphisher`) require root. A limited NOPASSWD sudoers grant covers these
-  and the other root-only tools (sshuttle, gophish, evilginx, setoolkit).
+- Wireless and MITM tools (`aircrack-ng`, `wifite`, `reaver`, `wash`, `iw`,
+  `macchanger`, `bettercap`, `ettercap`, `dsniff`, `hcxdumptool`, `kismet`,
+  `bully`, `eaphammer`, `wifiphisher`) require root for capture, injection, or
+  interface changes. A limited NOPASSWD sudoers grant covers these and the
+  other root-only tools (sshuttle, gophish, evilginx, setoolkit).
 - Tor-related tools: use `torsocks <cmd>` for per-app Tor; the root-only
   `tor-mode` toggle provides transparent system-wide routing.
 - Most tools write config/state under `$HOME` (`/home/user`). SET is the

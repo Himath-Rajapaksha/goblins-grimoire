@@ -1,0 +1,42 @@
+
+[1mettercap 0.8.3.1[0m copyright 2001-2020 Ettercap Development Team
+
+
+Available plugins :
+
+         arp_cop  1.1  Report suspicious ARP activity
+         autoadd  1.2  Automatically add new victims in the target range
+      chk_poison  1.1  Check if the poisoning had success
+       dns_spoof  1.3  Sends spoofed dns replies
+      dos_attack  1.0  Run a d.o.s. attack against an IP address
+           dummy  3.0  A plugin template (for developers)
+       find_conn  1.0  Search connections on a switched LAN
+   find_ettercap  2.0  Try to find ettercap activity
+         find_ip  1.0  Search an unused IP address in the subnet
+          finger  1.6  Fingerprint a remote host
+   finger_submit  1.0  Submit a fingerprint to ettercap's website
+  fraggle_attack  1.0  Run a fraggle attack against hosts of target one
+       gre_relay  1.1  Tunnel broker for redirected GRE tunnels
+     gw_discover  1.0  Try to find the LAN gateway
+         isolate  1.0  Isolate an host from the lan
+  krb5_downgrade  1.0  Downgrades Kerberos V5 security by modifying AS-REQ packets
+       link_type  1.0  Check the link type (hub/switch)
+      mdns_spoof  1.0  Sends spoofed mDNS replies
+      nbns_spoof  1.1  Sends spoof NBNS replies & sends SMB challenges with custom challenge
+    pptp_chapms1  1.0  PPTP: Forces chapms-v1 from chapms-v2
+      pptp_clear  1.0  PPTP: Tries to force cleartext tunnel
+        pptp_pap  1.0  PPTP: Forces PAP authentication
+      pptp_reneg  1.0  PPTP: Forces tunnel re-negotiation
+      rand_flood  1.0  Flood the LAN with random MAC addresses
+  remote_browser  1.2  Sends visited URLs to the browser
+       reply_arp  1.0  Simple arp responder
+    repoison_arp  1.0  Repoison after broadcast ARP
+   scan_poisoner  1.0  Actively search other poisoners
+  search_promisc  1.2  Search promisc NICs in the LAN
+       smb_clear  1.0  Tries to force SMB cleartext auth
+        smb_down  1.0  Tries to force SMB to not use NTLM2 key auth
+    smurf_attack  1.0  Run a smurf attack against specified hosts
+        sslstrip  1.2  SSLStrip plugin
+     stp_mangler  1.0  Become root of a switches spanning tree
+
+

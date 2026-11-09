@@ -1,0 +1,72 @@
+[0m
+  Airodump-ng 1.7  - (C) 2006-2022 Thomas d'Otreppe
+  https://www.aircrack-ng.org
+
+  usage: airodump-ng <options> <interface>[,<interface>,...]
+
+  Options:
+      --ivs                 : Save only captured IVs
+      --gpsd                : Use GPSd
+      --write      <prefix> : Dump file prefix
+      --beacons             : Record all beacons in dump file
+      --update       <secs> : Display update delay in seconds
+      --showack             : Prints ack/cts/rts statistics
+      -h                    : Hides known stations for --showack
+      -f            <msecs> : Time in ms between hopping channels
+      --berlin       <secs> : Time before removing the AP/client
+                              from the screen when no more packets
+                              are received (Default: 120 seconds)
+      -r             <file> : Read packets from that file
+      --real-time           : While reading packets from a file,
+                              simulate the arrival rate of them
+                              as if they were "live".
+      -x            <msecs> : Active Scanning Simulation
+      --manufacturer        : Display manufacturer from IEEE OUI list
+      --uptime              : Display AP Uptime from Beacon Timestamp
+      --wps                 : Display WPS information (if any)
+      --output-format
+                  <formats> : Output format. Possible values:
+                              pcap, ivs, csv, gps, kismet, netxml, logcsv
+      --ignore-negative-one : Removes the message that says
+                              fixed channel <interface>: -1
+      --write-interval
+                  <seconds> : Output file(s) write interval in seconds
+      --background <enable> : Override background detection.
+
+  Filter options:
+      --encrypt   <suite>   : Filter APs by cipher suite,
+                              you can pass multiple --encrypt options
+      --netmask <netmask>   : Filter APs by mask
+      --bssid     <bssid>   : Filter APs by BSSID,
+                              you can pass multiple --bssid options
+      --essid     <essid>   : Filter APs by ESSID,
+                              you can pass multiple --essid options
+      --essid-regex <regex> : Filter APs by ESSID using a regular
+                              expression
+      --min-packets   <int> : Minimum AP packets recv'd before
+                              displaying it (default: 2)
+      --min-power     <int> : Filter out APs with PWR less than
+                              the specified value (default: -120)
+      --min-rxq       <int> : Filter out APs with RXQ less than
+                              the specified value (default: 0)
+                              Requires --channel (or -c) or -C
+      -a                    : Filter out unassociated stations
+      -z                    : Filter out associated stations
+
+  By default, airodump-ng hops on 2.4GHz channels.
+  You can make it capture on other/specific channel(s) by using:
+      --ht20                : Set channel to HT20 (802.11n)
+      --ht40-               : Set channel to HT40- (802.11n)
+      --ht40+               : Set channel to HT40+ (802.11n)
+      --channel <channels>  : Capture on specific channels
+      --ignore-other-chans  : Filter out other channels
+                              Requires --channel (or -c)
+      --band <abg>          : Band on which airodump-ng should hop
+      -C    <frequencies>   : Uses these frequencies in MHz to hop
+      --cswitch  <method>   : Set channel switching method
+                    0       : FIFO (default)
+                    1       : Round Robin
+                    2       : Hop on last
+
+      --help                : Displays this usage screen
+

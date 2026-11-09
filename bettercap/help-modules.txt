@@ -1,0 +1,335 @@
+########## bettercap interactive help ##########
+bettercap v2.33.0 (built for linux amd64 with go1.24.4) [type 'help' for a list of commands]
+
+
+           help MODULE : List available commands or show module specific help if no module name is provided.
+                active : Show information about active modules.
+                  quit : Close the session and exit.
+         sleep SECONDS : Sleep for the given amount of seconds.
+              get NAME : Get the value of variable NAME, use * alone for all, or NAME* as a wildcard.
+        set NAME VALUE : Set the VALUE of variable NAME.
+  read VARIABLE PROMPT : Show a PROMPT to ask the user for input that will be saved inside VARIABLE.
+                 clear : Clear the screen.
+        include CAPLET : Load and run this caplet in the current session.
+             ! COMMAND : Execute a shell command and print its output.
+        alias MAC NAME : Assign an alias to a given endpoint given its MAC address.
+
+Modules
+
+      any.proxy > not running
+       api.rest > not running
+      arp.spoof > not running
+      ble.recon > not running
+             c2 > not running
+        caplets > not running
+    dhcp6.spoof > not running
+      dns.spoof > not running
+  events.stream > running
+            gps > not running
+          graph > not running
+            hid > not running
+     http.proxy > not running
+    http.server > not running
+    https.proxy > not running
+   https.server > not running
+    mac.changer > not running
+    mdns.server > not running
+   mysql.server > not running
+      ndp.spoof > not running
+      net.probe > not running
+      net.recon > not running
+      net.sniff > not running
+   packet.proxy > not running
+       syn.scan > not running
+      tcp.proxy > not running
+         ticker > not running
+             ui > not running
+         update > not running
+           wifi > not running
+            wol > not running
+
+[01:44:54] [sys.log] [war] Could not find mac for 
+
+########## help arp.spoof ##########
+bettercap v2.33.0 (built for linux amd64 with go1.24.4) [type 'help' for a list of commands]
+
+
+arp.spoof (not running): Keep spoofing selected hosts on the network.
+
+   arp.spoof on : Start ARP spoofer.
+     arp.ban on : Start ARP spoofer in ban mode, meaning the target(s) connectivity will not work.
+  arp.spoof off : Stop ARP spoofer.
+    arp.ban off : Stop ARP spoofer.
+
+  Parameters
+
+    arp.spoof.fullduplex : If true, both the targets and the gateway will be attacked, otherwise only the target (if the router has ARP spoofing protections in place this will make the attack fail). (default=false)
+      arp.spoof.internal : If true, local connections among computers of the network will be spoofed, otherwise only connections going to and coming from the external network. (default=false)
+  arp.spoof.skip_restore : If set to true, targets arp cache won't be restored when spoofing is stopped. (default=false)
+[01:44:54] [sys.log] [war] Could not find mac for 
+       arp.spoof.targets : Comma separated list of IP addresses, MAC addresses or aliases to spoof, also supports nmap style IP ranges. (default=<entire subnet>)
+     arp.spoof.whitelist : Comma separated list of IP addresses, MAC addresses or aliases to skip while spoofing. (default=)
+
+
+########## help dns.spoof ##########
+bettercap v2.33.0 (built for linux amd64 with go1.24.4) [type 'help' for a list of commands]
+
+
+dns.spoof (not running): Replies to DNS messages with spoofed responses.
+
+   dns.spoof on : Start the DNS spoofer in the background.
+  dns.spoof off : Stop the DNS spoofer in the background.
+
+  Parameters
+
+  dns.spoof.address : IP address to map the domains to. (default=<interface address>)
+      dns.spoof.all : If true the module will reply to every DNS request, otherwise it will only reply to the one targeting the local pc. (default=false)
+  dns.spoof.domains : Comma separated values of domain names to spoof. (default=)
+    dns.spoof.hosts : If not empty, this hosts file will be used to map domains to IP addresses. (default=)
+      dns.spoof.ttl : TTL of spoofed DNS replies. (default=1024)
+
+[01:44:54] [sys.log] [war] Could not find mac for 
+
+########## help wifi ##########
+bettercap v2.33.0 (built for linux amd64 with go1.24.4) [type 'help' for a list of commands]
+
+
+wifi (not running): A module to monitor and perform wireless attacks on 802.11.
+
+                                wifi.recon on : Start 802.11 wireless base stations discovery and channel hopping.
+                               wifi.recon off : Stop 802.11 wireless base stations discovery and channel hopping.
+                                   wifi.clear : Clear all access points collected by the WiFi discovery module.
+                               wifi.recon MAC : Set 802.11 base station address to filter for.
+                             wifi.recon clear : Remove the 802.11 base station filter.
+          wifi.client.probe.sta.filter FILTER : Use this regular expression on the station address to filter client probes, 'clear' to reset the filter.
+[01:44:54] [sys.log] [war] Could not find mac for 
+           wifi.client.probe.ap.filter FILTER : Use this regular expression on the access point name to filter client probes, 'clear' to reset the filter.
+                            wifi.deauth BSSID : Start a 802.11 deauth attack, if an access point BSSID is provided, every client will be deauthenticated, otherwise only the selected client. Use 'all', '*' or a broadcast BSSID (ff:ff:ff:ff:ff:ff) to iterate every access point with at least one client and start a deauth attack for each one.
+                       wifi.probe BSSID ESSID : Sends a fake client probe with the given station BSSID, searching for ESSID.
+  wifi.channel_switch_announce bssid channel  : Start a 802.11 channel hop attack, all client will be force to change the channel lead to connection down.
+                  wifi.fake_auth bssid client : send an fake authentication with client mac to ap lead to client disconnect
+                             wifi.assoc BSSID : Send an association request to the selected BSSID in order to receive a RSN PMKID key. Use 'all', '*' or a broadcast BSSID (ff:ff:ff:ff:ff:ff) to iterate for every access point.
+                                      wifi.ap : Inject fake management beacons in order to create a rogue access point.
+                          wifi.show.wps BSSID : Show WPS information about a given station (use 'all', '*' or a broadcast BSSID for all).
+                                    wifi.show : Show current wireless stations list (default sorting by essid).
+                   wifi.recon.channel CHANNEL : WiFi channels (comma separated) or 'clear' for channel hopping.
+
+  Parameters
+
+                        wifi.ap.bssid : BSSID of the fake access point. (default=<random mac>)
+                      wifi.ap.channel : Channel of the fake access point. (default=1)
+                   wifi.ap.encryption : If true, the fake access point will use WPA2, otherwise it'll result as an open AP. (default=true)
+                         wifi.ap.ssid : SSID of the fake access point. (default=FreeWiFi)
+                          wifi.ap.ttl : Seconds of inactivity for an access points to be considered not in range anymore. (default=300)
+                  wifi.assoc.acquired : Send association to AP's for which key material was already acquired. (default=false)
+                      wifi.assoc.open : Send association requests to open networks. (default=false)
+                    wifi.assoc.silent : If true, messages from wifi.assoc will be suppressed. (default=false)
+                      wifi.assoc.skip : Comma separated list of BSSID to skip while sending association requests. (default=)
+  wifi.channel_switch_announce.silent : If true, messages from wifi.channel_switch_announce will be suppressed. (default=false)
+                 wifi.deauth.acquired : Send wifi deauth packets from AP's for which key material was already acquired. (default=false)
+                     wifi.deauth.open : Send wifi deauth packets to open networks. (default=true)
+                   wifi.deauth.silent : If true, messages from wifi.deauth will be suppressed. (default=false)
+                     wifi.deauth.skip : Comma separated list of BSSID to skip while sending deauth packets. (default=)
+                wifi.fake_auth.silent : If true, messages from wifi.fake_auth will be suppressed. (default=false)
+            wifi.handshakes.aggregate : If true, all handshakes will be saved inside a single file, otherwise a folder with per-network pcap files will be created. (default=true)
+                 wifi.handshakes.file : File path of the pcap file to save handshakes to. (default=~/bettercap-wifi-handshakes.pcap)
+                      wifi.hop.period : If channel hopping is enabled (empty wifi.recon.channel), this is the time in milliseconds the algorithm will hop on every channel (it'll be doubled if both 2.4 and 5.0 bands are available). (default=250)
+                       wifi.interface : If filled, will use this interface name instead of the one provided by the -iface argument or detected automatically. (default=)
+                          wifi.region : Set the WiFi region to this value before activating the interface. (default=)
+                        wifi.rssi.min : Minimum WiFi signal strength in dBm. (default=-200)
+                     wifi.show.filter : Defines a regular expression filter for wifi.show (default=)
+                      wifi.show.limit : Defines limit for wifi.show (default=0)
+               wifi.show.manufacturer : If true, wifi.show will also show the devices manufacturers. (default=false)
+                       wifi.show.sort : Defines sorting field (rssi, bssid, essid, channel, encryption, clients, seen, sent, rcvd) and direction (asc or desc) for wifi.show (default=rssi asc)
+                     wifi.skip-broken : If true, dot11 packets with an invalid checksum will be skipped. (default=true)
+                     wifi.source.file : If set, the wifi module will read from this pcap file instead of the hardware interface. (default=)
+                         wifi.sta.ttl : Seconds of inactivity for a client station to be considered not in range or not connected to its access point anymore. (default=300)
+                         wifi.txpower : Set WiFi transmission power to this value before activating the interface. (default=30)
+
+
+########## help net.probe ##########
+bettercap v2.33.0 (built for linux amd64 with go1.24.4) [type 'help' for a list of commands]
+
+
+net.probe (not running): Keep probing for new hosts on the network by sending dummy UDP packets to every possible IP on the subnet.
+
+   net.probe on : Start network hosts probing in background.
+  net.probe off : Stop network hosts probing in background.
+
+  Parameters
+
+      net.probe.mdns : Enable mDNS discovery probes. (default=true)
+      net.probe.nbns : Enable NetBIOS name service discovery probes. (default=true)
+  net.probe.throttle : If greater than 0, probe packets will be throttled by this value in milliseconds. (default=10)
+      net.probe.upnp : Enable UPNP discovery probes. (default=true)
+       net.probe.wsd : Enable WSD discovery probes. (default=true)
+
+[01:44:54] [sys.log] [war] Could not find mac for 
+
+########## help net.sniff ##########
+bettercap v2.33.0 (built for linux amd64 with go1.24.4) [type 'help' for a list of commands]
+
+
+net.sniff (not running): Sniff packets from the network.
+
+  net.sniff stats : Print sniffer session configuration and statistics.
+     net.sniff on : Start network sniffer in background.
+    net.sniff off : Stop network sniffer in background.
+      net.fuzz on : Enable fuzzing for every sniffed packet containing the specified layers.
+     net.fuzz off : Disable fuzzing
+
+  Parameters
+
+    net.fuzz.layers : Types of layer to fuzz. (default=Payload)
+      net.fuzz.rate : Rate in the [0.0,1.0] interval of packets to fuzz. (default=1.0)
+     net.fuzz.ratio : Rate in the [0.0,1.0] interval of bytes to fuzz for each packet. (default=0.4)
+    net.fuzz.silent : If true it will not report fuzzed packets. (default=false)
+   net.sniff.filter : BPF filter for the sniffer. (default=not arp)
+    net.sniff.local : If true it will consider packets from/to this computer, otherwise it will skip them. (default=false)
+   net.sniff.output : If set, the sniffer will write captured packets to this file. (default=)
+   net.sniff.regexp : If set, only packets matching this regular expression will be considered. (default=)
+   net.sniff.source : If set, the sniffer will read from this pcap file instead of the current interface. (default=)
+  net.sniff.verbose : If true, every captured and parsed packet will be sent to the events.stream for displaying, otherwise only the ones parsed at the application layer (sni, http, etc). (default=false)
+
+[01:44:54] [sys.log] [war] Could not find mac for 
+
+########## help syn.scan ##########
+bettercap v2.33.0 (built for linux amd64 with go1.24.4) [type 'help' for a list of commands]
+
+
+syn.scan (not running): A module to perform SYN port scanning.
+
+                          syn.scan stop : Stop the current syn scanning session.
+  syn.scan IP-RANGE START-PORT END-PORT : Perform a syn port scanning against an IP address within the provided ports range.
+                      syn.scan.progress : Print progress of the current syn scanning session.
+
+  Parameters
+
+  syn.scan.show-progress-every : Period in seconds for the scanning progress reporting. (default=1)
+
+[01:44:55] [sys.log] [war] Could not find mac for 
+
+########## help mac.changer ##########
+bettercap v2.33.0 (built for linux amd64 with go1.24.4) [type 'help' for a list of commands]
+
+
+mac.changer (not running): Change active interface mac address.
+
+   mac.changer on : Start mac changer module.
+  mac.changer off : Stop mac changer module and restore original mac address.
+
+  Parameters
+
+  mac.changer.address : Hardware address to apply to the interface. (default=<random mac>)
+    mac.changer.iface : Name of the interface to use. (default=<interface name>)
+
+[01:44:55] [sys.log] [war] Could not find mac for 
+
+########## help http.proxy ##########
+bettercap v2.33.0 (built for linux amd64 with go1.24.4) [type 'help' for a list of commands]
+
+
+http.proxy (not running): A full featured HTTP proxy that can be used to inject malicious contents into webpages, all HTTP traffic will be redirected to it.
+
+   http.proxy on : Start HTTP proxy.
+  http.proxy off : Stop HTTP proxy.
+
+  Parameters
+
+             http.port : HTTP port to redirect when the proxy is activated. (default=80)
+    http.proxy.address : Address to bind the HTTP proxy to. (default=<interface address>)
+  http.proxy.blacklist : Comma separated list of hostnames to skip while proxying (wildcard expressions can be used). (default=)
+   http.proxy.injectjs : URL, path or javascript code to inject into every HTML page. (default=)
+       http.proxy.port : Port to bind the HTTP proxy to. (default=8080)
+   http.proxy.redirect : Enable or disable port redirection with iptables. (default=true)
+     http.proxy.script : Path of a proxy JS script. (default=)
+   http.proxy.sslstrip : Enable or disable SSL stripping. (default=false)
+  http.proxy.whitelist : Comma separated list of hostnames to proxy if the blacklist is used (wildcard expressions can be used). (default=)
+
+[01:44:55] [sys.log] [war] Could not find mac for 
+
+########## help https.proxy ##########
+bettercap v2.33.0 (built for linux amd64 with go1.24.4) [type 'help' for a list of commands]
+
+
+https.proxy (not running): A full featured HTTPS proxy that can be used to inject malicious contents into webpages, all HTTPS traffic will be redirected to it.
+
+   https.proxy on : Start HTTPS proxy.
+  https.proxy off : Stop HTTPS proxy.
+
+  Parameters
+
+                                  https.port : HTTPS port to redirect when the proxy is activated. (default=443)
+                         https.proxy.address : Address to bind the HTTPS proxy to. (default=<interface address>)
+                       https.proxy.blacklist : Comma separated list of hostnames to skip while proxying (wildcard expressions can be used). (default=)
+                     https.proxy.certificate : HTTPS proxy certification authority TLS certificate file. (default=~/.bettercap-ca.cert.pem)
+                https.proxy.certificate.bits : Number of bits of the RSA private key of the generated HTTPS certificate. (default=4096)
+          https.proxy.certificate.commonname : Common Name field of the generated HTTPS certificate. (default=Go Daddy Secure Certificate Authority - G2)
+             https.proxy.certificate.country : Country field of the generated HTTPS certificate. (default=US)
+            https.proxy.certificate.locality : Locality field of the generated HTTPS certificate. (default=Scottsdale)
+        https.proxy.certificate.organization : Organization field of the generated HTTPS certificate. (default=GoDaddy.com, Inc.)
+  https.proxy.certificate.organizationalunit : Organizational Unit field of the generated HTTPS certificate. (default=https://certs.godaddy.com/repository/)
+                        https.proxy.injectjs : URL, path or javascript code to inject into every HTML page. (default=)
+[01:44:55] [sys.log] [war] Could not find mac for 
+                             https.proxy.key : HTTPS proxy certification authority TLS key file. (default=~/.bettercap-ca.key.pem)
+                            https.proxy.port : Port to bind the HTTPS proxy to. (default=8083)
+                        https.proxy.redirect : Enable or disable port redirection with iptables. (default=true)
+                          https.proxy.script : Path of a proxy JS script. (default=)
+                        https.proxy.sslstrip : Enable or disable SSL stripping. (default=false)
+                       https.proxy.whitelist : Comma separated list of hostnames to proxy if the blacklist is used (wildcard expressions can be used). (default=)
+
+
+########## help any.proxy ##########
+bettercap v2.33.0 (built for linux amd64 with go1.24.4) [type 'help' for a list of commands]
+
+
+any.proxy (not running): A firewall redirection to any custom proxy.
+
+   any.proxy on : Start the custom proxy redirection.
+  any.proxy off : Stop the custom proxy redirection.
+
+  Parameters
+
+  any.proxy.dst_address : Address where the proxy is listening. (default=<interface address>)
+     any.proxy.dst_port : Port where the proxy is listening. (default=8080)
+        any.proxy.iface : Interface to redirect packets from. (default=<interface name>)
+     any.proxy.protocol : Proxy protocol. (default=TCP)
+  any.proxy.src_address : Leave empty to intercept any source address. (default=)
+     any.proxy.src_port : Remote port to redirect when the module is activated, also supported a comma separated list of ports and/or port-ranges. (default=80)
+
+[01:44:55] [sys.log] [war] Could not find mac for 
+
+########## help events.stream ##########
+bettercap v2.33.0 (built for linux amd64 with go1.24.4) [type 'help' for a list of commands]
+
+
+events.stream (running): Print events as a continuous stream.
+
+                  events.stream on : Start events stream.
+                 events.stream off : Stop events stream.
+                events.show LIMIT? : Show events stream.
+            events.on TAG COMMANDS : Run COMMANDS when an event with the specified TAG is triggered.
+                   events.triggers : Show the list of event triggers created by the events.on command.
+  events.trigger.delete TRIGGER_ID : Remove an event trigger given its TRIGGER_ID (use events.triggers to see the list of triggers).
+             events.triggers.clear : Remove all event triggers (use events.triggers to see the list of triggers).
+       events.waitfor TAG TIMEOUT? : Wait for an event with the given tag either forever or for a timeout in seconds.
+              events.ignore FILTER : Events with an identifier matching this filter will not be shown (use multiple times to add more filters).
+             events.include FILTER : Used to remove filters passed with the events.ignore command.
+                    events.filters : Print the list of filters used to ignore events.
+              events.filters.clear : Clear the list of filters passed with the events.ignore command.
+                      events.clear : Clear events stream.
+
+  Parameters
+
+         events.stream.http.format.hex : If true dumped HTTP bodies will be in hexadecimal format. (default=true)
+       events.stream.http.request.dump : If true all HTTP requests will be dumped. (default=false)
+      events.stream.http.response.dump : If true all HTTP responses will be dumped. (default=false)
+                  events.stream.output : If not empty, events will be written to this file instead of the standard output. (default=)
+           events.stream.output.rotate : If true will enable log rotation. (default=true)
+  events.stream.output.rotate.compress : If true will enable log rotation compression. (default=true)
+    events.stream.output.rotate.format : Datetime format to use for log rotation file names. (default=2006-01-02 15:04:05)
+       events.stream.output.rotate.how : Rotate by 'size' or 'time'. (default=size)
+      events.stream.output.rotate.when : File size (in MB) or time duration (in seconds) for log rotation. (default=10)
+             events.stream.time.format : Date and time format to use for events reporting. (default=15:04:05)
+
+[01:44:55] [sys.log] [war] Could not find mac for 

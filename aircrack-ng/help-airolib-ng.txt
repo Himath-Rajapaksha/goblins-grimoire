@@ -1,0 +1,25 @@
+
+  Airolib-ng 1.7  - (C) 2007, 2008, 2009 ebfe
+  https://www.aircrack-ng.org
+
+  Usage: airolib-ng <database> <operation> [options]
+
+  Operations:
+
+       --stats        : Output information about the database.
+       --sql <sql>    : Execute specified SQL statement.
+       --clean [all]  : Clean the database from old junk. 'all' will also 
+                        reduce filesize if possible and run an integrity check.
+       --batch        : Start batch-processing all combinations of ESSIDs
+                        and passwords.
+       --verify [all] : Verify a set of randomly chosen PMKs.
+                        If 'all' is given, all invalid PMK will be deleted.
+
+       --import [essid|passwd] <file>   :
+                        Import a text file as a list of ESSIDs or passwords.
+       --import cowpatty <file>         :
+                        Import a cowpatty file.
+
+       --export cowpatty <essid> <file> :
+                        Export to a cowpatty file.
+

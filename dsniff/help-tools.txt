@@ -1,0 +1,52 @@
+########## arpspoof ##########
+Version: 2.4
+Usage: arpspoof [-i interface] [-c own|host|both] [-t target] [-r] host
+
+########## dnsspoof ##########
+Version: 2.4
+Usage: dnsspoof [-i interface] [-f hostsfile] [expression]
+
+########## macof ##########
+Version: 2.4
+Usage: macof [-s src] [-d dst] [-e tha] [-x sport] [-y dport]
+             [-i interface] [-n times]
+
+########## tcpkill ##########
+Version: 2.4
+Usage: tcpkill [-i interface] [-1..9] expression
+
+########## tcpnice ##########
+Version: 2.4
+Usage: tcpnice [-A] [-I] [-M] [-i interface] expression
+
+########## urlsnarf ##########
+Version: 2.4
+Usage: urlsnarf [-n] [-i interface | -p pcapfile] [[-v] pattern [expression]]
+
+########## filesnarf ##########
+Version: 2.4
+Usage: filesnarf [-i interface | -p pcapfile] [[-v] pattern [expression]]
+
+########## mailsnarf ##########
+Version: 2.4
+Usage: mailsnarf [-i interface | -p pcapfile] [[-v] pattern [expression]]
+
+########## msgsnarf ##########
+Version: 2.4
+Usage: msgsnarf [-i interface | -p pcapfile] [[-v] pattern [expression]]
+
+########## sshmitm ##########
+Version: 2.4
+Usage: sshmitm [-d] [-I] [-p port] host [port]
+
+########## webmitm ##########
+Version: 2.4
+Usage: webmitm [-d] [host]
+
+########## webspy ##########
+Version: 2.4
+Usage: webspy [-i interface | -p pcapfile] host
+
+########## sshow ##########
+Usage: sshow [-d] [-i interface | -p pcapfile]
+
