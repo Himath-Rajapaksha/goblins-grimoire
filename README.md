@@ -222,4 +222,4 @@ scope, rate limits, and program rules.
 
 ---
 
-*Generated for the user pentest workstation. Help snapshots taken 2026-11-09.*
+*Generated for a Debian 13 pentest workstation. Help snapshots taken 2026-11-09.*
