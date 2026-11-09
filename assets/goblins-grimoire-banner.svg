@@ -1,0 +1,211 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 280" width="1000" height="280" role="img" aria-labelledby="banner-title banner-desc">
+<title id="banner-title">Goblin's Grimoire</title>
+<desc id="banner-desc">An engraved banner for Goblin's Grimoire, a field manual for the pentest and bug-bounty toolbox: 118 tools, 119 scenario files, and a research workflow for every command.</desc>
+<defs>
+  <linearGradient id="ink" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#0e110c"/>
+    <stop offset="1" stop-color="#090b08"/>
+  </linearGradient>
+  <radialGradient id="lamp" cx="50%" cy="50%" r="50%">
+    <stop offset="0" stop-color="#a9c86f" stop-opacity=".07"/>
+    <stop offset=".55" stop-color="#a8854f" stop-opacity=".03"/>
+    <stop offset="1" stop-color="#a8854f" stop-opacity="0"/>
+  </radialGradient>
+  <style>
+    .title { font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif; font-size: 50px; letter-spacing: 1.6px; fill: #ece3cd; font-weight: 400; }
+    .sub { font-family: Georgia, "Iowan Old Style", "Palatino Linotype", "Book Antiqua", serif; font-size: 16px; fill: #b9bcaa; }
+    .eyebrow, .strip, .meta { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace; }
+    .eyebrow { font-size: 10px; letter-spacing: 1.4px; fill: #a8854f; font-variant: small-caps; }
+    .strip { font-size: 11px; letter-spacing: .3px; fill: #838b78; }
+    .meta { font-size: 10.5px; letter-spacing: .2px; fill: #5f6757; }
+    .hair { stroke: #3d3527; stroke-width: 1; fill: none; }
+    .draw { stroke-dasharray: 100; stroke-dashoffset: 0; animation: draw 1.5s cubic-bezier(.25,.7,.2,1) both; }
+    .fade { animation: rise .85s cubic-bezier(.2,.7,.2,1) both; }
+    .sweep { animation: spin 24s linear 2s infinite; }
+    .eye { animation: blink 8s ease-in-out 2s infinite; }
+    .glyph { fill: none; stroke: #8d7c58; stroke-width: 1.35; stroke-linecap: round; stroke-linejoin: round; animation: kindle 24s linear infinite; }
+    @keyframes draw { from { stroke-dashoffset: 100; } to { stroke-dashoffset: 0; } }
+    @keyframes rise { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    @keyframes blink { 0%, 88%, 100% { transform: scaleY(1); } 91% { transform: scaleY(.08); } 94% { transform: scaleY(1); } }
+    @keyframes kindle { 0% { stroke: #a9c86f; opacity: 1; } 8% { stroke: #a9c86f; opacity: 1; } 14%, 100% { stroke: #8d7c58; opacity: .82; } }
+    @media (prefers-reduced-motion: reduce) {
+      .draw, .fade, .sweep, .eye, .glyph { animation: none !important; }
+      .fade { opacity: 1; transform: none; }
+      .draw { stroke-dashoffset: 0; }
+    }
+  </style>
+</defs>
+
+<rect width="1000" height="280" fill="url(#ink)"/>
+<g class="fade" style="animation-delay:.05s">
+  <rect x="12" y="12" width="976" height="256" fill="none" stroke="#262c22" stroke-width="1"/>
+  <rect x="18" y="18" width="964" height="244" fill="none" stroke="#181d16" stroke-width="1"/>
+  <path d="M12,40V12H40 M960,12H988V40 M988,240V268H960 M40,268H12V240" fill="none" stroke="#6e5a39" stroke-width="1"/>
+</g>
+<g>
+  <text class="eyebrow fade" x="48" y="76" style="animation-delay:.12s">Field manual · Debian 13</text>
+  <text class="title fade" x="48" y="128" style="animation-delay:.2s">GOBLIN’S GRIMOIRE</text>
+  <line class="hair draw" x1="48" y1="148" x2="136" y2="148" pathLength="100" style="animation-delay:.34s"/>
+  <text class="sub fade" x="48" y="176" style="animation-delay:.42s">Every command, every flag, and the research to choose between them.</text>
+  <text class="strip fade" x="48" y="206" style="animation-delay:.5s">recon · web · credentials · network · wireless · exploit · reversing · privacy</text>
+  <text class="meta fade" x="48" y="232" style="animation-delay:.58s">118 tools · 119 scenario files · every flag covered</text>
+  <g class="fade" style="animation-delay:.66s">
+    <line x1="622" y1="72" x2="622" y2="220" stroke="#3d3527" stroke-width="1"/>
+    <path d="M622,136L626,140L622,144L618,140Z" fill="#6e5a39"/>
+  </g>
+</g>
+<g>
+  <circle cx="800" cy="140" r="150" fill="url(#lamp)"/>
+  <circle class="draw" cx="800" cy="140" r="96" fill="none" stroke="#4b4230" stroke-width="1" pathLength="100" style="animation-delay:.5s"/>
+  <g class="fade" style="animation-delay:.62s">
+    <line x1="800.00" y1="36.00" x2="800.00" y2="28.00" stroke="#6e5a39" stroke-width="1"/>
+    <line x1="810.49" y1="33.52" x2="810.98" y2="28.54" stroke="#3d3527" stroke-width="1"/>
+    <line x1="820.87" y1="35.06" x2="821.85" y2="30.15" stroke="#3d3527" stroke-width="1"/>
+    <line x1="831.06" y1="37.61" x2="832.51" y2="32.82" stroke="#3d3527" stroke-width="1"/>
+    <line x1="840.95" y1="41.14" x2="842.86" y2="36.53" stroke="#3d3527" stroke-width="1"/>
+    <line x1="850.44" y1="45.63" x2="852.80" y2="41.22" stroke="#3d3527" stroke-width="1"/>
+    <line x1="859.45" y1="51.03" x2="862.22" y2="46.88" stroke="#3d3527" stroke-width="1"/>
+    <line x1="867.88" y1="57.29" x2="871.05" y2="53.42" stroke="#3d3527" stroke-width="1"/>
+    <line x1="873.54" y1="66.46" x2="879.20" y2="60.80" stroke="#6e5a39" stroke-width="1"/>
+    <line x1="882.71" y1="72.12" x2="886.58" y2="68.95" stroke="#3d3527" stroke-width="1"/>
+    <line x1="888.97" y1="80.55" x2="893.12" y2="77.78" stroke="#3d3527" stroke-width="1"/>
+    <line x1="894.37" y1="89.56" x2="898.78" y2="87.20" stroke="#3d3527" stroke-width="1"/>
+    <line x1="898.86" y1="99.05" x2="903.47" y2="97.14" stroke="#3d3527" stroke-width="1"/>
+    <line x1="902.39" y1="108.94" x2="907.18" y2="107.49" stroke="#3d3527" stroke-width="1"/>
+    <line x1="904.94" y1="119.13" x2="909.85" y2="118.15" stroke="#3d3527" stroke-width="1"/>
+    <line x1="906.48" y1="129.51" x2="911.46" y2="129.02" stroke="#3d3527" stroke-width="1"/>
+    <line x1="904.00" y1="140.00" x2="912.00" y2="140.00" stroke="#6e5a39" stroke-width="1"/>
+    <line x1="906.48" y1="150.49" x2="911.46" y2="150.98" stroke="#3d3527" stroke-width="1"/>
+    <line x1="904.94" y1="160.87" x2="909.85" y2="161.85" stroke="#3d3527" stroke-width="1"/>
+    <line x1="902.39" y1="171.06" x2="907.18" y2="172.51" stroke="#3d3527" stroke-width="1"/>
+    <line x1="898.86" y1="180.95" x2="903.47" y2="182.86" stroke="#3d3527" stroke-width="1"/>
+    <line x1="894.37" y1="190.44" x2="898.78" y2="192.80" stroke="#3d3527" stroke-width="1"/>
+    <line x1="888.97" y1="199.45" x2="893.12" y2="202.22" stroke="#3d3527" stroke-width="1"/>
+    <line x1="882.71" y1="207.88" x2="886.58" y2="211.05" stroke="#3d3527" stroke-width="1"/>
+    <line x1="873.54" y1="213.54" x2="879.20" y2="219.20" stroke="#6e5a39" stroke-width="1"/>
+    <line x1="867.88" y1="222.71" x2="871.05" y2="226.58" stroke="#3d3527" stroke-width="1"/>
+    <line x1="859.45" y1="228.97" x2="862.22" y2="233.12" stroke="#3d3527" stroke-width="1"/>
+    <line x1="850.44" y1="234.37" x2="852.80" y2="238.78" stroke="#3d3527" stroke-width="1"/>
+    <line x1="840.95" y1="238.86" x2="842.86" y2="243.47" stroke="#3d3527" stroke-width="1"/>
+    <line x1="831.06" y1="242.39" x2="832.51" y2="247.18" stroke="#3d3527" stroke-width="1"/>
+    <line x1="820.87" y1="244.94" x2="821.85" y2="249.85" stroke="#3d3527" stroke-width="1"/>
+    <line x1="810.49" y1="246.48" x2="810.98" y2="251.46" stroke="#3d3527" stroke-width="1"/>
+    <line x1="800.00" y1="244.00" x2="800.00" y2="252.00" stroke="#6e5a39" stroke-width="1"/>
+    <line x1="789.51" y1="246.48" x2="789.02" y2="251.46" stroke="#3d3527" stroke-width="1"/>
+    <line x1="779.13" y1="244.94" x2="778.15" y2="249.85" stroke="#3d3527" stroke-width="1"/>
+    <line x1="768.94" y1="242.39" x2="767.49" y2="247.18" stroke="#3d3527" stroke-width="1"/>
+    <line x1="759.05" y1="238.86" x2="757.14" y2="243.47" stroke="#3d3527" stroke-width="1"/>
+    <line x1="749.56" y1="234.37" x2="747.20" y2="238.78" stroke="#3d3527" stroke-width="1"/>
+    <line x1="740.55" y1="228.97" x2="737.78" y2="233.12" stroke="#3d3527" stroke-width="1"/>
+    <line x1="732.12" y1="222.71" x2="728.95" y2="226.58" stroke="#3d3527" stroke-width="1"/>
+    <line x1="726.46" y1="213.54" x2="720.80" y2="219.20" stroke="#6e5a39" stroke-width="1"/>
+    <line x1="717.29" y1="207.88" x2="713.42" y2="211.05" stroke="#3d3527" stroke-width="1"/>
+    <line x1="711.03" y1="199.45" x2="706.88" y2="202.22" stroke="#3d3527" stroke-width="1"/>
+    <line x1="705.63" y1="190.44" x2="701.22" y2="192.80" stroke="#3d3527" stroke-width="1"/>
+    <line x1="701.14" y1="180.95" x2="696.53" y2="182.86" stroke="#3d3527" stroke-width="1"/>
+    <line x1="697.61" y1="171.06" x2="692.82" y2="172.51" stroke="#3d3527" stroke-width="1"/>
+    <line x1="695.06" y1="160.87" x2="690.15" y2="161.85" stroke="#3d3527" stroke-width="1"/>
+    <line x1="693.52" y1="150.49" x2="688.54" y2="150.98" stroke="#3d3527" stroke-width="1"/>
+    <line x1="696.00" y1="140.00" x2="688.00" y2="140.00" stroke="#6e5a39" stroke-width="1"/>
+    <line x1="693.52" y1="129.51" x2="688.54" y2="129.02" stroke="#3d3527" stroke-width="1"/>
+    <line x1="695.06" y1="119.13" x2="690.15" y2="118.15" stroke="#3d3527" stroke-width="1"/>
+    <line x1="697.61" y1="108.94" x2="692.82" y2="107.49" stroke="#3d3527" stroke-width="1"/>
+    <line x1="701.14" y1="99.05" x2="696.53" y2="97.14" stroke="#3d3527" stroke-width="1"/>
+    <line x1="705.63" y1="89.56" x2="701.22" y2="87.20" stroke="#3d3527" stroke-width="1"/>
+    <line x1="711.03" y1="80.55" x2="706.88" y2="77.78" stroke="#3d3527" stroke-width="1"/>
+    <line x1="717.29" y1="72.12" x2="713.42" y2="68.95" stroke="#3d3527" stroke-width="1"/>
+    <line x1="726.46" y1="66.46" x2="720.80" y2="60.80" stroke="#6e5a39" stroke-width="1"/>
+    <line x1="732.12" y1="57.29" x2="728.95" y2="53.42" stroke="#3d3527" stroke-width="1"/>
+    <line x1="740.55" y1="51.03" x2="737.78" y2="46.88" stroke="#3d3527" stroke-width="1"/>
+    <line x1="749.56" y1="45.63" x2="747.20" y2="41.22" stroke="#3d3527" stroke-width="1"/>
+    <line x1="759.05" y1="41.14" x2="757.14" y2="36.53" stroke="#3d3527" stroke-width="1"/>
+    <line x1="768.94" y1="37.61" x2="767.49" y2="32.82" stroke="#3d3527" stroke-width="1"/>
+    <line x1="779.13" y1="35.06" x2="778.15" y2="30.15" stroke="#3d3527" stroke-width="1"/>
+    <line x1="789.51" y1="33.52" x2="789.02" y2="28.54" stroke="#3d3527" stroke-width="1"/>
+  </g>
+  <rect class="draw" x="749.09" y="89.09" width="101.82" height="101.82" fill="none" stroke="#5e4e34" stroke-width="1" pathLength="100" style="animation-delay:.72s"/>
+  <rect class="draw" x="749.09" y="89.09" width="101.82" height="101.82" transform="rotate(45 800 140)" fill="none" stroke="#5e4e34" stroke-width="1" pathLength="100" style="animation-delay:.82s"/>
+  <circle class="draw" cx="800" cy="140" r="46" fill="none" stroke="#5e4e34" stroke-width="1" pathLength="100" style="animation-delay:.92s"/>
+  <path d="M800.00,78.00L803.00,81.00L800.00,84.00L797.00,81.00Z" fill="#3d3527"/>
+  <path d="M859.00,137.00L862.00,140.00L859.00,143.00L856.00,140.00Z" fill="#3d3527"/>
+  <path d="M800.00,196.00L803.00,199.00L800.00,202.00L797.00,199.00Z" fill="#3d3527"/>
+  <path d="M741.00,137.00L744.00,140.00L741.00,143.00L738.00,140.00Z" fill="#3d3527"/>
+  <g transform="translate(800 140)">
+    <circle class="sweep" r="96" fill="none" stroke="#a9c86f" stroke-width="2" stroke-linecap="round" stroke-dasharray="50.27 552.92" transform="rotate(-90)" opacity=".55" style="transform-origin:0 0"/>
+  </g>
+  <g class="fade" style="animation-delay:1.40s">
+    <g transform="translate(800.00 44.00)">
+      <circle r="12" fill="#0e120d" stroke="#4b4230" stroke-width="1"/>
+      <g class="glyph" style="animation-delay:2s">
+      <circle cx="0" cy="0" r="6"/>
+      <path d="M0,-11V-6 M0,6V11 M-11,0H-6 M6,0H11"/></g>
+    </g>
+  </g>
+  <g class="fade" style="animation-delay:1.46s">
+    <g transform="translate(867.88 72.12)">
+      <circle r="12" fill="#0e120d" stroke="#4b4230" stroke-width="1"/>
+      <g class="glyph" style="animation-delay:5s">
+      <path d="M-3,-5L-9,0L-3,5 M3,-5L9,0L3,5 M2,-7L-2,7"/></g>
+    </g>
+  </g>
+  <g class="fade" style="animation-delay:1.52s">
+    <g transform="translate(896.00 140.00)">
+      <circle r="12" fill="#0e120d" stroke="#4b4230" stroke-width="1"/>
+      <g class="glyph" style="animation-delay:8s">
+      <circle cx="-4" cy="-4" r="3.5"/>
+      <path d="M-1.5,-1.5L7,7 M4,4L6,2 M6,6L8,4"/></g>
+    </g>
+  </g>
+  <g class="fade" style="animation-delay:1.58s">
+    <g transform="translate(867.88 207.88)">
+      <circle r="12" fill="#0e120d" stroke="#4b4230" stroke-width="1"/>
+      <g class="glyph" style="animation-delay:11s">
+      <circle cx="0" cy="-7" r="2.4"/><circle cx="-7" cy="6" r="2.4"/><circle cx="7" cy="6" r="2.4"/>
+      <path d="M0,-4.6L-5.5,4 M0,-4.6L5.5,4 M-4.6,6H4.6"/></g>
+    </g>
+  </g>
+  <g class="fade" style="animation-delay:1.64s">
+    <g transform="translate(800.00 236.00)">
+      <circle r="12" fill="#0e120d" stroke="#4b4230" stroke-width="1"/>
+      <g class="glyph" style="animation-delay:14s">
+      <circle cx="0" cy="7" r="1.3" fill="#8d7c58" stroke="none"/>
+      <path d="M-2.8,4.2A4,4 0 0 1 2.8,4.2 M-5.7,1.3A8,8 0 0 1 5.7,1.3 M-8.5,-1.5A12,12 0 0 1 8.5,-1.5"/></g>
+    </g>
+  </g>
+  <g class="fade" style="animation-delay:1.70s">
+    <g transform="translate(732.12 207.88)">
+      <circle r="12" fill="#0e120d" stroke="#4b4230" stroke-width="1"/>
+      <g class="glyph" style="animation-delay:17s">
+      <ellipse cx="0" cy="1" rx="4.5" ry="6"/><circle cx="0" cy="-7" r="2.5"/>
+      <path d="M-1,-9L-3,-11 M1,-9L3,-11 M-4.5,-2L-8,-4 M4.5,-2L8,-4 M-4.5,2L-8,3 M4.5,2L8,3 M-4,5L-7,8 M4,5L7,8"/></g>
+    </g>
+  </g>
+  <g class="fade" style="animation-delay:1.76s">
+    <g transform="translate(704.00 140.00)">
+      <circle r="12" fill="#0e120d" stroke="#4b4230" stroke-width="1"/>
+      <g class="glyph" style="animation-delay:20s">
+      <rect x="-5" y="-5" width="10" height="10" rx="1"/>
+      <path d="M-5,-3H-8 M-5,0H-8 M-5,3H-8 M5,-3H8 M5,0H8 M5,3H8 M-3,-5V-8 M0,-5V-8 M3,-5V-8 M-3,5V8 M0,5V8 M3,5V8"/></g>
+    </g>
+  </g>
+  <g class="fade" style="animation-delay:1.82s">
+    <g transform="translate(732.12 72.12)">
+      <circle r="12" fill="#0e120d" stroke="#4b4230" stroke-width="1"/>
+      <g class="glyph" style="animation-delay:23s">
+      <path d="M0,-9L7.5,-6V0C7.5,5 4,8.5 0,10C-4,8.5 -7.5,5 -7.5,0V-6Z"/>
+      <circle cx="0" cy="-0.5" r="1.6"/>
+      <path d="M0,1.1V5"/></g>
+    </g>
+  </g>
+  <g transform="translate(800 140)">
+    <g class="eye" style="transform-origin:0 0">
+      <path d="M-34,0Q0,-22 34,0Q0,22 -34,0Z" fill="#0e120d" stroke="#a8854f" stroke-width="1.4"/>
+      <circle r="10" fill="none" stroke="#6e5a39" stroke-width="1"/>
+      <ellipse rx="2.8" ry="8" fill="#090b08"/>
+      <circle cx="1.6" cy="-2.4" r="1.1" fill="#a9c86f"/>
+      <path d="M0,-16L2.2,-12L0,-8L-2.2,-12Z" fill="#3d3527"/>
+    </g>
+  </g>
+</g>
+</svg>

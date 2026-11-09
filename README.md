@@ -1,5 +1,7 @@
 # Goblin's Grimoire
 
+![Animated banner: an engraved brass seal with an eye at its centre, ringed by icons for recon, web, credentials, network, wireless, exploitation, reversing, and privacy.](assets/goblins-grimoire-banner.svg)
+
 A field manual for the pentest and bug-bounty toolbox: every command, every flag, and a research workflow for deciding when to use each one.
 Each tool has its own directory containing:
 
