@@ -1,0 +1,16 @@
+openvpn3: session-manage - Manage VPN sessions
+
+   -h | --help                 - This help screen
+   -o | --path SESSION-PATH    - Path to the session in the session manager
+        --session-path SESSION-PATH
+                               - Alias for --path
+   -c | --config CONFIG-NAME   - Alternative to --path, where configuration profile name is used instead
+   -I | --interface INTERFACE  - Alternative to --path, where tun interface name is used instead
+        --log-level[=LEVEL]    - View/Set the log-level for a running VPN session
+        --timeout SECS         - Connection attempt timeout for resume and restart (default: infinite)
+   -P | --pause                - Pauses the VPN session
+   -R | --resume               - Resumes a paused VPN session
+        --restart              - Disconnect and reconnect a running VPN session
+   -D | --disconnect           - Disconnects a VPN session
+        --cleanup              - Clean up stale sessions
+

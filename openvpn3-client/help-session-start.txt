@@ -1,0 +1,11 @@
+openvpn3: session-start - Start a new VPN session
+
+   -h | --help                 - This help screen
+   -c | --config CONFIG-FILE   - Configuration file to start directly
+   -p | --config-path CONFIG-PATH
+                               - Configuration path to an already imported configuration
+        --persist-tun          - Enforces persistent tun/seamless tunnel (requires --config)
+        --timeout SECS         - Connection attempt timeout (default: infinite)
+        --background           - Starts the connection in the background after basic credentials are provided
+        --dco BOOL             - Start the connection using Data Channel Offload kernel acceleration
+

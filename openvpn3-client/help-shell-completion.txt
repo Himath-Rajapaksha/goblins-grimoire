@@ -1,0 +1,7 @@
+openvpn3: shell-completion - Helper function to provide shell completion data
+
+   -h | --help                 - This help screen
+        --list-commands        - List all available commands
+        --list-options COMMAND - List all available options for a specific command
+        --arg-helper OPTION    - Used together with --list-options, lists value hint to an option
+

@@ -1,0 +1,58 @@
+openvpn3: config-manage - Manage configuration properties
+
+   -h | --help                 - This help screen
+   -o | --path CONFIG-PATH     - Path to the configuration in the configuration manager
+        --config-path CONFIG-PATH
+                               - Alias for --path
+   -c | --config CONFIG-NAME   - Alternative to --path, where configuration profile name is used instead
+   -r | --rename NEW-CONFIG-NAME
+                               - Renames the configuration
+        --tag TAG-NAME         - Adds a tag name to the configuration profile
+        --remove-tag TAG-NAME  - Removes a tag name to the configuration profile
+   -s | --show                 - Show current configuration options
+        --exists               - Checks if a specific configuration file exists
+        --quiet                - Don't write anything to terminal unless strictly needed
+        --dco <true|false>     - Set/unset the kernel data channel offload flag
+        --server-override <value>
+                               - Replace the remote, connecting to this server instead the server specified in the configuration
+        --port-override <value>
+                               - Replace the remote port, connecting to this port instead of the configuration value
+        --proto-override <tcp|udp>
+                               - Overrides the protocol being used
+        --ipv6 <yes|no|default>
+                               - Sets the IPv6 policy of the client
+        --persist-tun <true|false>
+                               - Adds the boolean override persist-tun
+        --log-level <1|2|3|4|5|6>
+                               - Override the configuration profile --verb setting
+        --dns-fallback-google <true|false>
+                               - Adds the boolean override dns-fallback-google
+        --dns-setup-disabled <true|false>
+                               - Adds the boolean override dns-setup-disabled
+        --dns-scope <global|tunnel>
+                               - Defines which domain scope can be queried via VPN provided DNS servers
+        --dns-sync-lookup <true|false>
+                               - Adds the boolean override dns-sync-lookup
+        --auth-fail-retry <true|false>
+                               - Adds the boolean override auth-fail-retry
+        --allow-compression <no|asym|yes>
+                               - Set compression mode
+        --enable-legacy-algorithms <true|false>
+                               - Adds the boolean override enable-legacy-algorithms
+        --tls-version-min <tls_1_0|tls_1_1|tls_1_2|tls_1_3>
+                               - Sets the minimal TLS version for the control channel
+        --tls-cert-profile <legacy|preferred|suiteb>
+                               - Sets the control channel tls profile
+        --proxy-host <value>   - HTTP Proxy to connect via, overrides configuration file http-proxy
+        --proxy-port <value>   - HTTP Proxy port to connect on
+        --proxy-username <value>
+                               - HTTP Proxy username to authenticate as
+        --proxy-password <value>
+                               - HTTP Proxy password to use for authentication
+        --proxy-auth-cleartext <true|false>
+                               - Adds the boolean override proxy-auth-cleartext
+        --enterprise-profile <value>
+                               - Enterprise profile for client side device posture checks
+        --unset-override <name>
+                               - Removes the <name> override
+

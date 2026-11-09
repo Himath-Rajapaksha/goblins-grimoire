@@ -69,8 +69,8 @@ Append findings to `~/tools/<tool>/RESEARCH-LOG.md`:
 
 ## Scenario index
 
-Every directory below has a `SCENARIOS.md`. There are 99 directories covering
-98 tools: `metasploit-msfvenom` is documented alongside Metasploit rather than
+Every directory below has a `SCENARIOS.md`. There are 109 directories covering
+108 tools: `metasploit-msfvenom` is documented alongside Metasploit rather than
 counted separately.
 
 ### Recon & asset discovery
@@ -156,6 +156,8 @@ counted separately.
 | onesixtyone | [`onesixtyone/SCENARIOS.md`](onesixtyone/SCENARIOS.md) | community-string scanning |
 | nbtscan | [`nbtscan/SCENARIOS.md`](nbtscan/SCENARIOS.md) | range/verbose/script output |
 | sshuttle | [`sshuttle/SCENARIOS.md`](sshuttle/SCENARIOS.md) | subnet/DNS/ssh options |
+| openvpn | [`openvpn/SCENARIOS.md`](openvpn/SCENARIOS.md) | config/TLS/routing/management |
+| openvpn3-client | [`openvpn3-client/SCENARIOS.md`](openvpn3-client/SCENARIOS.md) | sessions/configs/admin |
 | socat | [`socat/SCENARIOS.md`](socat/SCENARIOS.md) | TCP/UDP/TLS/UNIX/PTY relays + options |
 | nc | [`nc/SCENARIOS.md`](nc/SCENARIOS.md) | traditional connect/listen/scan/UDP |
 | proxychains4 | [`proxychains4/SCENARIOS.md`](proxychains4/SCENARIOS.md) | chain modes/DNS/proxy auth/leak checks |
@@ -225,6 +227,13 @@ counted separately.
 | pwndbg | [`pwndbg/SCENARIOS.md`](pwndbg/SCENARIOS.md) | GDB command groups |
 | gef | [`gef/SCENARIOS.md`](gef/SCENARIOS.md) | GDB command groups |
 | volatility3 | [`volatility3/SCENARIOS.md`](volatility3/SCENARIOS.md) | plugin/history/render |
+| ghidra | [`ghidra/SCENARIOS.md`](ghidra/SCENARIOS.md) | headless analyze/import/export/scripts |
+| binwalk | [`binwalk/SCENARIOS.md`](binwalk/SCENARIOS.md) | signatures/entropy/extract/diff |
+| checksec | [`checksec/SCENARIOS.md`](checksec/SCENARIOS.md) | ELF hardening fields + Python API |
+| exiftool | [`exiftool/SCENARIOS.md`](exiftool/SCENARIOS.md) | read/write/copy/JSON/CSV |
+| mat2 | [`mat2/SCENARIOS.md`](mat2/SCENARIOS.md) | formats/inplace/archives/verification |
+| patchelf | [`patchelf/SCENARIOS.md`](patchelf/SCENARIOS.md) | interpreter/rpath/needed/soname |
+| strace | [`strace/SCENARIOS.md`](strace/SCENARIOS.md) | filters/output/stats/inject |
 
 ### TLS & service scanning
 
@@ -245,6 +254,7 @@ counted separately.
 | Tool | Scenarios file | Command surface |
 |------|----------------|-----------------|
 | torsocks | [`torsocks/SCENARIOS.md`](torsocks/SCENARIOS.md) | wrapper/shell/isolation |
+| tor | [`tor/SCENARIOS.md`](tor/SCENARIOS.md) | torrc/bridges/onion/control |
 | tor-browser | [`tor-browser/SCENARIOS.md`](tor-browser/SCENARIOS.md) | launcher/profile/bridges |
 
 ## Anti-patterns

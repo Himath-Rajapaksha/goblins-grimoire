@@ -1,0 +1,10 @@
+openvpn3: session-stats - Show session statistics
+
+   -h | --help                 - This help screen
+   -o | --path SESSION-PATH    - Path to the configuration in the configuration manager
+        --session-path SESSION-PATH
+                               - Alias for --path
+   -c | --config CONFIG-NAME   - Alternative to --path, where configuration profile name is used instead
+   -I | --interface INTERFACE  - Alternative to --path, where tun interface name is used instead
+   -j | --json                 - Dump the configuration in JSON format
+

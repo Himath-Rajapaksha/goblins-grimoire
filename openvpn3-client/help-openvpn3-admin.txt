@@ -1,0 +1,16 @@
+openvpn3-admin: OpenVPN 3 Admin
+                Command line interface to manage OpenVPN 3 D-Bus based services
+
+  Available commands: 
+    help              - This help screen
+    shell-completion  - Helper function to provide shell completion data
+    version           - Show program version information
+    variables         - Show various OpenVPN 3 variables
+    journal           - Retrieve OpenVPN 3 Linux journal log entries
+    log-service       - Manage the OpenVPN 3 Log service
+    netcfg-service    - Management of net.openvpn.v3.netcfg (requires root)
+    sessionmgr-service - Interact the OpenVPN 3 Session manager service
+    init-config       - Automated configuration tool
+
+For more information, run: openvpn3-admin <command> --help
+

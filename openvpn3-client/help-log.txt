@@ -1,0 +1,9 @@
+openvpn3: log - Receive log events as they occur
+
+   -h | --help                 - This help screen
+        --session-path SESSION-PATH
+                               - Receive log events for a specific session
+   -c | --config CONFIG-NAME   - Alternative to --session-path, where configuration profile name is used instead
+   -I | --interface INTERFACE  - Alternative to --session-path, where tun interface name is used instead
+        --log-level LOG-LEVEL  - Set the log verbosity level of messages to be shown (default: 4)
+

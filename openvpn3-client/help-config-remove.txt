@@ -1,0 +1,8 @@
+openvpn3: config-remove - Remove an available configuration profile
+
+   -h | --help                 - This help screen
+   -o | --path OBJ-PATH        - Path to the configuration in the configuration manager
+        --config-path OBJ-PATH - Alias for --path
+   -c | --config CONFIG-NAME   - Alternative to --path, where configuration profile name is used instead
+        --force                - Force the deletion process without asking for confirmation
+

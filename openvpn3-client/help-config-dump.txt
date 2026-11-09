@@ -1,0 +1,8 @@
+openvpn3: config-dump - Show/dump a configuration profile
+
+   -h | --help                 - This help screen
+   -o | --path OBJ-PATH        - Path to the configuration in the configuration manager
+        --config-path OBJ-PATH - Alias for --path
+   -c | --config CONFIG-NAME   - Alternative to --path, where configuration profile name is used instead
+   -j | --json                 - Dump the configuration in JSON format
+

@@ -1,0 +1,11 @@
+openvpn3: configs-list - List all available configuration profiles
+
+   -h | --help                 - This help screen
+        --count                - Only report the number of configurations found
+        --json                 - Format the output as JSON
+   -v | --verbose              - Provide more information about each configuration profile
+        --filter-config NAME-PREFIX
+                               - Filter configurations starting with the given prefix
+        --filter-tag TAG-VALUE - Only list configurations with the given tag
+        --filter-owner OWNER   - Only list configurations belonging to a user
+

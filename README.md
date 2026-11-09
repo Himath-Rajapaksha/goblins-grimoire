@@ -14,7 +14,7 @@ adds context, workflows, and copy-paste recipes that `--help` does not explain.
 
 > **Start here for research-driven use:** [`DEEP-RESEARCH.md`](DEEP-RESEARCH.md) —
 > the `@deep-research` workflow, prompt template, evidence rules, research-log
-> format, and the index of all 99 `SCENARIOS.md` files (98 tools;
+> format, and the index of all 109 `SCENARIOS.md` files (108 tools;
 > `metasploit-msfvenom` is documented alongside Metasploit).
 >
 > **External references:** [`RELATED-DOCS.md`](RELATED-DOCS.md) — a cited
@@ -111,6 +111,8 @@ adds context, workflows, and copy-paste recipes that `--help` does not explain.
 | onesixtyone | [`onesixtyone/`](onesixtyone/README.md) | Fast SNMP community-string scanner |
 | nbtscan | [`nbtscan/`](nbtscan/README.md) | NetBIOS name and address scanner |
 | sshuttle | [`sshuttle/`](sshuttle/README.md) | VPN-over-SSH for pivoting into internal networks |
+| openvpn | [`openvpn/`](openvpn/README.md) | OpenVPN 2.x client/server: config, TLS, routing, management |
+| openvpn3-client | [`openvpn3-client/`](openvpn3-client/README.md) | OpenVPN 3 Linux client (`openvpn3` / `openvpn2`) |
 | socat | [`socat/`](socat/README.md) | Multipurpose relay: TCP/UDP/TLS/UNIX/PTY bridging |
 | nc | [`nc/`](nc/README.md) | netcat-traditional ad-hoc TCP/UDP client and listener |
 | proxychains4 | [`proxychains4/`](proxychains4/README.md) | Force TCP through SOCKS/HTTP proxy chains via LD_PRELOAD |
@@ -166,6 +168,13 @@ adds context, workflows, and copy-paste recipes that `--help` does not explain.
 | pwndbg | [`pwndbg/`](pwndbg/README.md) | GDB plugin for exploit development |
 | gef | [`gef/`](gef/README.md) | GDB Enhanced Features |
 | volatility3 | [`volatility3/`](volatility3/README.md) | Memory forensics framework |
+| ghidra | [`ghidra/`](ghidra/README.md) | NSA reverse-engineering suite: headless analysis, scripts, server |
+| binwalk | [`binwalk/`](binwalk/README.md) | Firmware signature scanning, entropy analysis, extraction |
+| checksec | [`checksec/`](checksec/README.md) | ELF mitigation report (pwntools wrapper) |
+| exiftool | [`exiftool/`](exiftool/README.md) | Read/write metadata across image, document, and media formats |
+| mat2 | [`mat2/`](mat2/README.md) | Metadata anonymisation for documents, images, audio, archives |
+| patchelf | [`patchelf/`](patchelf/README.md) | Modify ELF interpreter, RPATH/RUNPATH, NEEDED, SONAME |
+| strace | [`strace/`](strace/README.md) | Trace system calls and signals |
 
 ### TLS & service scanning
 | Tool | Directory | One-liner |
@@ -183,6 +192,7 @@ adds context, workflows, and copy-paste recipes that `--help` does not explain.
 | Tool | Directory | One-liner |
 |------|-----------|-----------|
 | torsocks | [`torsocks/`](torsocks/README.md) | Route a single app's TCP through Tor (SOCKS5) |
+| tor | [`tor/`](tor/README.md) | Tor daemon: torrc, bridges, onion services, control port |
 | tor-browser | [`tor-browser/`](tor-browser/README.md) | Hardened Firefox preconfigured for Tor |
 
 ---
@@ -255,7 +265,12 @@ holehe --only-used user@example.com
   interface changes. A limited NOPASSWD sudoers grant covers these and the
   other root-only tools (sshuttle, gophish, evilginx, setoolkit).
 - Tor-related tools: use `torsocks <cmd>` for per-app Tor; the root-only
-  `tor-mode` toggle provides transparent system-wide routing.
+  `tor-mode` toggle provides transparent system-wide routing. A standalone
+  `tor` instance needs a writable `DataDirectory` and free `SocksPort`.
+- VPN clients (`openvpn`, `openvpn3-client`) need root or `CAP_NET_ADMIN` to
+  create tun/tap devices and change routes.
+- `strace -p` is limited by `kernel.yama.ptrace_scope`; attach to processes
+  you own, or run the target under `strace` directly.
 - Most tools write config/state under `$HOME` (`/home/user`). SET is the
   exception: it uses `/opt/set/src` and `/etc/setoolkit`.
 

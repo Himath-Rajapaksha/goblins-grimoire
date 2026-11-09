@@ -1,0 +1,19 @@
+openvpn3: config-acl - Manage access control lists for configurations
+
+   -h | --help                 - This help screen
+   -o | --path OBJ-PATH        - Path to the configuration in the configuration manager
+        --config-path OBJ-PATH - Alias for --path
+   -c | --config CONFIG-NAME   - Alternative to --path, where configuration profile name is used instead
+   -s | --show                 - Show the current access control lists
+   -G | --grant <UID | username>
+                               - Grant this user access to this configuration profile
+   -R | --revoke <UID | username>
+                               - Revoke this user access from this configuration profile
+        --public-access <true|false>
+                               - Set/unset the public access flag
+   -T | --transfer-owner-session <true|false>
+                               - Transfer the configuration ownership to the VPN session at startup
+        --lock-down <true|false>
+                               - Set/unset the lock-down flag.  Will disable config retrieval for users
+   -S | --seal                 - Make the configuration profile permanently read-only
+

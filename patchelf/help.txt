@@ -1,0 +1,31 @@
+syntax: patchelf
+  [--set-interpreter FILENAME]
+  [--page-size SIZE]
+  [--print-interpreter]
+  [--print-os-abi]		Prints 'EI_OSABI' field of ELF header
+  [--set-os-abi ABI]		Sets 'EI_OSABI' field of ELF header to ABI.
+  [--print-soname]		Prints 'DT_SONAME' entry of .dynamic section. Raises an error if DT_SONAME doesn't exist
+  [--set-soname SONAME]		Sets 'DT_SONAME' entry to SONAME.
+  [--set-rpath RPATH]
+  [--add-rpath RPATH]
+  [--remove-rpath]
+  [--shrink-rpath]
+  [--allowed-rpath-prefixes PREFIXES]		With '--shrink-rpath', reject rpath entries not starting with the allowed prefix
+  [--print-rpath]
+  [--force-rpath]
+  [--add-needed LIBRARY]
+  [--remove-needed LIBRARY]
+  [--replace-needed LIBRARY NEW_LIBRARY]
+  [--print-needed]
+  [--no-default-lib]
+  [--no-sort]		Do not sort program+section headers; useful for debugging patchelf.
+  [--clear-symbol-version SYMBOL]
+  [--add-debug-tag]
+  [--print-execstack]		Prints whether the object requests an executable stack
+  [--clear-execstack]
+  [--set-execstack]
+  [--rename-dynamic-symbols NAME_MAP_FILE]	Renames dynamic symbols. The map file should contain two symbols (old_name new_name) per line
+  [--output FILE]
+  [--debug]
+  [--version]
+  FILENAME...

@@ -1,0 +1,24 @@
+usage: mat2 [-h] [-V] [--unknown-members policy] [--inplace] [--no-sandbox]
+            [-v] [-l] [--check-dependencies] [-L | -s]
+            [files ...]
+
+Metadata anonymisation toolkit 2
+
+positional arguments:
+  files                 the files to process
+
+options:
+  -h, --help            show this help message and exit
+  -V, --verbose         show more verbose status information
+  --unknown-members policy
+                        how to handle unknown members of archive-style files
+                        (policy should be one of: abort, omit, keep) [Default:
+                        abort]
+  --inplace             clean in place, without backup
+  --no-sandbox          Disable bubblewrap's sandboxing
+  -v, --version         show program's version number and exit
+  -l, --list            list all supported fileformats
+  --check-dependencies  check if mat2 has all the dependencies it needs
+  -L, --lightweight     remove SOME metadata
+  -s, --show            list harmful metadata detectable by mat2 without
+                        removing them

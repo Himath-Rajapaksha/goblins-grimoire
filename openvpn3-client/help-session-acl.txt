@@ -1,0 +1,18 @@
+openvpn3: session-acl - Manage access control lists for sessions
+
+   -h | --help                 - This help screen
+   -o | --path SESSION-PATH    - Path to the session in the session manager
+        --session-path SESSION-PATH
+                               - Alias for --path
+   -c | --config CONFIG-NAME   - Alternative to --path, where configuration profile name is used instead
+   -I | --interface INTERFACE  - Alternative to --path, where tun interface name is used instead
+   -s | --show                 - Show the current access control lists
+   -G | --grant <UID | username>
+                               - Grant this user access to this session
+   -R | --revoke <UID | username>
+                               - Revoke this user access from this session
+        --public-access <true|false>
+                               - Set/unset the public access flag
+        --allow-log-access <true|false>
+                               - Can users granted access also access the session log?
+

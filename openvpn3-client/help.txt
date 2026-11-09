@@ -1,0 +1,23 @@
+openvpn3: OpenVPN 3
+          Command line interface to manage OpenVPN 3 configurations and sessions
+
+  Available commands: 
+    help              - This help screen
+    shell-completion  - Helper function to provide shell completion data
+    version           - Show program version information
+    config-import     - Import configuration profiles
+    config-manage     - Manage configuration properties
+    config-acl        - Manage access control lists for configurations
+    config-dump       - Show/dump a configuration profile
+    config-remove     - Remove an available configuration profile
+    configs-list      - List all available configuration profiles
+    session-start     - Start a new VPN session
+    session-manage    - Manage VPN sessions
+    session-auth      - Interact with on-going session authentication requests
+    session-acl       - Manage access control lists for sessions
+    session-stats     - Show session statistics
+    sessions-list     - List available VPN sessions
+    log               - Receive log events as they occur
+
+For more information, run: openvpn3 <command> --help
+

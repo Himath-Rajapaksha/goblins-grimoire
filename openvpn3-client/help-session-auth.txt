@@ -1,0 +1,5 @@
+openvpn3: session-auth - Interact with on-going session authentication requests
+
+   -h | --help                 - This help screen
+        --auth-req ID          - Continue the authentication process for the given auth request ID
+

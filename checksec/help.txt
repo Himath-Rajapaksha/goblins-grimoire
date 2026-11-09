@@ -1,0 +1,10 @@
+usage: pwn checksec [-h] [--file [elf ...]] [elf ...]
+
+Check binary security settings
+
+positional arguments:
+  elf               Files to check
+
+options:
+  -h, --help        show this help message and exit
+  --file [elf ...]  File to check (for compatibility with checksec.sh)

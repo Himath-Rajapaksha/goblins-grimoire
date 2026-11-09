@@ -1,0 +1,4 @@
+openvpn3: sessions-list - List available VPN sessions
+
+   -h | --help                 - This help screen
+

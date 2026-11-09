@@ -1,0 +1,8 @@
+openvpn3: config-import - Import configuration profiles
+
+   -h | --help                 - This help screen
+   -c | --config CFG-FILE      - Configuration file to import
+   -n | --name NAME            - Provide a different name for the configuration (default: CFG-FILE)
+   -p | --persistent           - Make the configuration profile persistent through service restarts
+        --tag TAG-NAME         - Adds a tag name to the configuration profile
+
