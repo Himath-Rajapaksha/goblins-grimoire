@@ -205,8 +205,8 @@ holehe --only-used user@example.com
 - `afl-fuzz` and `arjun` are `root:sectools 750` via `dpkg-statoverride`.
 - `wireshark` group membership is required for live packet capture.
 - Wireless capture tools (`hcxdumptool`, `kismet`, `bully`, `eaphammer`,
-  `wifiphisher`) require root; they are documented but not yet sudo-enabled
-  for `user`.
+  `wifiphisher`) require root. A limited NOPASSWD sudoers grant covers these
+  and the other root-only tools (sshuttle, gophish, evilginx, setoolkit).
 - Tor-related tools: use `torsocks <cmd>` for per-app Tor; the root-only
   `tor-mode` toggle provides transparent system-wide routing.
 - Most tools write config/state under `$HOME` (`/home/user`). SET is the
