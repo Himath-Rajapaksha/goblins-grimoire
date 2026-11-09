@@ -13,7 +13,7 @@ was checked against the project's own README, site, or repository tree on
 > example scenario — and what should this repository borrow from it?
 
 The decision this informs: whether the three-file Grimoire format is worth
-keeping, and which external sources to use when writing the ~30 missing
+keeping, and which external sources to use when writing the 50+ missing
 `SCENARIOS.md` files.
 
 ## Short answer
@@ -204,29 +204,49 @@ agent-oriented; the Grimoire is tool-first and operator-oriented.
    missing `SCENARIOS.md` files, verify each command against `help.txt` and
    cite the external page only for scenario framing.
 4. **Prioritize the installed-but-undocumented tools** (appendix below),
-   starting with `nmap`, `sqlmap`, `hashcat`, `hydra`, `impacket-*`, and the
-   `aircrack-ng` suite — highest operational value and the largest scenario
-   surface.
+   starting with `nmap`, `sqlmap`, `hashcat`, `hydra`, `impacket`, the
+   `aircrack-ng` suite, and the SMB/LDAP trio (`smbclient`, `rpcclient`,
+   `ldapsearch`) — highest operational value and the largest scenario surface.
 5. **Add metadata, not a new format.** `Privilege`, `ATT&CK`, and `Tested`
    lines per scenario capture the best ideas from LOLBAS and The Hacker
    Recipes without restructuring the files.
 
 ## Appendix — installed but undocumented (verified 2026-11-10)
 
-`command -v` was used; no packages were installed. `ghidra` is present at
-`/opt/ghidra/ghidra_12.1.4_PUBLIC/ghidraRun` but not on `PATH`. Impacket
-ships as `impacket-*` binaries.
+First pass used a hand-written candidate list and missed whole suites. This
+second pass is package-anchored: `apt-mark showmanual`, `dpkg -L`, the full
+`PATH`, `/opt`, and the Python package list were compared against the 67
+documented directories. No packages were installed.
+
+Result: **~54 tool families, 200+ binaries**. The first-pass list covered 28
+of them; the additions below are marked **new**. `ghidra` is present at
+`/opt/ghidra/ghidra_12.1.4_PUBLIC/ghidraRun` and linked at
+`~/ghidra/ghidraRun`, but is not on the default `PATH`. Impacket ships five
+`impacket-*` wrappers plus 62 runnable example scripts under
+`/usr/share/doc/python3-impacket/examples/`.
 
 | Category | Tools |
 |---|---|
-| Recon / network | `nmap`, `masscan`, `tcpdump`, `whatweb` |
+| Recon / network | `nmap` (+ `nping`), `masscan`, `tcpdump`, `whatweb`, `dnsrecon` **new**, `whois` **new**, `dnsutils` (`dig`, `host`, `nslookup`, `nsupdate`) **new**, `traceroute` **new**, `scapy` **new** |
 | Web | `sqlmap`, `ffuf`, `gobuster`, `dirb` |
-| Credentials | `hashcat`, `john`, `hydra`, `medusa` |
-| Windows / AD | `impacket-netview`, `impacket-rpcdump`, `impacket-samrdump`, `impacket-secretsdump`, `impacket-wmiexec` |
-| MITM / sniffing | `bettercap`, `ettercap`, `dsniff` (+ `arpspoof`, `dnsspoof`, `macof`, `tcpkill`, `urlsnarf`, `webspy`, `mailsnarf`, `msgsnarf`, `filesnarf`) |
-| Wireless | `aircrack-ng` suite, `reaver`, `pixiewps`, `wash` |
-| Reverse engineering | `ghidra`, `binwalk`, `checksec` |
-| Pivoting / transport | `nc`, `socat`, `proxychains4`, `openvpn` |
+| Credentials | `hashcat`, `john` (+ `unshadow`, `*2john`), `hydra`, `medusa` |
+| Windows / AD | `impacket` (5 wrappers + 62 scripts), `ldapdomaindump` **new**, `ldap-utils` (`ldapsearch`, `ldapadd`, `ldapmodify`, ...) **new**, `rpcclient` **new**, `smbclient`/`smbget` **new**, `samba-common-bin` (`net`, `nmblookup`, `smbpasswd`, `smbcacls`, `smbtree`, `testparm`, `winexe`) **new** |
+| MITM / sniffing | `bettercap`, `ettercap` (text-only), `dsniff` suite (13 binaries: `arpspoof`, `dnsspoof`, `macof`, `tcpkill`, `tcpnice`, `urlsnarf`, `webspy`, `mailsnarf`, `msgsnarf`, `filesnarf`, `dsniff`, `sshmitm`, `webmitm`) |
+| Wireless | `aircrack-ng` suite (24 binaries), `reaver`, `pixiewps`, `wash`, `wifite` **new**, `macchanger` **new**, `iw` **new**, `wireless-tools` (`iwconfig`/`iwlist`) **new**, `wpa_supplicant`/`wpa_cli` **new**, BlueZ (`bluetoothctl`, `hciconfig`, `hcitool`, `btmon`, `gatttool`, `sdptool`, `rfcomm`, `l2ping`) **new**, `roguehostapd` (`/opt`) **new**, `pyric` (`/opt`, Python library) **new** |
+| Pivoting / transport | `nc` (netcat-traditional), `socat`, `proxychains4`, `openvpn`, `openvpn3-client` **new**, `tor` (system daemon; `tor-browser` is a separate documented entry) **new** |
+| RE / forensics / file analysis | `ghidra`, `binwalk`, `checksec`, `patchelf` **new**, `exiftool` **new**, `mat2` **new**, `strace` **new** |
+| Mobile | `adb` **new**, `fastboot` **new**, `scrcpy` **new** |
+
+Not counted as gaps: `tshark`/`dumpcap` are covered by `wireshark`;
+`snmpwalk`/`snmpget`/`snmpset` are covered by `snmp`; `gdb`/`gdbserver` are
+covered by `gef` and `pwndbg`; `msfvenom` has its own directory; `nxc` is the
+`netexec` entry point.
+
+Deliberately excluded as non-pentest tooling: defensive/system packages
+(`fail2ban`, `ufw`, `nftables`), general-purpose utilities (`docker`,
+`ansible`, `ffmpeg`, `imagemagick`), and browsers/IDEs (`chromium`,
+`android-studio`).
+
 
 ## Sources
 
