@@ -1,0 +1,1 @@
+Usage: iwpriv interface [private-command [private-arguments]]

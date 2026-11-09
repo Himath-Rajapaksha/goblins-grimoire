@@ -1,0 +1,3 @@
+Usage:
+net vfs getntacl <share> <path> [<path> ...]
+net vfs stream2adouble [OPTIONS] <share> <path> [<path> ...]

@@ -1,0 +1,7 @@
+Usage:
+net eventlog dump
+    Dump win32 *.evt eventlog file
+net eventlog import
+    Import win32 *.evt eventlog file
+net eventlog export
+    Export win32 *.evt eventlog file

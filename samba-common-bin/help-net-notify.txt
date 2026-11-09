@@ -1,0 +1,3 @@
+Usage:
+net notify listen <path>
+net notify trigger <path> <action> <filter>

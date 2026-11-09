@@ -185,7 +185,7 @@ The definitions are worth knowing because they explain the false positives.
 | Debuginfo | `.debug_info` section present |
 | Packer | `UPX!` in the first `0xFF` bytes |
 | SHSTK / IBT | `GNU_PROPERTY_X86_FEATURE_1_AND` note bits |
-| RWX | any `PT_LOAD` with `PF_W | PF_X` |
+| RWX | any `PT_LOAD` with `PF_W \| PF_X` |
 
 Two consequences:
 

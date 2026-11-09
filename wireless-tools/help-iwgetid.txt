@@ -1,0 +1,10 @@
+Usage iwgetid [OPTIONS] [ifname]
+  Options are:
+    -a,--ap       Print the access point address
+    -c,--channel  Print the current channel
+    -f,--freq     Print the current frequency
+    -m,--mode     Print the current mode
+    -p,--protocol Print the protocol name
+    -r,--raw      Format the output as raw value for shell scripts
+    -s,--scheme   Format the output as a PCMCIA scheme identifier
+    -h,--help     Print this message

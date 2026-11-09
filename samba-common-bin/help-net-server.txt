@@ -1,0 +1,5 @@
+Usage:
+net rap server name
+    Get the name of the server
+net rap server domain
+    Get the servers in this domain/workgroup

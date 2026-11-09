@@ -181,8 +181,8 @@ is a write, so the backup rules apply.
 | `-srcfile FMT` | Process a different source file |
 | `-fileNUM ALTFILE` | Load tags from an alternate file |
 | `-o OUTFILE`, `-out` | Output file or directory |
-| `-w[+|!] EXT`, `-textOut` | Write text output per input file |
-| `-W[+|!] FMT`, `-tagOut` | Write one output file per tag |
+| `-w[+\|!] EXT`, `-textOut` | Write text output per input file |
+| `-W[+\|!] FMT`, `-tagOut` | Write one output file per tag |
 | `-Wext EXT`, `-tagOutExt` | Restrict `-W` to certain extensions |
 | `-password PASSWD` | Password for protected files |
 | `-z`, `-zip` | Read/write compressed information |

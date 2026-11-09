@@ -1,0 +1,28 @@
+
+Usage: 
+  net lookup [host] HOSTNAME[#<type>]
+	gives IP for a hostname
+
+  net lookup ldap [domain] [sitename]
+	gives IP of domain's ldap server
+
+  net lookup kdc [realm]
+	gives IP of realm's kerberos KDC
+
+  net lookup pdc [domain|realm]
+	gives IP of realm's kerberos KDC
+
+  net lookup dc [domain]
+	gives IP of domains Domain Controllers
+
+  net lookup master [domain|wg]
+	give IP of master browser
+
+  net lookup name [name]
+	Lookup name's sid and type
+
+  net lookup sid [sid]
+	Give sid's name and type
+
+  net lookup dsgetdcname [name] [flags] [sitename]
+

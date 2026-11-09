@@ -1,0 +1,10 @@
+Usage:
+net rap session
+    List all open sessions on remote server
+net rap session info
+    Display information about session
+net rap session delete
+    Close specified session
+    Alias for net rap session close
+net rap session close
+    Close specified session

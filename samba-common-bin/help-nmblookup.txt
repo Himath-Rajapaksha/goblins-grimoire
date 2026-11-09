@@ -1,0 +1,43 @@
+Usage: <NODE> ...
+  -B, --broadcast=BROADCAST-ADDRESS         Specify address to use for
+                                            broadcasts
+  -f, --flags                               List the NMB flags returned
+  -U, --unicast=STRING                      Specify address to use for unicast
+  -M, --master-browser                      Search for a master browser
+      --recursion                           Set recursion desired in package
+  -S, --status                              Lookup node status as well
+  -T, --translate                           Translate IP addresses into names
+  -r, --root-port                           Use root port 137 (Win95 only
+                                            replies to this)
+  -A, --lookup-by-ip                        Do a node status on <name> as an
+                                            IP Address
+
+Help options:
+  -?, --help                                Show this help message
+      --usage                               Display brief usage message
+
+Common Samba options:
+  -d, --debuglevel=DEBUGLEVEL               Set debug level
+      --debug-stdout                        Send debug output to standard
+                                            output
+  -s, --configfile=CONFIGFILE               Use alternative configuration file
+      --option=name=value                   Set smb.conf option from command
+                                            line
+  -l, --log-basename=LOGFILEBASE            Basename for log/debug files
+      --leak-report                         enable talloc leak reporting on
+                                            exit
+      --leak-report-full                    enable full talloc leak reporting
+                                            on exit
+
+Connection options:
+  -R, --name-resolve=NAME-RESOLVE-ORDER     Use these name resolution services
+                                            only
+  -O, --socket-options=SOCKETOPTIONS        socket options to use
+  -m, --max-protocol=MAXPROTOCOL            Set max protocol level
+  -n, --netbiosname=NETBIOSNAME             Primary netbios name
+      --netbios-scope=SCOPE                 Use this Netbios scope
+  -W, --workgroup=WORKGROUP                 Set the workgroup name
+      --realm=REALM                         Set the realm name
+
+Version options:
+  -V, --version                             Print version

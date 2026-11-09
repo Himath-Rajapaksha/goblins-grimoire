@@ -1,0 +1,10 @@
+btattach - Bluetooth serial utility
+Usage:
+	btattach [options]
+options:
+	-B, --bredr <device>   Attach Primary controller
+	-A, --amp <device>     Attach AMP controller
+	-P, --protocol <proto> Specify protocol type
+	-S, --speed <baudrate> Specify which baudrate to use
+	-N, --noflowctl        Disable flow control
+	-h, --help             Show help options

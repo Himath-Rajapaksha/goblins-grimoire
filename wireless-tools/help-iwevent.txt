@@ -1,0 +1,5 @@
+Usage: iwevent [OPTIONS]
+   Monitors and displays Wireless Events.
+   Options are:
+     -h,--help     Print this message.
+     -v,--version  Show version of this program.

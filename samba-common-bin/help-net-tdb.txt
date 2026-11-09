@@ -1,0 +1,2 @@
+Usage:
+net tdb locking <key>

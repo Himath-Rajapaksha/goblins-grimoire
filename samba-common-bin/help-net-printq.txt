@@ -1,0 +1,8 @@
+Usage:
+net rap printq
+    List the print queue
+net rap printq info [queue]
+    Display info about print jobs in queue.
+    If queue is not specified, all queues are listed
+net rap printq delete
+    Delete print job(s)

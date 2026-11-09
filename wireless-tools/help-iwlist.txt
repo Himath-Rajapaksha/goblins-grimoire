@@ -1,0 +1,18 @@
+Usage: iwlist [interface] scanning [essid NNN] [last]
+              [interface] frequency 
+              [interface] channel 
+              [interface] bitrate 
+              [interface] rate 
+              [interface] encryption 
+              [interface] keys 
+              [interface] power 
+              [interface] txpower 
+              [interface] retry 
+              [interface] ap 
+              [interface] accesspoints 
+              [interface] peers 
+              [interface] event 
+              [interface] auth 
+              [interface] wpakeys 
+              [interface] genie 
+              [interface] modulation 

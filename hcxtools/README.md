@@ -119,7 +119,7 @@ hcxpmktool -l '<hash line>' -e 'CorpNet' -p 'candidate-password'
 | `--rc` / `--rc-not` | Replay-count checked / unchecked |
 | `--hcx-min=<n>`, `--hcx-max=<n>` | Occurrence thresholds |
 | `--info=<file>`, `--info=stdout` | Detailed hash-file report |
-| `--info-vendor[-ap|-client]=<file>` | Vendor report |
+| `--info-vendor[-ap\|-client]=<file>` | Vendor report |
 | `--psk=<psk>`, `--pmk=<pmk>` | Test a key (no nonce correction) |
 | `--hccapx-in/out`, `--hccap-in/out`, `--john=` | Legacy conversion |
 | `--vendorlist` | Print the whole OUI list |

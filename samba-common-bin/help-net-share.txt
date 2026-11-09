@@ -1,0 +1,10 @@
+Usage:
+net rap share
+    List all shares on remote server
+net rap share delete
+    Delete a share from server
+net rap share close
+    Delete a share from server
+    Alias for net rap share delete
+net rap share add
+    Add a share to server

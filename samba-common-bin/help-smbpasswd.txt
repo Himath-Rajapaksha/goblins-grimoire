@@ -1,0 +1,25 @@
+smbpasswd: invalid option -- '-'
+When run by root:
+    smbpasswd [options] [username]
+otherwise:
+    smbpasswd [options]
+
+options:
+  -L                   local mode (must be first option)
+  -h                   print this usage message
+  -s                   use stdin for password prompt
+  -c smb.conf file     Use the given path to the smb.conf file
+  -D LEVEL             debug level
+  -r MACHINE           remote machine
+  -U USER              remote username (e.g. SAM/user)
+extra options when run by root or in local mode:
+  -a                   add user
+  -d                   disable user
+  -e                   enable user
+  -i                   interdomain trust account
+  -m                   machine trust account
+  -n                   set no password
+  -W                   use stdin ldap admin password
+  -w PASSWORD          ldap admin password
+  -x                   delete user
+  -R ORDER             name resolve order

@@ -61,7 +61,7 @@ https://github.com/projectdiscovery/subfinder/issues, provider API docs.
 | 12 | `subfinder -d example.com -m dev,staging` | Substring match filter |
 | 13 | `subfinder -d example.com -f test,old` | Drop matches |
 | 14 | `subfinder -d example.com -match-regex '^api\.'` | Regex include |
-| 15 | `subfinder -d example.com -filter-regex 'cdn|akamai'` | Regex exclude |
+| 15 | `subfinder -d example.com -filter-regex 'cdn\|akamai'` | Regex exclude |
 | 16 | `subfinder -d example.com -ei` | Drop bare IPs |
 | 17 | `subfinder -d example.com -mr 50` | Cap results per source |
 

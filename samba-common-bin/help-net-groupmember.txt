@@ -1,0 +1,7 @@
+Usage:
+net rap groupmember add
+    Add specified user to group
+net rap groupmember list
+    List users in group
+net rap groupmember delete
+    Remove user from group

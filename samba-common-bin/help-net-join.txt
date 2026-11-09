@@ -1,0 +1,8 @@
+Usage:
+net rpc join -U <username>[%%password] <type>
+  Join a domain
+    username	Name of the admin user    password	Password of the admin user, will prompt if not specified
+    type	Can be one of the following:
+		MEMBER	Join as member server (default)
+		BDC	Join as BDC
+		PDC	Join as PDC

@@ -1,0 +1,4 @@
+Usage:
+net serverid wipedbs
+    Clean dead entries from temporary databases
+net serverid exists <id>

@@ -1,0 +1,9 @@
+Usage:
+net time
+    Display the remote time server's time
+net time system
+    Display time ready for /bin/date
+net time set
+    Set the system time from time server
+net time zone
+    Display timezone offset from UTC

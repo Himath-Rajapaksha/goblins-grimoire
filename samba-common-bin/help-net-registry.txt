@@ -1,0 +1,37 @@
+Usage:
+net registry enumerate
+    Enumerate registry keys and values
+net registry enumerate_recursive
+    Enumerate registry keys and values
+net registry createkey
+    Create a new registry key
+net registry deletekey
+    Delete a registry key
+net registry deletekey_recursive
+    Delete a registry key with subkeys
+net registry getvalue
+    Print a registry value
+net registry getvalueraw
+    Print a registry value (raw format)
+net registry getvaluesraw <key>
+    Print a registry value (raw format)
+net registry setvalue
+    Set a new registry value
+net registry increment
+    Increment a DWORD registry value under a lock
+net registry deletevalue
+    Delete a registry value
+net registry getsd
+    Get security descriptor
+net registry getsd_sddl
+    Get security descriptor in sddl format
+net registry setsd_sddl
+    Set security descriptor from sddl format string
+net registry import
+    Import .reg file
+net registry export
+    Export .reg file
+net registry convert
+    Convert .reg file
+net registry check
+    Check a registry database

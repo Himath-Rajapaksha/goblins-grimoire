@@ -1,0 +1,4 @@
+Usage:
+  net [options] primarytrust dumpinfo'
+    Dump the details of the workstation trust in secrets.tdb.
+    Requires the -f flag to include the password values.

@@ -1,0 +1,21 @@
+Usage:
+net groupmap add
+    Create a new group mapping
+net groupmap modify
+    Modify an existing group mapping
+net groupmap delete
+    Remove a group mapping
+net groupmap set
+    Set a group mapping
+net groupmap cleanup
+    Remove foreign group mapping entries
+net groupmap addmem
+    Add a foreign alias member
+net groupmap delmem
+    Delete foreign alias member
+net groupmap listmem
+    List foreign alias members
+net groupmap memberships
+    List foreign group memberships
+net groupmap list
+    List current group map

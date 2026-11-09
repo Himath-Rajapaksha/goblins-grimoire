@@ -1,0 +1,64 @@
+
+net [<method>] user [misc. options] [targets]
+	List users
+
+net [<method>] user DELETE <name> [misc. options] [targets]
+	Delete specified user
+
+net [<method>] user INFO <name> [misc. options] [targets]
+	List the domain groups of the specified user
+
+net [<method>] user ADD <name> [password] [-c container] [-F user flags] [misc. options] [targets]
+	Add specified user
+
+net [<method>] user RENAME <oldusername> <newusername> [targets]
+	Rename specified user
+
+Valid methods: (auto-detected if not specified)
+	ads				Active Directory (LDAP/Kerberos)
+	rpc				DCE-RPC
+	rap				RAP (older systems)
+
+Valid targets: choose one (none defaults to localhost)
+	-S|--server=<server>			server name
+	-I|--ipaddress=<ipaddr>			address of target server
+	-w|--target-workgroup=<wg>		target workgroup or domain
+
+Valid misc options are:
+	-p|--port=<port>			connection port on target
+	--myname=<name>				client name
+	--long					Display full information
+
+Valid common options are:
+	-d|--debuglevel=<level>			debug level (0-10)
+	--debug-stdout				Send debug output to standard output
+	--configfile=<path>			pathname of smb.conf file
+	--option=name=value			Set smb.conf option from command line
+	-l|--log-basename=LOGFILEBASE		Basename for log/debug files
+	--leak-report				enable talloc leak reporting on exit
+	--leak-report-full			enable full talloc leak reporting on exit
+	-V|--version				Print samba version information
+
+Valid connection options are:
+	-R|--name-resolve=NAME-RESOLVE-ORDER	Use these name resolution services only
+	-O|--socket-options=SOCKETOPTIONS	socket options to use
+	-m|--max-protocol=MAXPROTOCOL		Set max protocol level
+	-n|--netbiosname=NETBIOSNAME		Primary netbios name
+	--netbios-scope=SCOPE			Use this Netbios scope
+	-W|--workgroup=WORKGROUP		Set the workgroup name
+	--realm=REALM				Set the realm name
+
+Valid credential options are:
+	-U|--user=[DOMAIN/]USERNAME[%PASSWORD]	Set the network username
+	-N|--no-pass				Don't ask for a password
+	--password=STRING			Set a password
+	--pw-nt-hash				The supplied password is the NT hash
+	-A|--authentication-file=FILE		Get the credentials from a file
+	-P|--machine-pass			Use stored machine account password
+	--simple-bind-dn=DN			DN to use for a simple bind
+	--use-kerberos=desired|required|off	Use kerberos authentication
+	--use-krb5-ccache=CCACHE		Credentials cache location for Kerberos
+	--use-winbind-ccache			Use the winbind ccache for authentication
+	--client-protection=sign|encrypt|off	Configure used protection for client connections
+	-C or --comment=<comment>	descriptive comment (for add only)
+	-c or --container=<container>	LDAP container, defaults to cn=Users (for add in ADS only)

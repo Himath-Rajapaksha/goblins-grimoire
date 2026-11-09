@@ -1,0 +1,21 @@
+Usage: testparm [OPTION...] <config-file> [host-name] [host-ip]
+  -s, --suppress-prompt           Suppress prompt for enter
+  -v, --verbose                   Show default options too
+  -l, --skip-logic-checks         Skip the global checks
+      --show-all-parameters       Show the parameters, type, possible values
+      --parameter-name=STRING     Limit testparm to a named parameter
+      --section-name=STRING       Limit testparm to a named section
+
+Help options:
+  -?, --help                      Show this help message
+      --usage                     Display brief usage message
+
+Common debug options:
+  -d, --debuglevel=DEBUGLEVEL     Set debug level
+      --debug-stdout              Send debug output to standard output
+
+Options:
+      --option=name=value         Set smb.conf option from command line
+
+Version options:
+  -V, --version                   Print version

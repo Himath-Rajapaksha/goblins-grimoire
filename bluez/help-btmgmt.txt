@@ -1,0 +1,11 @@
+btmgmt ver 5.82
+Usage:
+	btmgmt [--options] [commands]
+Options:
+	--index 	Specify adapter index
+
+	--monitor 	Enable monitor output
+	--timeout 	Timeout in seconds for non-interactive mode
+	--version 	Display version
+	--init-script 	Init script file
+	--help 		Display help

@@ -1,0 +1,5 @@
+Usage:
+net status sessions [parseable]
+    If parseable is specified, output is presented in a machine-parseable fashion.
+net status shares [parseable]
+    If parseable is specified, output is presented in a machine-parseable fashion.

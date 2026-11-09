@@ -98,7 +98,7 @@ decision tree and a safe invocation matrix.
 | 21 | `grpcurl -plaintext -d '{"topic":"x"}' 127.0.0.1:50051 my.Service/Subscribe` | Server stream |
 | 22 | `grpcurl -plaintext -d @ ... < stream.jsonl` | Client stream |
 | 23 | `grpcurl -plaintext -vv -d '{}' ... > call.log 2>&1` | Timing evidence |
-| 24 | `grep -E 'Response|Trailer' call.log` | Extract metadata |
+| 24 | `grep -E 'Response\|Trailer' call.log` | Extract metadata |
 | 25 | `sha256sum call.log out.protoset recovered/*.proto` | Hash evidence |
 
 **Research questions**

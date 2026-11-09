@@ -1,0 +1,33 @@
+Usage:
+net sam createbuiltingroup
+    Create a new BUILTIN group
+net sam createlocalgroup
+    Create a new local group
+net sam createdomaingroup
+    Create a new group
+net sam deletelocalgroup
+    Delete an existing local group
+net sam deletedomaingroup
+    Delete a group
+net sam mapunixgroup
+    Map a unix group to a domain group
+net sam unmapunixgroup
+    Remove a group mapping of an unix group to a domain group
+net sam addmem
+    Add a member to a group
+net sam delmem
+    Delete a member from a group
+net sam listmem
+    List group members
+net sam list
+    List users, groups and local groups
+net sam show
+    Show details of a SAM entry
+net sam set
+    Set details of a SAM account
+net sam policy
+    Set account policies
+net sam rights
+    Manipulate user privileges
+net sam privison
+    Provision a clear user database

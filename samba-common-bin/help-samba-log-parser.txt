@@ -1,0 +1,16 @@
+usage: samba-log-parser [-h] [--traceid ID] [--pid PID] [--breakdown]
+                        [--merge-by-timestamp] [--flow] [--flow-compact]
+                        path
+
+positional arguments:
+  path                  logfile or directory
+
+options:
+  -h, --help            show this help message and exit
+  --traceid ID          specify the traceid of the trace records
+  --pid PID             specify the pid of winbind client
+  --breakdown           breakdown the traces into per traceid files
+  --merge-by-timestamp  merge logs by timestamp
+  --flow                show the request/sub-request flow traces
+  --flow-compact        show the request/sub-request flow traces without
+                        dcerpc details

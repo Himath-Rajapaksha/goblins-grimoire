@@ -1,0 +1,21 @@
+Usage:
+net cache add <key string> <data string> <timeout>
+  Add new cache entry.
+    key string	Key string to add cache data under.
+    data string	Data to store under given key.
+    timeout	Timeout for cache data.
+net cache del <key string>
+  Delete existing cache entry by key.
+    key string	Key string to delete.
+net cache get <key string>
+  Get cache entry by key.
+    key string	Key string to look up cache entry for.
+net cache search <pattern>
+  Search entry by pattern.
+    pattern	Pattern to search for in cache.
+net cache list
+  List all cache entries
+net cache flush
+  Delete all cache entries
+net cache samlogon
+  List contents of the samlogon cache

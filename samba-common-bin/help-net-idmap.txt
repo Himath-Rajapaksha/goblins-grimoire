@@ -1,0 +1,13 @@
+Usage:
+net idmap dump
+  Dump the current ID mappings
+net idmap restore
+  Restore entries from stdin
+net idmap get
+  Read data from the ID mapping database
+net idmap set
+  Write data to the ID mapping database
+net idmap delete
+  Delete entries from the ID mapping database
+net idmap check
+  Check id mappings

@@ -1,0 +1,7 @@
+Usage:
+net rap service
+    List services on remote server
+net rap service start
+    Start service on remote server
+net rap service stop
+    Stop named serve on remote server

@@ -1,0 +1,31 @@
+btmon - Bluetooth monitor
+Usage:
+	btmon [options]
+options:
+	-r, --read <file>      Read traces in btsnoop format
+	-w, --write <file>     Save traces in btsnoop format
+	-a, --analyze <file>   Analyze traces in btsnoop format
+	                       If gnuplot is installed on the
+	                       system it will also attempt to plot
+	                       packet latency graph.
+	-s, --server <socket>  Start monitor server socket
+	-p, --priority <level> Show only priority or lower
+	-i, --index <num>      Show only specified controller
+	-d, --tty <tty>        Read data from TTY
+	-B, --tty-speed <rate> Set TTY speed (default 115200)
+	-V, --vendor <compid>  Set default company identifier
+	-M, --mgmt             Open channel for mgmt events
+	-t, --time             Show time instead of time offset
+	-T, --date             Show time and date information
+	-S, --sco              Dump SCO traffic
+	-A, --a2dp             Dump A2DP stream traffic
+	-I, --iso              Dump ISO traffic
+	-E, --ellisys [ip]     Send Ellisys HCI Injection
+	-P, --no-pager         Disable pager usage
+	-J  --jlink <device>,[<serialno>],[<interface>],[<speed>]
+	                       Read data from RTT
+	-R  --rtt [<address>],[<area>],[<name>]
+	                       RTT control block parameters
+	-C, --columns [width]  Output width if not a terminal
+	-c, --color [mode]     Output color: auto/always/never
+	-h, --help             Show help options

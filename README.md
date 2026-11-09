@@ -14,7 +14,7 @@ adds context, workflows, and copy-paste recipes that `--help` does not explain.
 
 > **Start here for research-driven use:** [`DEEP-RESEARCH.md`](DEEP-RESEARCH.md) —
 > the `@deep-research` workflow, prompt template, evidence rules, research-log
-> format, and the index of all 109 `SCENARIOS.md` files (108 tools;
+> format, and the index of all 119 `SCENARIOS.md` files (118 tools;
 > `metasploit-msfvenom` is documented alongside Metasploit).
 >
 > **External references:** [`RELATED-DOCS.md`](RELATED-DOCS.md) — a cited
@@ -103,10 +103,14 @@ adds context, workflows, and copy-paste recipes that `--help` does not explain.
 | netexec | [`netexec/`](netexec/README.md) | Multi-protocol network exploitation (SMB/LDAP/WinRM/...) |
 | impacket | [`impacket/`](impacket/README.md) | Python SMB/MS-RPC/Kerberos toolkit and 62 example scripts |
 | smbclient | [`smbclient/`](smbclient/README.md) | Samba SMB/CIFS client and mini shell |
+| smbget | [`smbget/`](smbget/README.md) | `wget`-style SMB downloader with resume and recursion |
+| samba-common-bin | [`samba-common-bin/`](samba-common-bin/README.md) | `net`, `smbpasswd`, `testparm`, `smbcontrol`, `nmblookup`, `winexe` |
 | rpcclient | [`rpcclient/`](rpcclient/README.md) | Samba MS-RPC client for SAMR/LSA/SPOOLSS |
 | ldapsearch | [`ldapsearch/`](ldapsearch/README.md) | OpenLDAP query tool for directory enumeration |
+| ldapdomaindump | [`ldapdomaindump/`](ldapdomaindump/README.md) | Bulk AD LDAP dump to HTML/JSON/greppable text |
 | enum4linux-ng | [`enum4linux-ng/`](enum4linux-ng/README.md) | SMB/NetBIOS/AD enumeration |
 | wireshark | [`wireshark/`](wireshark/README.md) | Packet capture & analysis (`tshark`, `dumpcap`, GUI) |
+| scapy | [`scapy/`](scapy/README.md) | Python packet crafting, sniffing, and protocol layers |
 | snmp | [`snmp/`](snmp/README.md) | Net-SNMP CLI suite (`snmpwalk`, `snmpget`, `snmpset`, ...) |
 | onesixtyone | [`onesixtyone/`](onesixtyone/README.md) | Fast SNMP community-string scanner |
 | nbtscan | [`nbtscan/`](nbtscan/README.md) | NetBIOS name and address scanner |
@@ -141,6 +145,20 @@ adds context, workflows, and copy-paste recipes that `--help` does not explain.
 | bully | [`bully/`](bully/README.md) | WPS PIN brute force |
 | eaphammer | [`eaphammer/`](eaphammer/README.md) | 802.1X/EAP Evil Twin and credential capture |
 | wifiphisher | [`wifiphisher/`](wifiphisher/README.md) | Rogue AP and credential-phishing framework (Python 3 patched) |
+| wpa_supplicant | [`wpa_supplicant/`](wpa_supplicant/README.md) | WPA/WPA2/WPA3 supplicant plus `wpa_cli` and `wpa_passphrase` |
+| wireless-tools | [`wireless-tools/`](wireless-tools/README.md) | Legacy `iwconfig`/`iwlist`/`iwpriv`/`iwspy` interface utilities |
+
+### Bluetooth
+| Tool | Directory | One-liner |
+|------|-----------|-----------|
+| bluez | [`bluez/`](bluez/README.md) | `bluetoothctl`, `hcitool`, `btmgmt`, `btmon`, `sdptool`, `rfcomm` |
+
+### Android & mobile
+| Tool | Directory | One-liner |
+|------|-----------|-----------|
+| adb | [`adb/`](adb/README.md) | Android Debug Bridge: devices, shell, files, packages, port forwarding |
+| fastboot | [`fastboot/`](fastboot/README.md) | Bootloader flashing, unlocking, slots, and partition management |
+| scrcpy | [`scrcpy/`](scrcpy/README.md) | USB/TCP screen mirroring and control with recording and audio |
 
 ### Phishing & social engineering
 | Tool | Directory | One-liner |
@@ -261,9 +279,18 @@ holehe --only-used user@example.com
 - `wireshark` group membership is required for live packet capture.
 - Wireless and MITM tools (`aircrack-ng`, `wifite`, `reaver`, `wash`, `iw`,
   `macchanger`, `bettercap`, `ettercap`, `dsniff`, `hcxdumptool`, `kismet`,
-  `bully`, `eaphammer`, `wifiphisher`) require root for capture, injection, or
-  interface changes. A limited NOPASSWD sudoers grant covers these and the
-  other root-only tools (sshuttle, gophish, evilginx, setoolkit).
+  `bully`, `eaphammer`, `wifiphisher`, `wpa_supplicant`, `wireless-tools`)
+  require root for capture, injection, or interface changes. A limited
+  NOPASSWD sudoers grant covers these and the other root-only tools (sshuttle,
+  gophish, evilginx, setoolkit).
+- Bluetooth tools (`bluez`: `bluetoothctl`, `hcitool`, `btmgmt`, `btmon`,
+  `sdptool`, `rfcomm`) need a running `bluetoothd`, a `bluetooth`-group user or
+  root, and an adapter that is not blocked by `rfkill`.
+- Android tools (`adb`, `fastboot`) need a udev rule granting the logged-in
+  user access to the device; without one, `adb devices` shows `no permissions`
+  and `fastboot` waits for a device. `scrcpy` is a local build at
+  `/usr/local/bin/scrcpy` that embeds `/usr/local/bin/adb`; export
+  `ADB=/usr/bin/adb` so it uses the packaged client.
 - Tor-related tools: use `torsocks <cmd>` for per-app Tor; the root-only
   `tor-mode` toggle provides transparent system-wide routing. A standalone
   `tor` instance needs a writable `DataDirectory` and free `SocksPort`.

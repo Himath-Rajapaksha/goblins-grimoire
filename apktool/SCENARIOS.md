@@ -27,7 +27,7 @@ available. Inventory the tree before deciding which parts matter.
 | 1 | `mkdir -p /home/user/cases` | Create the case workspace |
 | 2 | `apktool d /home/user/cases/target.apk -o /home/user/cases/app` | Full decode into a named directory |
 | 3 | `ls /home/user/cases/app` | Confirm manifest, `res/`, `smali/`, `apktool.yml` |
-| 4 | `grep -E 'package=|android:permission|exported=' /home/user/cases/app/AndroidManifest.xml` | First-pass manifest review |
+| 4 | `grep -E 'package=\|android:permission\|exported=' /home/user/cases/app/AndroidManifest.xml` | First-pass manifest review |
 | 5 | `du -sh /home/user/cases/app` | Budget disk before copying or diffing |
 
 **Research questions**

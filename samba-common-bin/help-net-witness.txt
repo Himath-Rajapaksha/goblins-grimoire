@@ -1,0 +1,11 @@
+Usage:
+net witness list
+    List witness registrations from rpcd_witness_registration.tdb
+net witness client-move
+    Generate client move notifications for witness registrations to a new ip or node
+net witness share-move
+    Generate share move notifications for witness registrations to a new ip or node
+net witness force-unregister
+    Force unregistrations for witness registrations
+net witness force-response
+    Force an AsyncNotify response based on json input (mostly for testing)

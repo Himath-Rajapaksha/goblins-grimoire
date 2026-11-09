@@ -69,8 +69,8 @@ Append findings to `~/tools/<tool>/RESEARCH-LOG.md`:
 
 ## Scenario index
 
-Every directory below has a `SCENARIOS.md`. There are 109 directories covering
-108 tools: `metasploit-msfvenom` is documented alongside Metasploit rather than
+Every directory below has a `SCENARIOS.md`. There are 119 directories covering
+118 tools: `metasploit-msfvenom` is documented alongside Metasploit rather than
 counted separately.
 
 ### Recon & asset discovery
@@ -148,10 +148,14 @@ counted separately.
 | netexec | [`netexec/SCENARIOS.md`](netexec/SCENARIOS.md) | 10 protocols x actions |
 | impacket | [`impacket/SCENARIOS.md`](impacket/SCENARIOS.md) | 62 scripts: enum/kerberos/dump/exec/relay |
 | smbclient | [`smbclient/SCENARIOS.md`](smbclient/SCENARIOS.md) | share access/upload/download/scripting |
+| smbget | [`smbget/SCENARIOS.md`](smbget/SCENARIOS.md) | URL forms/auth/resume/recursive/throttle |
+| samba-common-bin | [`samba-common-bin/SCENARIOS.md`](samba-common-bin/SCENARIOS.md) | `net`/`smbpasswd`/`testparm`/`smbcontrol`/`nmblookup`/tdb |
 | rpcclient | [`rpcclient/SCENARIOS.md`](rpcclient/SCENARIOS.md) | SAMR/LSA/SPOOLSS command groups |
 | ldapsearch | [`ldapsearch/SCENARIOS.md`](ldapsearch/SCENARIOS.md) | bind/base/filter/attribute/output |
+| ldapdomaindump | [`ldapdomaindump/SCENARIOS.md`](ldapdomaindump/SCENARIOS.md) | bind formats/output files/filtering/cleanup |
 | enum4linux-ng | [`enum4linux-ng/SCENARIOS.md`](enum4linux-ng/SCENARIOS.md) | all enumeration switches |
 | wireshark | [`wireshark/SCENARIOS.md`](wireshark/SCENARIOS.md) | dumpcap/tshark/GUI |
+| scapy | [`scapy/SCENARIOS.md`](scapy/SCENARIOS.md) | craft/sniff/send/layers/sessions |
 | snmp | [`snmp/SCENARIOS.md`](snmp/SCENARIOS.md) | snmpwalk/get/set/bulk/translate |
 | onesixtyone | [`onesixtyone/SCENARIOS.md`](onesixtyone/SCENARIOS.md) | community-string scanning |
 | nbtscan | [`nbtscan/SCENARIOS.md`](nbtscan/SCENARIOS.md) | range/verbose/script output |
@@ -197,6 +201,22 @@ counted separately.
 | bully | [`bully/SCENARIOS.md`](bully/SCENARIOS.md) | WPS PIN attack options |
 | eaphammer | [`eaphammer/SCENARIOS.md`](eaphammer/SCENARIOS.md) | evil-twin/EAP capture modes |
 | wifiphisher | [`wifiphisher/SCENARIOS.md`](wifiphisher/SCENARIOS.md) | AP/phishing scenario modes |
+| wpa_supplicant | [`wpa_supplicant/SCENARIOS.md`](wpa_supplicant/SCENARIOS.md) | driver/config/`wpa_cli`/`wpa_passphrase` |
+| wireless-tools | [`wireless-tools/SCENARIOS.md`](wireless-tools/SCENARIOS.md) | `iwconfig`/`iwlist`/`iwpriv`/`iwspy`/`iwgetid` |
+
+### Bluetooth
+
+| Tool | Scenarios file | Command surface |
+|------|----------------|-----------------|
+| bluez | [`bluez/SCENARIOS.md`](bluez/SCENARIOS.md) | `bluetoothctl`/`hcitool`/`btmgmt`/`btmon`/`sdptool`/`rfcomm` |
+
+### Android & mobile
+
+| Tool | Scenarios file | Command surface |
+|------|----------------|-----------------|
+| adb | [`adb/SCENARIOS.md`](adb/SCENARIOS.md) | devices/shell/files/packages/forward/keygen |
+| fastboot | [`fastboot/SCENARIOS.md`](fastboot/SCENARIOS.md) | devices/getvar/flash/slots/unlock |
+| scrcpy | [`scrcpy/SCENARIOS.md`](scrcpy/SCENARIOS.md) | video/audio/recording/input/v4l2/tcpip |
 
 ### Phishing & social engineering
 

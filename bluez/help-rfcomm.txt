@@ -1,0 +1,23 @@
+RFCOMM configuration utility ver 5.82
+Usage:
+	rfcomm [options] <command> <dev>
+
+Options:
+	-i, --device [hciX|bdaddr]     Local HCI device or BD Address
+	-h, --help                     Display help
+	-r, --raw                      Switch TTY into raw mode
+	-A, --auth                     Enable authentication
+	-E, --encrypt                  Enable encryption
+	-S, --secure                   Secure connection
+	-C, --central                  Become the central of a piconet
+	-L, --linger [seconds]         Set linger timeout
+	-a                             Show all devices (default)
+
+Commands:
+	bind     <dev> <bdaddr> [channel]	Bind device
+	release  <dev>                   	Release device
+	show     <dev>                   	Show device
+	connect  <dev> <bdaddr> [channel]	Connect device
+	listen   <dev> [channel [cmd]]   	Listen
+	watch    <dev> [channel [cmd]]   	Watch
+

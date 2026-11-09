@@ -1,0 +1,27 @@
+Usage:
+net rap file
+    List open files
+net rap share
+    List shares exported by server
+net rap session
+    List open sessions
+net rap server
+    List servers in domain/workgroup
+net rap domain
+    List domains in network
+net rap printq
+    List printer queues on server
+net rap user
+    List users
+net rap group
+    List user groups
+net rap validate
+    Check username/password
+net rap groupmember
+    List/modify group memberships
+net rap admin
+    Execute commands on remote OS/2
+net rap service
+    Start/stop remote service
+net rap password
+    Change user password

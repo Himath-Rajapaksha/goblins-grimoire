@@ -1,0 +1,9 @@
+Usage:
+net g_lock do <lock name> <timeout> <command>
+
+net g_lock locks
+
+net g_lock dump <lock name>
+
+net g_lock dumpall
+

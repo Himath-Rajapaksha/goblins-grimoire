@@ -1,0 +1,2 @@
+# reading passphrase from stdin
+Failed to read passphrase

@@ -1,0 +1,7 @@
+Usage:
+net dom join <domain=DOMAIN> <ou=OU> <account=ACCOUNT> <password=PASSWORD> <reboot>
+  Join a remote machine
+net dom unjoin <account=ACCOUNT> <password=PASSWORD> <reboot>
+  Unjoin a remote machine
+net dom renamecomputer <newname=NEWNAME> <account=ACCOUNT> <password=PASSWORD> <reboot>
+  Rename joined computer

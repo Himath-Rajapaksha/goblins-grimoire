@@ -1,0 +1,3 @@
+Usage:
+net rpc changetrustpw
+    Change the machine trust password

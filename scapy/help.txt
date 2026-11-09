@@ -1,0 +1,6 @@
+Usage: scapy.py [-s sessionfile] [-c new_startup_file] [-p new_prestart_file] [-C] [-P] [-H]
+Args:
+	-H: header-less start
+	-C: do not read startup file
+	-P: do not read pre-startup file
+

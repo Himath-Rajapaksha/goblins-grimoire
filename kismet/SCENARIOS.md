@@ -101,7 +101,7 @@ lists; return exact -c syntax and export commands.
 | 23 | `sudo kismet --override httpd` | Load `kismet_httpd.conf` overrides |
 | 24 | `sudo kismet --confdir /opt/kismet/etc` | Alternate config directory |
 | 25 | `sudo kismet --no-plugins` | Start without plugins |
-| 26 | `grep -E 'httpd_|log_prefix' /opt/kismet/etc/kismet_httpd.conf` | Inspect UI binding |
+| 26 | `grep -E 'httpd_\|log_prefix' /opt/kismet/etc/kismet_httpd.conf` | Inspect UI binding |
 
 **Research questions**
 - What is the minimum config to bind the UI to localhost only?
