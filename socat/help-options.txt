@@ -1,0 +1,572 @@
+socat by Gerhard Rieger and contributors - see www.dest-unreach.org
+Usage:
+socat [options] <bi-address> <bi-address>
+   options (general command line options):
+      -V     print version and feature information to stdout, and exit
+      -h|-?  print a help text describing command line options and addresses
+      -hh    like -h, plus a list of all common address option names
+      -hhh   like -hh, plus a list of all available address option names
+      -d[ddd]        increase verbosity (use up to 4 times; 2 are recommended)
+      -d0|1|2|3|4    set verbosity level (0: Errors; 4 all including Debug)
+      -D     analyze file descriptors before loop
+      --experimental enable experimental features
+      --statistics   output transfer statistics on exit
+      -ly[facility]  log to syslog, using facility (default is daemon)
+      -lf<logfile>   log to file
+      -ls            log to stderr (default if no other log)
+      -lm[facility]  mixed log mode (stderr during initialization, then syslog)
+      -lp<progname>  set the program name used for logging and vars
+      -lu            use microseconds for logging timestamps
+      -lh            add hostname to log messages
+      -v     verbose text dump of data traffic
+      -x     verbose hexadecimal dump of data traffic
+      -r <file>      raw dump of data flowing from left to right
+      -R <file>      raw dump of data flowing from right to left
+      -b<size_t>     set data buffer size (8192)
+      -s     sloppy (continue on error)
+      -S<sigmask>    log these signals, override default
+      -t<timeout>    wait seconds before closing second channel
+      -T<timeout>    total inactivity timeout in seconds
+      -u     unidirectional mode (left to right)
+      -U     unidirectional mode (right to left)
+      -g     do not check option groups
+      -L <lockfile>  try to obtain lock, or fail
+      -W <lockfile>  try to obtain lock, or wait
+      -0     do not prefer an IP version
+      -4     prefer IPv4 if version is not explicitly specified
+      -6     prefer IPv6 if version is not explicitly specified
+   bi-address:  /* is an address that may act both as data sync and source */
+      <single-address>
+      <single-address>!!<single-address>
+   single-address:
+      <address-head>[,<opts>]
+   address-head:
+      ABSTRACT-CLIENT:<filename>		groups=FD,SOCKET,RETRY,UNIX
+      ABSTRACT-CONNECT:<filename>		groups=FD,SOCKET,RETRY,UNIX
+      ABSTRACT-LISTEN:<filename>		groups=FD,SOCKET,LISTEN,CHILD,RETRY,UNIX
+      ABSTRACT-RECV:<filename>			groups=FD,SOCKET,RETRY,UNIX
+      ABSTRACT-RECVFROM:<filename>		groups=FD,SOCKET,CHILD,RETRY,UNIX
+      ABSTRACT-SENDTO:<filename>		groups=FD,SOCKET,RETRY,UNIX
+      ACCEPT-FD:<fdnum>				groups=FD,SOCKET,CHILD,RETRY,RANGE,UNIX,IP4,IP6,UDP,TCP,SCTP,DCCP,UDPLITE
+      CREATE:<filename>				groups=FD,REG,NAMED
+      DCCP-CONNECT:<host>:<port>		groups=FD,SOCKET,CHILD,RETRY,IP4,IP6,DCCP
+      DCCP-LISTEN:<port>			groups=FD,SOCKET,LISTEN,CHILD,RETRY,RANGE,IP4,IP6,DCCP
+      DCCP4-CONNECT:<host>:<port>		groups=FD,SOCKET,CHILD,RETRY,IP4,DCCP
+      DCCP4-LISTEN:<port>			groups=FD,SOCKET,LISTEN,CHILD,RETRY,RANGE,IP4,DCCP
+      DCCP6-CONNECT:<host>:<port>		groups=FD,SOCKET,CHILD,RETRY,IP6,DCCP
+      DCCP6-LISTEN:<port>			groups=FD,SOCKET,LISTEN,CHILD,RETRY,RANGE,IP6,DCCP
+      EXEC:<command-line>			groups=FD,FIFO,SOCKET,EXEC,FORK,TERMIOS,PTY,PARENT,UNIX
+      FD:<fdnum>				groups=FD,FIFO,CHR,BLK,REG,SOCKET,TERMIOS,UNIX,IP4,IP6,UDP,TCP,SCTP,DCCP,UDPLITE
+      GOPEN:<filename>				groups=FD,FIFO,CHR,BLK,REG,SOCKET,NAMED,OPEN,TERMIOS,UNIX
+      INTERFACE:<interface>			groups=FD,SOCKET,INTERFACE
+      IP-DATAGRAM:<host>:<protocol>		groups=FD,SOCKET,RANGE,IP4,IP6
+      IP-RECV:<protocol>			groups=FD,SOCKET,RANGE,IP4,IP6
+      IP-RECVFROM:<protocol>			groups=FD,SOCKET,CHILD,RANGE,IP4,IP6
+      IP-SENDTO:<host>:<protocol>		groups=FD,SOCKET,IP4,IP6
+      IP4-DATAGRAM:<host>:<protocol>		groups=FD,SOCKET,RANGE,IP4
+      IP4-RECV:<protocol>			groups=FD,SOCKET,RANGE,IP4
+      IP4-RECVFROM:<protocol>			groups=FD,SOCKET,CHILD,RANGE,IP4
+      IP4-SENDTO:<host>:<protocol>		groups=FD,SOCKET,IP4
+      IP6-DATAGRAM:<host>:<protocol>		groups=FD,SOCKET,RANGE,IP6
+      IP6-RECV:<protocol>			groups=FD,SOCKET,RANGE,IP6
+      IP6-RECVFROM:<protocol>			groups=FD,SOCKET,CHILD,RANGE,IP6
+      IP6-SENDTO:<host>:<protocol>		groups=FD,SOCKET,IP6
+      OPEN:<filename>				groups=FD,FIFO,CHR,BLK,REG,NAMED,OPEN,TERMIOS
+      OPENSSL:<host>:<port>			groups=FD,SOCKET,CHILD,RETRY,IP4,IP6,TCP,OPENSSL
+      OPENSSL-DTLS-CLIENT:<host>:<port>		groups=FD,SOCKET,CHILD,RETRY,IP4,IP6,UDP,OPENSSL
+      OPENSSL-DTLS-SERVER:<port>		groups=FD,SOCKET,LISTEN,CHILD,RETRY,RANGE,IP4,IP6,UDP,OPENSSL
+      OPENSSL-LISTEN:<port>			groups=FD,SOCKET,LISTEN,CHILD,RETRY,RANGE,IP4,IP6,TCP,OPENSSL
+      PIPE[:<filename>]				groups=FD,FIFO,NAMED,OPEN
+      POSIXMQ-BIDIRECTIONAL:<mqname>		groups=FD,NAMED,OPEN,RETRY,POSIXMQ
+      POSIXMQ-READ:<mqname>			groups=FD,NAMED,OPEN,RETRY,POSIXMQ
+      POSIXMQ-RECEIVE:<mqname>			groups=FD,NAMED,OPEN,CHILD,RETRY,POSIXMQ
+      POSIXMQ-SEND:<mqname>			groups=FD,NAMED,OPEN,CHILD,RETRY,POSIXMQ
+      POSIXMQ-WRITE:<mqname>			groups=FD,NAMED,OPEN,CHILD,RETRY,POSIXMQ
+      PROXY:<proxy-server>:<host>:<port>	groups=FD,SOCKET,CHILD,RETRY,IP4,IP6,TCP,HTTP
+      PTY					groups=FD,NAMED,TERMIOS,PTY
+      SCTP-CONNECT:<host>:<port>		groups=FD,SOCKET,CHILD,RETRY,IP4,IP6,SCTP
+      SCTP-LISTEN:<port>			groups=FD,SOCKET,LISTEN,CHILD,RETRY,RANGE,IP4,IP6,SCTP
+      SCTP4-CONNECT:<host>:<port>		groups=FD,SOCKET,CHILD,RETRY,IP4,SCTP
+      SCTP4-LISTEN:<port>			groups=FD,SOCKET,LISTEN,CHILD,RETRY,RANGE,IP4,SCTP
+      SCTP6-CONNECT:<host>:<port>		groups=FD,SOCKET,CHILD,RETRY,IP6,SCTP
+      SCTP6-LISTEN:<port>			groups=FD,SOCKET,LISTEN,CHILD,RETRY,RANGE,IP6,SCTP
+      SHELL:<shell-command>			groups=FD,FIFO,SOCKET,EXEC,FORK,SHELL,TERMIOS,PTY,PARENT,UNIX
+      SOCKET-CONNECT:<domain>:<protocol>:<remote-address>	groups=FD,SOCKET,CHILD,RETRY
+      SOCKET-DATAGRAM:<domain>:<type>:<protocol>:<remote-address>	groups=FD,SOCKET,RANGE
+      SOCKET-LISTEN:<domain>:<protocol>:<local-address>	groups=FD,SOCKET,LISTEN,CHILD,RETRY,RANGE
+      SOCKET-RECV:<domain>:<type>:<protocol>:<local-address>	groups=FD,SOCKET,RANGE
+      SOCKET-RECVFROM:<domain>:<type>:<protocol>:<local-address>	groups=FD,SOCKET,CHILD,RANGE
+      SOCKET-SENDTO:<domain>:<type>:<protocol>:<remote-address>	groups=FD,SOCKET
+      SOCKETPAIR:<filename>			groups=FD,SOCKET
+      SOCKS4:<socks-server>:<host>:<port>	groups=FD,SOCKET,CHILD,RETRY,IP4,IP6,TCP,SOCKS
+      SOCKS4A:<socks-server>:<host>:<port>	groups=FD,SOCKET,CHILD,RETRY,IP4,IP6,TCP,SOCKS
+      SOCKS5-CONNECT:<socks-server>[:<socks-port>]:<target-host>:<target-port>	groups=FD,SOCKET,CHILD,RETRY,IP4,IP6,TCP,SOCKS
+      SOCKS5-LISTEN:<socks-server>[:<socks-port>]:<listen-host>:<listen-port>	groups=FD,SOCKET,CHILD,RETRY,IP4,IP6,TCP,SOCKS
+      STDERR					groups=FD,FIFO,CHR,BLK,REG,SOCKET,TERMIOS,UNIX,IP4,IP6,UDP,TCP,SCTP,DCCP,UDPLITE
+      STDIN					groups=FD,FIFO,CHR,BLK,REG,SOCKET,TERMIOS,UNIX,IP4,IP6,UDP,TCP,SCTP,DCCP,UDPLITE
+      STDIO					groups=FD,FIFO,CHR,BLK,REG,SOCKET,TERMIOS,UNIX,IP4,IP6,UDP,TCP,SCTP,DCCP,UDPLITE
+      STDOUT					groups=FD,FIFO,CHR,BLK,REG,SOCKET,TERMIOS,UNIX,IP4,IP6,UDP,TCP,SCTP,DCCP,UDPLITE
+      SYSTEM:<shell-command>			groups=FD,FIFO,SOCKET,EXEC,FORK,TERMIOS,PTY,PARENT,UNIX
+      TCP-CONNECT:<host>:<port>			groups=FD,SOCKET,CHILD,RETRY,IP4,IP6,TCP
+      TCP-LISTEN:<port>				groups=FD,SOCKET,LISTEN,CHILD,RETRY,RANGE,IP4,IP6,TCP
+      TCP4-CONNECT:<host>:<port>		groups=FD,SOCKET,CHILD,RETRY,IP4,TCP
+      TCP4-LISTEN:<port>			groups=FD,SOCKET,LISTEN,CHILD,RETRY,RANGE,IP4,TCP
+      TCP6-CONNECT:<host>:<port>		groups=FD,SOCKET,CHILD,RETRY,IP6,TCP
+      TCP6-LISTEN:<port>			groups=FD,SOCKET,LISTEN,CHILD,RETRY,RANGE,IP6,TCP
+      TUN[:<ip-addr>/<bits>]			groups=FD,CHR,OPEN,INTERFACE
+      UDP-CONNECT:<host>:<port>			groups=FD,SOCKET,IP4,IP6,UDP
+      UDP-DATAGRAM:<host>:<port>		groups=FD,SOCKET,RANGE,IP4,IP6,UDP
+      UDP-LISTEN:<port>				groups=FD,SOCKET,LISTEN,CHILD,RANGE,IP4,IP6,UDP
+      UDP-RECV:<port>				groups=FD,SOCKET,RANGE,IP4,IP6,UDP
+      UDP-RECVFROM:<port>			groups=FD,SOCKET,CHILD,RANGE,IP4,IP6,UDP
+      UDP-SENDTO:<host>:<port>			groups=FD,SOCKET,IP4,IP6,UDP
+      UDP4-CONNECT:<host>:<port>		groups=FD,SOCKET,IP4,UDP
+      UDP4-DATAGRAM:<host>:<port>		groups=FD,SOCKET,RANGE,IP4,UDP
+      UDP4-LISTEN:<port>			groups=FD,SOCKET,LISTEN,CHILD,RANGE,IP4,UDP
+      UDP4-RECV:<port>				groups=FD,SOCKET,RANGE,IP4,UDP
+      UDP4-RECVFROM:<port>			groups=FD,SOCKET,CHILD,RANGE,IP4,UDP
+      UDP4-SENDTO:<host>:<port>			groups=FD,SOCKET,IP4,UDP
+      UDP6-CONNECT:<host>:<port>		groups=FD,SOCKET,IP6,UDP
+      UDP6-DATAGRAM:<host>:<port>		groups=FD,SOCKET,RANGE,IP6,UDP
+      UDP6-LISTEN:<port>			groups=FD,SOCKET,LISTEN,CHILD,RANGE,IP6,UDP
+      UDP6-RECV:<port>				groups=FD,SOCKET,RANGE,IP6,UDP
+      UDP6-RECVFROM:<port>			groups=FD,SOCKET,CHILD,RANGE,IP6,UDP
+      UDP6-SENDTO:<host>:<port>			groups=FD,SOCKET,IP6,UDP
+      UDPLITE-CONNECT:<host>:<port>		groups=FD,SOCKET,IP4,IP6,UDP,UDPLITE
+      UDPLITE-DATAGRAM:<host>:<port>		groups=FD,SOCKET,RANGE,IP4,IP6,UDP,UDPLITE
+      UDPLITE-LISTEN:<port>			groups=FD,SOCKET,LISTEN,CHILD,RANGE,IP4,IP6,UDP,UDPLITE
+      UDPLITE-RECV:<port>			groups=FD,SOCKET,RANGE,IP4,IP6,UDP,UDPLITE
+      UDPLITE-RECVFROM:<port>			groups=FD,SOCKET,CHILD,RANGE,IP4,IP6,UDP,UDPLITE
+      UDPLITE-SENDTO:<host>:<port>		groups=FD,SOCKET,IP4,IP6,UDP,UDPLITE
+      UDPLITE4-CONNECT:<host>:<port>		groups=FD,SOCKET,IP4,UDP,UDPLITE
+      UDPLITE4-DATAGRAM:<remote-address>:<port>	groups=FD,SOCKET,RANGE,IP4,UDP,UDPLITE
+      UDPLITE4-LISTEN:<port>			groups=FD,SOCKET,LISTEN,CHILD,RANGE,IP4,UDP,UDPLITE
+      UDPLITE4-RECV:<port>			groups=FD,SOCKET,RANGE,IP4,UDP,UDPLITE
+      UDPLITE4-RECVFROM:<host>:<port>		groups=FD,SOCKET,CHILD,RANGE,IP4,UDP,UDPLITE
+      UDPLITE4-SENDTO:<host>:<port>		groups=FD,SOCKET,IP4,UDP,UDPLITE
+      UDPLITE6-CONNECT:<host>:<port>		groups=FD,SOCKET,IP6,UDP,UDPLITE
+      UDPLITE6-DATAGRAM:<host>:<port>		groups=FD,SOCKET,RANGE,IP6,UDP,UDPLITE
+      UDPLITE6-LISTEN:<port>			groups=FD,SOCKET,LISTEN,CHILD,RANGE,IP6,UDP,UDPLITE
+      UDPLITE6-RECV:<port>			groups=FD,SOCKET,RANGE,IP6,UDP,UDPLITE
+      UDPLITE6-RECVFROM:<port>			groups=FD,SOCKET,CHILD,RANGE,IP6,UDP,UDPLITE
+      UDPLITE6-SENDTO:<host>:<port>		groups=FD,SOCKET,IP6,UDP,UDPLITE
+      UNIX-CLIENT:<filename>			groups=FD,SOCKET,NAMED,RETRY,UNIX
+      UNIX-CONNECT:<filename>			groups=FD,SOCKET,NAMED,RETRY,UNIX
+      UNIX-LISTEN:<filename>			groups=FD,SOCKET,NAMED,LISTEN,CHILD,RETRY,UNIX
+      UNIX-RECV:<filename>			groups=FD,SOCKET,NAMED,RETRY,UNIX
+      UNIX-RECVFROM:<filename>			groups=FD,SOCKET,NAMED,CHILD,RETRY,UNIX
+      UNIX-SENDTO:<filename>			groups=FD,SOCKET,NAMED,RETRY,UNIX
+      VSOCK-CONNECT:<cid>:<port>		groups=FD,SOCKET,CHILD,RETRY
+      VSOCK-LISTEN:<port>			groups=FD,SOCKET,LISTEN,CHILD,RETRY
+   opts:
+      <opt>{,<opts>}:
+   opt:
+      acceptconn	groups=SOCKET		phase=PASTSOCKET	type=INT
+      addrconfig	groups=IP4,IP6		phase=OFFSET		type=BOOL
+      ai-all		groups=IP4,IP6		phase=OFFSET		type=BOOL
+      allmulti		groups=INTERFACE	phase=OFFSET		type=BOOL
+      allow-table	groups=RANGE		phase=ACCEPT		type=STRING
+      append		groups=FD,OPEN		phase=LATE		type=BOOL
+      async		groups=FD,OPEN		phase=LATE		type=BOOL
+      attachfilter	groups=SOCKET		phase=PASTSOCKET	type=INT
+      authhdr		groups=IP6		phase=PASTSOCKET	type=INT
+      automedia		groups=INTERFACE	phase=OFFSET		type=BOOL
+      b0		groups=TERMIOS		phase=FD		type=CONST
+      b1000000		groups=TERMIOS		phase=FD		type=CONST
+      b110		groups=TERMIOS		phase=FD		type=CONST
+      b115200		groups=TERMIOS		phase=FD		type=CONST
+      b1152000		groups=TERMIOS		phase=FD		type=CONST
+      b1200		groups=TERMIOS		phase=FD		type=CONST
+      b134		groups=TERMIOS		phase=FD		type=CONST
+      b150		groups=TERMIOS		phase=FD		type=CONST
+      b1500000		groups=TERMIOS		phase=FD		type=CONST
+      b1800		groups=TERMIOS		phase=FD		type=CONST
+      b19200		groups=TERMIOS		phase=FD		type=CONST
+      b200		groups=TERMIOS		phase=FD		type=CONST
+      b2000000		groups=TERMIOS		phase=FD		type=CONST
+      b230400		groups=TERMIOS		phase=FD		type=CONST
+      b2400		groups=TERMIOS		phase=FD		type=CONST
+      b2500000		groups=TERMIOS		phase=FD		type=CONST
+      b300		groups=TERMIOS		phase=FD		type=CONST
+      b3000000		groups=TERMIOS		phase=FD		type=CONST
+      b3500000		groups=TERMIOS		phase=FD		type=CONST
+      b38400		groups=TERMIOS		phase=FD		type=CONST
+      b4000000		groups=TERMIOS		phase=FD		type=CONST
+      b460800		groups=TERMIOS		phase=FD		type=CONST
+      b4800		groups=TERMIOS		phase=FD		type=CONST
+      b50		groups=TERMIOS		phase=FD		type=CONST
+      b500000		groups=TERMIOS		phase=FD		type=CONST
+      b57600		groups=TERMIOS		phase=FD		type=CONST
+      b576000		groups=TERMIOS		phase=FD		type=CONST
+      b600		groups=TERMIOS		phase=FD		type=CONST
+      b75		groups=TERMIOS		phase=FD		type=CONST
+      b921600		groups=TERMIOS		phase=FD		type=CONST
+      b9600		groups=TERMIOS		phase=FD		type=CONST
+      backlog		groups=LISTEN		phase=LISTEN		type=INT
+      bind		groups=SOCKET		phase=BIND		type=STRING
+      bind-tempname	groups=UNIX		phase=PREOPEN		type=STRING-NULL
+      brkint		groups=TERMIOS		phase=FD		type=BOOL
+      broadcast		groups=SOCKET		phase=PASTSOCKET	type=INT
+      bs0		groups=TERMIOS		phase=FD		type=CONST
+      bs1		groups=TERMIOS		phase=FD		type=CONST
+      bsdcompat		groups=SOCKET		phase=PASTSOCKET	type=INT
+      bsdly		groups=TERMIOS		phase=FD		type=BOOL
+      bytes		groups=APPL		phase=LATE		type=SIZE_T
+      cafile		groups=OPENSSL		phase=SPECIFIC		type=STRING
+      capath		groups=OPENSSL		phase=SPECIFIC		type=STRING
+      ccid		groups=DCCP		phase=PASTSOCKET	type=BYTE
+      cd		groups=(all)			phase=INIT		type=STRING
+      cert		groups=OPENSSL		phase=SPECIFIC		type=STRING
+      cfmakeraw		groups=TERMIOS		phase=FD		type=CONST
+      chroot		groups=PROCESS		phase=LATE		type=STRING
+      chroot-early	groups=PROCESS		phase=EARLY		type=STRING
+      ciphers		groups=OPENSSL		phase=SPECIFIC		type=STRING
+      clocal		groups=TERMIOS		phase=FD		type=BOOL
+      cloexec		groups=FD		phase=LATE		type=BOOL
+      close		groups=FD		phase=OFFSET		type=CONST
+      cn		groups=OPENSSL		phase=SPECIFIC		type=STRING
+      compr		groups=REG		phase=FD		type=BOOL
+      compress		groups=OPENSSL		phase=SPECIFIC		type=STRING
+      connect-timeout	groups=SOCKET		phase=PASTSOCKET	type=STRUCT-TIMEVAL
+      coolwrite		groups=FD		phase=INIT		type=BOOL
+      cork		groups=TCP		phase=PASTSOCKET	type=INT
+      cr		groups=APPL		phase=LATE		type=CONST
+      cr0		groups=TERMIOS		phase=FD		type=CONST
+      cr1		groups=TERMIOS		phase=FD		type=CONST
+      cr2		groups=TERMIOS		phase=FD		type=CONST
+      cr3		groups=TERMIOS		phase=FD		type=CONST
+      crdly		groups=TERMIOS		phase=FD		type=UNSIGNED-INT
+      cread		groups=TERMIOS		phase=FD		type=BOOL
+      creat		groups=OPEN		phase=OPEN		type=BOOL
+      crnl		groups=APPL		phase=LATE		type=CONST
+      crtscts		groups=TERMIOS		phase=FD		type=BOOL
+      cs5		groups=TERMIOS		phase=FD		type=CONST
+      cs6		groups=TERMIOS		phase=FD		type=CONST
+      cs7		groups=TERMIOS		phase=FD		type=CONST
+      cs8		groups=TERMIOS		phase=FD		type=CONST
+      csize		groups=TERMIOS		phase=FD		type=UNSIGNED-INT
+      cstopb		groups=TERMIOS		phase=FD		type=BOOL
+      ctty		groups=TERMIOS		phase=LATE2		type=BOOL
+      debug		groups=SOCKET		phase=PASTSOCKET	type=INT
+      defer-accept	groups=TCP		phase=PASTSOCKET	type=INT
+      defnames		groups=IP4,IP6		phase=OFFSET		type=BOOL
+      deny-table	groups=RANGE		phase=ACCEPT		type=STRING
+      detachfilter	groups=SOCKET		phase=PASTSOCKET	type=INT
+      dh		groups=OPENSSL		phase=SPECIFIC		type=STRING
+      direct		groups=OPEN		phase=OPEN		type=BOOL
+      directory		groups=OPEN		phase=OPEN		type=BOOL
+      dirsync		groups=REG		phase=FD		type=BOOL
+      discard		groups=TERMIOS		phase=FD		type=BYTE
+      dns		groups=IP4,IP6		phase=OFFSET		type=IP4SOCK
+      dnsrch		groups=IP4,IP6		phase=OFFSET		type=BOOL
+      dontroute		groups=SOCKET		phase=PASTSOCKET	type=INT
+      dstopts		groups=IP6		phase=PASTSOCKET	type=INT
+      dsync		groups=OPEN		phase=OPEN		type=BOOL
+      echo		groups=TERMIOS		phase=FD		type=BOOL
+      echoctl		groups=TERMIOS		phase=FD		type=BOOL
+      echoe		groups=TERMIOS		phase=FD		type=BOOL
+      echok		groups=TERMIOS		phase=FD		type=BOOL
+      echoke		groups=TERMIOS		phase=FD		type=BOOL
+      echonl		groups=TERMIOS		phase=FD		type=BOOL
+      echoprt		groups=TERMIOS		phase=FD		type=BOOL
+      egd		groups=OPENSSL		phase=SPECIFIC		type=STRING
+      eof		groups=TERMIOS		phase=FD		type=BYTE
+      eol		groups=TERMIOS		phase=FD		type=BYTE
+      eol2		groups=TERMIOS		phase=FD		type=BYTE
+      erase		groups=TERMIOS		phase=FD		type=BYTE
+      error		groups=SOCKET		phase=PASTSOCKET	type=INT
+      escape		groups=APPL		phase=INIT		type=INT
+      excl		groups=OPEN		phase=OPEN		type=BOOL
+      fdin		groups=FORK		phase=PASTBIGEN		type=UNSIGNED-SHORT
+      fdout		groups=FORK		phase=PASTBIGEN		type=UNSIGNED-SHORT
+      ff0		groups=TERMIOS		phase=FD		type=CONST
+      ff1		groups=TERMIOS		phase=FD		type=CONST
+      ffdly		groups=TERMIOS		phase=FD		type=BOOL
+      fiosetown		groups=SOCKET		phase=PASTSOCKET	type=INT
+      flock		groups=FD		phase=FD		type=BOOL
+      flock-nb		groups=FD		phase=FD		type=BOOL
+      flock-sh		groups=FD		phase=FD		type=BOOL
+      flock-sh-nb	groups=FD		phase=FD		type=BOOL
+      flusho		groups=TERMIOS		phase=FD		type=BOOL
+      forever		groups=RETRY		phase=INIT		type=BOOL
+      fork		groups=CHILD		phase=PASTACCEPT	type=BOOL
+      freebind		groups=IP4,IP6		phase=PASTSOCKET	type=INT
+      ftruncate32	groups=REG		phase=LATE		type=OFF_T
+      gid		groups=FD,NAMED		phase=FD		type=GID_T
+      gid-l		groups=FD		phase=LATE		type=GID_T
+      group-early	groups=NAMED		phase=PREOPEN		type=GID_T
+      hdrincl		groups=IP4,IP6		phase=PASTSOCKET	type=INT
+      hoplimit		groups=IP6		phase=PASTSOCKET	type=INT
+      hopopts		groups=IP6		phase=PASTSOCKET	type=INT
+      http-version	groups=HTTP		phase=LATE		type=STRING
+      hupcl		groups=TERMIOS		phase=FD		type=BOOL
+      icanon		groups=TERMIOS		phase=FD		type=BOOL
+      icrnl		groups=TERMIOS		phase=FD		type=BOOL
+      iexten		groups=TERMIOS		phase=FD		type=BOOL
+      if		groups=SOCKET		phase=PASTSOCKET	type=STRING
+      iff-broadcast	groups=INTERFACE	phase=OFFSET		type=BOOL
+      iff-debug		groups=INTERFACE	phase=OFFSET		type=BOOL
+      iff-multicast	groups=INTERFACE	phase=OFFSET		type=BOOL
+      ignbrk		groups=TERMIOS		phase=FD		type=BOOL
+      igncr		groups=TERMIOS		phase=FD		type=BOOL
+      ignorecr		groups=HTTP		phase=LATE		type=BOOL
+      ignoreeof		groups=APPL		phase=LATE		type=BOOL
+      ignpar		groups=TERMIOS		phase=FD		type=BOOL
+      igntc		groups=IP4,IP6		phase=OFFSET		type=BOOL
+      imaxbel		groups=TERMIOS		phase=FD		type=BOOL
+      immutable		groups=REG		phase=FD		type=BOOL
+      info		groups=TCP		phase=PASTSOCKET	type=INT
+      inlcr		groups=TERMIOS		phase=FD		type=BOOL
+      inpck		groups=TERMIOS		phase=FD		type=BOOL
+      interval		groups=RETRY		phase=INIT		type=STRUCT-TIMESPEC
+      intr		groups=TERMIOS		phase=FD		type=BYTE
+      ioctl		groups=FD		phase=FD		type=INT
+      ioctl-bin		groups=FD		phase=FD		type=INT:BIN
+      ioctl-int		groups=FD		phase=FD		type=INT:INT
+      ioctl-intp	groups=FD		phase=FD		type=INT:INTP
+      ioctl-string	groups=FD		phase=FD		type=INT:STRING
+      ipoptions		groups=IP4,IP6		phase=PASTSOCKET	type=BIN
+      ipv6only		groups=IP6		phase=PREBIND		type=INT
+      isig		groups=TERMIOS		phase=FD		type=BOOL
+      ispeed		groups=TERMIOS		phase=FD		type=UNSIGNED-INT
+      istrip		groups=TERMIOS		phase=FD		type=BOOL
+      iuclc		groups=TERMIOS		phase=FD		type=BOOL
+      ixany		groups=TERMIOS		phase=FD		type=BOOL
+      ixoff		groups=TERMIOS		phase=FD		type=BOOL
+      ixon		groups=TERMIOS		phase=FD		type=BOOL
+      join-group	groups=IP6		phase=PASTSOCKET	type=STRUCT-IP_MREQN
+      join-source-group	groups=IP6		phase=PASTSOCKET	type=GENERIC
+      journal-data	groups=REG		phase=FD		type=BOOL
+      keepalive		groups=SOCKET		phase=FD		type=INT
+      keepcnt		groups=TCP		phase=PASTSOCKET	type=INT
+      keepidle		groups=TCP		phase=PASTSOCKET	type=INT
+      keepintvl		groups=TCP		phase=PASTSOCKET	type=INT
+      key		groups=OPENSSL		phase=SPECIFIC		type=STRING
+      kill		groups=TERMIOS		phase=FD		type=BYTE
+      largefile		groups=OPEN		phase=OPEN		type=BOOL
+      linger		groups=SOCKET		phase=PASTSOCKET	type=STRUCT-LINGER
+      linger2		groups=TCP		phase=PASTSOCKET	type=INT
+      link		groups=PTY		phase=LATE		type=STRING
+      listen-timeout	groups=LISTEN		phase=LISTEN		type=STRUCT-TIMEVAL
+      lnext		groups=TERMIOS		phase=FD		type=BYTE
+      lockfile		groups=APPL		phase=INIT		type=STRING
+      login		groups=EXEC		phase=PREEXEC		type=BOOL
+      loopback		groups=INTERFACE	phase=OFFSET		type=BOOL
+      lowport		groups=UDP,TCP,SCTP,DCCP,UDPLITEphase=LATE		type=BOOL
+      lseek32-cur	groups=BLK,REG		phase=LATE		type=OFF_T
+      lseek32-end	groups=BLK,REG		phase=LATE		type=OFF_T
+      lseek32-set	groups=BLK,REG		phase=LATE		type=OFF_T
+      master		groups=INTERFACE	phase=OFFSET		type=BOOL
+      max-children	groups=CHILD		phase=PASTACCEPT	type=INT
+      max-version	groups=OPENSSL		phase=OFFSET		type=STRING
+      maxfraglen	groups=OPENSSL		phase=SPECIFIC		type=INT
+      maxsendfrag	groups=OPENSSL		phase=SPECIFIC		type=INT
+      membership	groups=IP4,IP6		phase=PASTSOCKET	type=STRUCT-IP_MREQN
+      min		groups=TERMIOS		phase=FD		type=BYTE
+      min-version	groups=OPENSSL		phase=OFFSET		type=STRING
+      mode		groups=FD,NAMED		phase=FD		type=MODE_T
+      mq-flush		groups=POSIXMQ		phase=EARLY		type=BOOL
+      mq-maxmsg		groups=POSIXMQ		phase=OPEN		type=LONG
+      mq-msgsize	groups=POSIXMQ		phase=OPEN		type=LONG
+      mq-prio		groups=POSIXMQ		phase=INIT		type=BOOL
+      mss		groups=TCP		phase=PASTSOCKET	type=INT
+      mss-late		groups=TCP		phase=CONNECTED		type=INT
+      mtu		groups=IP4,IP6		phase=PASTSOCKET	type=INT
+      mtudiscover	groups=IP4,IP6		phase=PASTSOCKET	type=INT
+      multicast-if	groups=IP4,IP6		phase=PASTSOCKET	type=IP4NAME
+      multicastloop	groups=IP4,IP6		phase=PASTSOCKET	type=BYTE
+      multicastttl	groups=IP4,IP6		phase=PASTSOCKET	type=BYTE
+      netns		groups=PROCESS		phase=INIT		type=STRING
+      nl0		groups=TERMIOS		phase=FD		type=CONST
+      nl1		groups=TERMIOS		phase=FD		type=CONST
+      nldly		groups=TERMIOS		phase=FD		type=BOOL
+      no-pi		groups=INTERFACE	phase=FD		type=BOOL
+      noarp		groups=INTERFACE	phase=OFFSET		type=BOOL
+      noatime		groups=FD,OPEN		phase=FD		type=BOOL
+      nocheck		groups=SOCKET		phase=PASTSOCKET	type=INT
+      noctty		groups=OPEN		phase=OPEN		type=BOOL
+      nodelay		groups=TCP		phase=PASTSOCKET	type=INT
+      nodump		groups=REG		phase=FD		type=BOOL
+      noflsh		groups=TERMIOS		phase=FD		type=BOOL
+      nofollow		groups=OPEN		phase=OPEN		type=BOOL
+      nofork		groups=FORK		phase=BIGEN		type=BOOL
+      nonblock		groups=FD,OPEN		phase=FD		type=BOOL
+      nosni		groups=OPENSSL		phase=SPECIFIC		type=BOOL
+      notrailers	groups=INTERFACE	phase=OFFSET		type=BOOL
+      null-eof		groups=SOCKET		phase=OFFSET		type=BOOL
+      ocrnl		groups=TERMIOS		phase=FD		type=BOOL
+      ofdel		groups=TERMIOS		phase=FD		type=BOOL
+      ofill		groups=TERMIOS		phase=FD		type=BOOL
+      olcuc		groups=TERMIOS		phase=FD		type=BOOL
+      onlcr		groups=TERMIOS		phase=FD		type=BOOL
+      onlret		groups=TERMIOS		phase=FD		type=BOOL
+      onocr		groups=TERMIOS		phase=FD		type=BOOL
+      oobinline		groups=SOCKET		phase=PASTSOCKET	type=INT
+      openpty		groups=PTY		phase=BIGEN		type=BOOL
+      opost		groups=TERMIOS		phase=FD		type=BOOL
+      ospeed		groups=TERMIOS		phase=FD		type=UNSIGNED-INT
+      parenb		groups=TERMIOS		phase=FD		type=BOOL
+      parmrk		groups=TERMIOS		phase=FD		type=BOOL
+      parodd		groups=TERMIOS		phase=FD		type=BOOL
+      passcred		groups=SOCKET		phase=PASTSOCKET	type=INT
+      passive		groups=IP4,IP6		phase=OFFSET		type=BOOL
+      path		groups=EXEC		phase=PREEXEC		type=STRING
+      peercred		groups=SOCKET		phase=PASTSOCKET	type=INT[3]
+      pendin		groups=TERMIOS		phase=FD		type=BOOL
+      perm-early	groups=NAMED		phase=PREOPEN		type=MODE_T
+      perm-late		groups=FD		phase=LATE		type=MODE_T
+      pf		groups=SOCKET		phase=PRESOCKET		type=STRING
+      pgid		groups=FORK		phase=LATE		type=INT
+      pipes		groups=FORK		phase=BIGEN		type=BOOL
+      pipesz		groups=FD		phase=FD		type=INT
+      pktinfo		groups=IP4,IP6		phase=PASTSOCKET	type=INT
+      pktopts		groups=IP4,IP6		phase=PASTSOCKET	type=INT
+      pointopoint	groups=INTERFACE	phase=OFFSET		type=BOOL
+      portsel		groups=INTERFACE	phase=OFFSET		type=BOOL
+      priority		groups=SOCKET		phase=PASTSOCKET	type=INT
+      promisc		groups=INTERFACE	phase=OFFSET		type=BOOL
+      protocol		groups=SOCKET		phase=SOCKET		type=INT
+      proxyauth		groups=HTTP		phase=LATE		type=STRING
+      proxyauthfile	groups=HTTP		phase=LATE		type=STRING
+      proxyport		groups=HTTP		phase=LATE		type=STRING
+      pseudo		groups=OPENSSL		phase=SPECIFIC		type=BOOL
+      ptmx		groups=PTY		phase=BIGEN		type=BOOL
+      pty		groups=FORK		phase=BIGEN		type=BOOL
+      pty-interval	groups=PTY		phase=EARLY		type=STRUCT-TIMESPEC
+      quickack		groups=TCP		phase=PASTSOCKET	type=INT
+      quit		groups=TERMIOS		phase=FD		type=BYTE
+      range		groups=RANGE		phase=ACCEPT		type=STRING
+      raw		groups=TERMIOS		phase=FD		type=CONST
+      rawer		groups=TERMIOS		phase=FD		type=CONST
+      rcvbuf		groups=SOCKET		phase=PASTSOCKET	type=INT
+      rcvbuf-late	groups=SOCKET		phase=LATE		type=INT
+      rcvlowat		groups=SOCKET		phase=PASTSOCKET	type=INT
+      rcvtimeo		groups=SOCKET		phase=PASTSOCKET	type=STRUCT-TIMEVAL
+      rdonly		groups=OPEN		phase=OPEN		type=BOOL
+      rdwr		groups=OPEN		phase=OPEN		type=BOOL
+      recurse		groups=IP4,IP6		phase=OFFSET		type=BOOL
+      recvdstopts	groups=IP6		phase=PASTSOCKET	type=INT
+      recverr		groups=IP4,IP6		phase=PASTSOCKET	type=INT
+      recvhoplimit	groups=IP6		phase=PASTSOCKET	type=INT
+      recvhopopts	groups=IP6		phase=PASTSOCKET	type=INT
+      recvopts		groups=IP4,IP6		phase=PASTSOCKET	type=INT
+      recvpktinfo	groups=IP6		phase=PASTSOCKET	type=INT
+      recvrthdr		groups=IP6		phase=PASTSOCKET	type=INT
+      recvtos		groups=IP4,IP6		phase=PASTSOCKET	type=INT
+      recvttl		groups=IP4,IP6		phase=PASTSOCKET	type=INT
+      reprint		groups=TERMIOS		phase=FD		type=BYTE
+      res-debug		groups=IP4,IP6		phase=OFFSET		type=BOOL
+      res-retry		groups=IP4,IP6		phase=OFFSET		type=INT
+      resolve		groups=HTTP		phase=LATE		type=BOOL
+      retopts		groups=IP4,IP6		phase=PASTSOCKET	type=INT
+      retrans		groups=IP4,IP6		phase=OFFSET		type=INT
+      retrieve-vlan	groups=INTERFACE	phase=LATE		type=CONST
+      retry		groups=RETRY		phase=INIT		type=UNSIGNED-INT
+      reuseaddr		groups=SOCKET		phase=PREBIND		type=INT/NULL
+      reuseport		groups=SOCKET		phase=PREBIND		type=INT
+      routeralert	groups=IP4,IP6		phase=PASTSOCKET	type=INT
+      rsync		groups=OPEN		phase=OPEN		type=BOOL
+      rthdr		groups=IP6		phase=PASTSOCKET	type=INT
+      running		groups=INTERFACE	phase=OFFSET		type=BOOL
+      sane		groups=TERMIOS		phase=FD		type=CONST
+      secrm		groups=REG		phase=FD		type=BOOL
+      securityauthentication	groups=SOCKET		phase=PASTSOCKET	type=INT
+      securityencryptionnetwork	groups=SOCKET		phase=PASTSOCKET	type=INT
+      securityencryptiontransport	groups=SOCKET		phase=PASTSOCKET	type=INT
+      seek		groups=BLK,REG		phase=LATE		type=OFF64_T
+      seek-cur		groups=BLK,REG		phase=LATE		type=OFF64_T
+      seek-end		groups=BLK,REG		phase=LATE		type=OFF64_T
+      setgid		groups=PROCESS		phase=LATE2		type=GID_T
+      setgid-early	groups=PROCESS		phase=EARLY		type=GID_T
+      setlk		groups=FD		phase=FD		type=BOOL
+      setlk-rd		groups=FD		phase=FD		type=BOOL
+      setlkw		groups=FD		phase=FD		type=BOOL
+      setlkw-rd		groups=FD		phase=FD		type=BOOL
+      setuid		groups=PROCESS		phase=LATE2		type=UID_T
+      setuid-early	groups=PROCESS		phase=EARLY		type=UID_T
+      shell		groups=SHELL		phase=PREEXEC		type=STRING
+      shut-close	groups=FD		phase=OFFSET		type=CONST
+      shut-down		groups=FD		phase=OFFSET		type=CONST
+      shut-none		groups=FD		phase=OFFSET		type=CONST
+      shut-null		groups=FD		phase=OFFSET		type=CONST
+      sid		groups=PROCESS		phase=LATE		type=BOOL
+      sighup		groups=PARENT		phase=LATE		type=CONST
+      sigint		groups=PARENT		phase=LATE		type=CONST
+      sigquit		groups=PARENT		phase=LATE		type=CONST
+      siocspgrp		groups=SOCKET		phase=PASTSOCKET	type=INT
+      sitout-eio	groups=PTY		phase=OFFSET		type=STRUCT-TIMEVAL
+      slave		groups=INTERFACE	phase=OFFSET		type=BOOL
+      sndbuf		groups=SOCKET		phase=PASTSOCKET	type=INT
+      sndbuf-late	groups=SOCKET		phase=LATE		type=INT
+      sndlowat		groups=SOCKET		phase=PASTSOCKET	type=INT
+      sndtimeo		groups=SOCKET		phase=PASTSOCKET	type=STRUCT-TIMEVAL
+      snihost		groups=OPENSSL		phase=SPECIFIC		type=STRING
+      sockopt		groups=SOCKET		phase=CONNECTED		type=INT:INT:BIN
+      sockopt-bin	groups=SOCKET		phase=CONNECTED		type=INT:INT:BIN
+      sockopt-conn	groups=SOCKET		phase=CONNECTED		type=INT:INT:BIN
+      sockopt-int	groups=SOCKET		phase=CONNECTED		type=INT:INT:INT
+      sockopt-listen	groups=SOCKET		phase=PREBIND		type=INT:INT:BIN
+      sockopt-sock	groups=SOCKET		phase=PASTSOCKET	type=INT:INT:BIN
+      sockopt-string	groups=SOCKET		phase=CONNECTED		type=INT:INT:STRING
+      socksport		groups=SOCKS		phase=LATE		type=STRING
+      socksuser		groups=SOCKS		phase=LATE		type=STRING
+      source-membership	groups=IP4,IP6		phase=PASTSOCKET	type=IP-MREQ-SOURCE
+      sp		groups=UDP,TCP,SCTP,DCCP,UDPLITEphase=LATE		type=UNSIGNED-SHORT
+      start		groups=TERMIOS		phase=FD		type=BYTE
+      stayopen		groups=IP4,IP6		phase=OFFSET		type=BOOL
+      stderr		groups=FORK		phase=PASTFORK		type=BOOL
+      stop		groups=TERMIOS		phase=FD		type=BYTE
+      su		groups=PROCESS		phase=LATE2		type=UID_T
+      su-d		groups=PROCESS		phase=INIT		type=UID_T
+      su-e		groups=PROCESS		phase=EARLY		type=UID_T
+      susp		groups=TERMIOS		phase=FD		type=BYTE
+      swtc		groups=TERMIOS		phase=FD		type=BYTE
+      sync		groups=OPEN		phase=OPEN		type=BOOL
+      syncnt		groups=TCP		phase=PASTSOCKET	type=INT
+      tab0		groups=TERMIOS		phase=FD		type=CONST
+      tab1		groups=TERMIOS		phase=FD		type=CONST
+      tab2		groups=TERMIOS		phase=FD		type=CONST
+      tab3		groups=TERMIOS		phase=FD		type=CONST
+      tabdly		groups=TERMIOS		phase=FD		type=UNSIGNED-INT
+      tcpwrap		groups=RANGE		phase=ACCEPT		type=STRING-NULL
+      tcpwrap-dir	groups=RANGE		phase=ACCEPT		type=STRING
+      tightsocklen	groups=UNIX		phase=PREBIND		type=BOOL
+      time		groups=TERMIOS		phase=FD		type=BYTE
+      timestamp		groups=SOCKET		phase=PASTSOCKET	type=INT
+      topdir		groups=REG		phase=FD		type=BOOL
+      tos		groups=IP4,IP6		phase=PASTSOCKET	type=INT
+      tostop		groups=TERMIOS		phase=FD		type=BOOL
+      transparent	groups=IP4,IP6		phase=PREBIND		type=BOOL
+      trunc		groups=OPEN		phase=LATE		type=BOOL
+      truncate		groups=REG		phase=LATE		type=OFF64_T
+      ttl		groups=IP4,IP6		phase=PASTSOCKET	type=INT
+      tun-device	groups=INTERFACE	phase=OPEN		type=STRING
+      tun-name		groups=INTERFACE	phase=FD		type=STRING
+      tun-type		groups=INTERFACE	phase=FD		type=STRING
+      type		groups=SOCKET		phase=SOCKET		type=INT
+      udplite-recv-cscov	groups=UDPLITE		phase=FD		type=INT
+      udplite-send-cscov	groups=UDPLITE		phase=FD		type=INT
+      uid		groups=FD,NAMED		phase=FD		type=UID_T
+      uid-l		groups=FD		phase=LATE		type=UID_T
+      umask		groups=(all)			phase=INIT		type=MODE_T
+      unicast-hops	groups=IP6		phase=PASTSOCKET	type=INT
+      unlink		groups=NAMED		phase=PREOPEN		type=BOOL
+      unlink-close	groups=NAMED		phase=LATE		type=BOOL
+      unlink-early	groups=NAMED		phase=EARLY		type=BOOL
+      unlink-late	groups=NAMED		phase=PASTOPEN		type=BOOL
+      unrm		groups=REG		phase=FD		type=BOOL
+      up		groups=INTERFACE	phase=OFFSET		type=BOOL
+      user-early	groups=NAMED		phase=PREOPEN		type=UID_T
+      usevc		groups=IP4,IP6		phase=OFFSET		type=BOOL
+      v4mapped		groups=IP4,IP6		phase=OFFSET		type=BOOL
+      verify		groups=OPENSSL		phase=SPECIFIC		type=BOOL
+      vt0		groups=TERMIOS		phase=FD		type=CONST
+      vt1		groups=TERMIOS		phase=FD		type=CONST
+      vtdly		groups=TERMIOS		phase=FD		type=BOOL
+      wait-slave	groups=PTY		phase=EARLY		type=BOOL
+      waitlock		groups=APPL		phase=INIT		type=STRING
+      werase		groups=TERMIOS		phase=FD		type=BYTE
+      window-clamp	groups=TCP		phase=PASTSOCKET	type=INT
+      wronly		groups=OPEN		phase=OPEN		type=BOOL
+      xcase		groups=TERMIOS		phase=FD		type=BOOL
+      xtabs		groups=TERMIOS		phase=FD		type=CONST

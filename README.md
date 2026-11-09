@@ -14,7 +14,7 @@ adds context, workflows, and copy-paste recipes that `--help` does not explain.
 
 > **Start here for research-driven use:** [`DEEP-RESEARCH.md`](DEEP-RESEARCH.md) —
 > the `@deep-research` workflow, prompt template, evidence rules, research-log
-> format, and the index of all 79 `SCENARIOS.md` files (78 tools;
+> format, and the index of all 89 `SCENARIOS.md` files (88 tools;
 > `metasploit-msfvenom` is documented alongside Metasploit).
 >
 > **External references:** [`RELATED-DOCS.md`](RELATED-DOCS.md) — a cited
@@ -32,6 +32,9 @@ adds context, workflows, and copy-paste recipes that `--help` does not explain.
 | nmap | [`nmap/`](nmap/README.md) | Port scanning, service/OS fingerprinting, NSE scripting |
 | masscan | [`masscan/`](masscan/README.md) | Internet-scale asynchronous port scanner |
 | tcpdump | [`tcpdump/`](tcpdump/README.md) | Packet capture and BPF-filtered traffic analysis |
+| whois | [`whois/`](whois/README.md) | Domain/IP/ASN registration lookups (RFC 3912) |
+| traceroute | [`traceroute/`](traceroute/README.md) | Hop-by-hop path discovery with UDP/ICMP/TCP probes |
+| dnsrecon | [`dnsrecon/`](dnsrecon/README.md) | DNS enumeration, zone transfer, brute force, cache snooping |
 | subfinder | [`subfinder/`](subfinder/README.md) | Passive subdomain enumeration from dozens of sources |
 | httpx | [`httpx/`](httpx/README.md) | Fast HTTP probing, tech detection, screenshots, filtering |
 | katana | [`katana/`](katana/README.md) | Web crawler (standard + headless), JS endpoint extraction |
@@ -62,6 +65,8 @@ adds context, workflows, and copy-paste recipes that `--help` does not explain.
 | gobuster | [`gobuster/`](gobuster/README.md) | Directory, DNS, vhost, and fuzz brute force |
 | wfuzz | [`wfuzz/`](wfuzz/README.md) | General-purpose web fuzzer |
 | dirsearch | [`dirsearch/`](dirsearch/README.md) | Web path and file brute force |
+| dirb | [`dirb/`](dirb/README.md) | Classic directory brute force with recursive scanning |
+| whatweb | [`whatweb/`](whatweb/README.md) | Web technology fingerprinting with ~1,800 plugins |
 | cewl | [`cewl/`](cewl/README.md) | Wordlist generator from website content |
 
 ### JavaScript, CMS & secrets
@@ -88,7 +93,9 @@ adds context, workflows, and copy-paste recipes that `--help` does not explain.
 | Tool | Directory | One-liner |
 |------|-----------|-----------|
 | hashcat | [`hashcat/`](hashcat/README.md) | GPU/CPU hash cracking across 300+ modes |
+| john | [`john/`](john/README.md) | John the Ripper password cracker (core 1.9.0 build) |
 | hydra | [`hydra/`](hydra/README.md) | Network login brute force across 50+ protocols |
+| medusa | [`medusa/`](medusa/README.md) | Parallel network login brute force (25 modules) |
 
 ### Network / Active Directory
 | Tool | Directory | One-liner |
@@ -104,6 +111,9 @@ adds context, workflows, and copy-paste recipes that `--help` does not explain.
 | onesixtyone | [`onesixtyone/`](onesixtyone/README.md) | Fast SNMP community-string scanner |
 | nbtscan | [`nbtscan/`](nbtscan/README.md) | NetBIOS name and address scanner |
 | sshuttle | [`sshuttle/`](sshuttle/README.md) | VPN-over-SSH for pivoting into internal networks |
+| socat | [`socat/`](socat/README.md) | Multipurpose relay: TCP/UDP/TLS/UNIX/PTY bridging |
+| nc | [`nc/`](nc/README.md) | netcat-traditional ad-hoc TCP/UDP client and listener |
+| proxychains4 | [`proxychains4/`](proxychains4/README.md) | Force TCP through SOCKS/HTTP proxy chains via LD_PRELOAD |
 | kerbrute | [`kerbrute/`](kerbrute/README.md) | AD username enumeration and password spraying |
 
 ### Wireless & RF
@@ -243,4 +253,4 @@ scope, rate limits, and program rules.
 
 ---
 
-*Generated for a Debian 13 pentest workstation. Help snapshots taken 2026-11-09.*
+*Generated for a Debian 13 pentest workstation. Help snapshots taken 2026-11-09 to 2026-11-10.*
